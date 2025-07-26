@@ -29,7 +29,12 @@ public class UserrServiceImpl implements IUserrService, UserDetailsService {
 	}
 
 	@Override
-	public List<Userr> listarTest() {
+	public List<Userr> listarAllUserr() {
 		return iUserrDAO.findAll();
+	}
+
+	@Override
+	public Userr userrFindById(int id) {
+		return iUserrDAO.getById(id);
 	}
 }

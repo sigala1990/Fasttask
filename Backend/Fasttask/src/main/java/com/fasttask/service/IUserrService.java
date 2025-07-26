@@ -5,5 +5,7 @@ import java.util.List;
 import com.fasttask.dto.Userr;
 
 public interface IUserrService {
-	public List<Userr> listarTest();
+	public List<Userr> listarAllUserr();
+	
+	public Userr userrFindById(int id);
 }

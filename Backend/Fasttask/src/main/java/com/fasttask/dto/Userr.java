@@ -16,6 +16,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.fasttask.common.Views;
+
 
 
 @Entity
@@ -25,16 +28,23 @@ public class Userr implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
- 
+	
+	@JsonView({Views.Public.class,Views.Internal.class,})
 	@Column(name="username")
 	private String username;
 	
+	@JsonView(Views.Internal.class)	
 	@Column(name="password")
 	private String password;
 	
+	@JsonView({Views.Public.class,Views.Internal.class})
 	@Column(name="rol")
 	private String rol;
 
+	@JsonView(Views.Public.class)
+	@Column(name="email")
+	private String email;
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> roles = new ArrayList<>();
@@ -72,6 +82,14 @@ public class Userr implements UserDetails {
 
 	public void setRol(String rol) {
 		this.rol = rol;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override

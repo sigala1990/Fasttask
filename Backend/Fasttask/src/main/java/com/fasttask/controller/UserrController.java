@@ -17,8 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasttask.DAO.IUserrDAO;
+import com.fasttask.common.Views;
 import com.fasttask.dto.Userr;
 import com.fasttask.service.UserrServiceImpl;
 
@@ -37,19 +38,28 @@ public class UserrController {
 	}
 
 	@Autowired
-	UserrServiceImpl testServiceImpl;
+	UserrServiceImpl userrServiceImpl;
 
-	@GetMapping("/response-entity-builder-with-http-headers")
-	public ResponseEntity<String> usingResponseEntityBuilderAndHttpHeaders() {
-		HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.set("Baeldung-Example-Header", "Value-ResponseEntityBuilderWithHttpHeaders");
+//	@GetMapping("/response-entity-builder-with-http-headers")
+//	public ResponseEntity<String> usingResponseEntityBuilderAndHttpHeaders() {
+//		HttpHeaders responseHeaders = new HttpHeaders();
+//		responseHeaders.set("Baeldung-Example-Header", "Value-ResponseEntityBuilderWithHttpHeaders");
+//
+//		return ResponseEntity.ok().headers(responseHeaders).body("Response with header using ResponseEntity");
+//	}
 
-		return ResponseEntity.ok().headers(responseHeaders).body("Response with header using ResponseEntity");
-	}
-
-	@GetMapping("/usuario")
+	@GetMapping("/userr")
+	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
-	public List<Userr> listarGcon_tb_usuarios() {
-		return testServiceImpl.listarTest();
+	public List<Userr> listarll_tb_usuarios() {
+		return userrServiceImpl.listarAllUserr();
 	}
+	
+	@GetMapping("/userr/{id}")
+	@JsonView(Views.Public.class)
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+	public Userr userXID(@PathVariable Integer id) {
+		return userrServiceImpl.userrFindById(id);
+	}
+	
 }

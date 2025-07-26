@@ -18,26 +18,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import com.fasttask.DAO.ITestDAO;
-import com.fasttask.dto.Test;
-import com.fasttask.service.TestServiceImpl;
+import com.fasttask.DAO.IUserrDAO;
+import com.fasttask.dto.Userr;
+import com.fasttask.service.UserrServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
 		RequestMethod.DELETE })
-public class TestController {
+public class UserrController {
 
-	private ITestDAO testDAO;
+	private IUserrDAO userrDAO;
 
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	public TestController(ITestDAO TestDAO, BCryptPasswordEncoder bCryptPasswordEncoder) {
-		this.testDAO = TestDAO;
+	public UserrController(IUserrDAO TestDAO, BCryptPasswordEncoder bCryptPasswordEncoder) {
+		this.userrDAO = TestDAO;
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 
 	@Autowired
-	TestServiceImpl testServiceImpl;
+	UserrServiceImpl testServiceImpl;
 
 	@GetMapping("/response-entity-builder-with-http-headers")
 	public ResponseEntity<String> usingResponseEntityBuilderAndHttpHeaders() {
@@ -49,7 +49,7 @@ public class TestController {
 
 	@GetMapping("/usuario")
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
-	public List<Test> listarGcon_tb_usuarios() {
+	public List<Userr> listarGcon_tb_usuarios() {
 		return testServiceImpl.listarTest();
 	}
 }

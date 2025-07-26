@@ -9,27 +9,27 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.fasttask.DAO.ITestDAO;
-import com.fasttask.dto.Test;
+import com.fasttask.DAO.IUserrDAO;
+import com.fasttask.dto.Userr;
 
 @Service
-public class TestServiceImpl implements ITestService, UserDetailsService {
+public class UserrServiceImpl implements IUserrService, UserDetailsService {
 	
 	@Autowired
-	ITestDAO iTestDAO;
+	IUserrDAO iUserrDAO;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Test test = iTestDAO.findByUsername(username);
-		if (test == null) {
+		Userr user = iUserrDAO.findByUsername(username);
+		if (user == null) {
 			throw new UsernameNotFoundException(username);
 		}
 
-		return new User(test.getUsername(), test.getPassword(), test.getAuthorities());
+		return new User(user.getUsername(), user.getPassword(), user.getAuthorities());
 	}
 
 	@Override
-	public List<Test> listarTest() {
-		return iTestDAO.findAll();
+	public List<Userr> listarTest() {
+		return iUserrDAO.findAll();
 	}
 }

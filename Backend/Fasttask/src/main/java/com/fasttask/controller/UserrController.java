@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,8 +25,8 @@ import com.fasttask.dto.Userr;
 import com.fasttask.service.UserrServiceImpl;
 
 @RestController
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
-		RequestMethod.DELETE })
+@RequestMapping("/api")
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,RequestMethod.DELETE })
 public class UserrController {
 
 	private IUserrDAO userrDAO;
@@ -55,11 +56,17 @@ public class UserrController {
 		return userrServiceImpl.listarAllUserr();
 	}
 	
-	@GetMapping("/userr/{id}")
+	@GetMapping("/userr/by_username/{username}")
+	@JsonView(Views.Public.class)
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+	public Userr userXID(@PathVariable String username) {
+		return userrDAO.findByUsername(username);
+	}
+	
+	@GetMapping("/userr/by_id/{id}")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public Userr userXID(@PathVariable Integer id) {
 		return userrServiceImpl.userrFindById(id);
 	}
-	
 }

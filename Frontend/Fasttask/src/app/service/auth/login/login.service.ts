@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { Token } from '../model/token/token.model';
+import { Token } from '../../../model/token/token.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
+import { apiConstants } from '../../apiConstants/ApiConstants'; // Adjust the path as needed
 
-const baseUrl = 'http://localhost:8080/';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +15,7 @@ export class LoginService {
   constructor(private httpClient:HttpClient) { }
 
     login(usuario: any): Observable<Token> {
-    return this.httpClient.post<Token>(`${baseUrl}login`, usuario).pipe(
+    return this.httpClient.post<Token>(`${apiConstants.baseUrl}login`, usuario).pipe(
       catchError(this.handleError)
     );
   }

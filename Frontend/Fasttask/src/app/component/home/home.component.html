@@ -2,10 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-10 offset-lg-1">
-        <h2 class="mb-3 text-center text-white">
-          Inicia Sesión en T-PRESTAMOS
+        <h2 class="mb-3 text-center ">
+          Inicia Sesión en Fasttask
         </h2>
-        <div class="bg-white shadow rounded">
+        <div class=" shadow rounded" style="background-color: #FBFBFD">
           <div class="row">
             <div class="col-md-7 pe-0">
               <div class="form-left h-100 py-4 px-5">
@@ -45,11 +45,14 @@
                         name="password"
                       />
                     </div>
-                    <div *ngIf="sigInFail">
+                    <!-- <div *ngIf="sigInFail">
                       <div class="alert alert-danger p-2 mt-1" role="alert">
                         Password incorrecto.
                       </div>
-                    </div>
+                    </div> -->
+                  </div>
+                  <div *ngIf="sigInFail">
+                    <label class="text-danger">Usuario o contraseña incorrectos</label>
                   </div>
                   <div>
                     <button
@@ -57,11 +60,6 @@
                       (click)="login()"
                       class="btn px-4 text-white me-5 button-t-prestamos"
                     >
-                     <!-- <button
-                      type="submit"
-                      (click)="registrar($event)"
-                      class="btn px-4 text-white me-5 button-t-prestamos"
-                    > -->
                       Acceder
                     </button>
                     <button
@@ -77,8 +75,8 @@
             </div>
             <div class="col-md-5 ps-0 d-md-block">
               <div
-                class="form-right h-100 text-white p-3"
-                style="background-color: #e91e63"
+                class="form-right h-100  p-3"
+                style="background-color: #F5F5F7"
               >
                 <h3>Logueate</h3>
 
@@ -98,7 +96,6 @@
                     <p style="text-align: justify">Logueate como invitado</p>
                   </button>
                 </div>
-                <!-- <p class="text-break" *ngIf="submitted">Bienvenido {{ssesion.username}} tu token es {{ssesion.token}}</p> -->
                 <div class="text-center">
                   <img
                     src="../../../assets/img/logo.png"

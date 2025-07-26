@@ -18,10 +18,8 @@ export class AuthInterceptor implements HttpInterceptor{
     const token = window.sessionStorage.getItem("auth-token");
     if (token != null) {
       request = request.clone({ headers: request.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
-
       return request;
     }
-
     return request;
   }
 }

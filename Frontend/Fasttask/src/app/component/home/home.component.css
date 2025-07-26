@@ -7,7 +7,7 @@ a {
   display: inline-block;
   display: flex;
   align-items: center;
-  background-color: #c2185cde;
+  background-color: #ffffff;
 }
 .form-right i {
   font-size: 100px;
@@ -28,11 +28,11 @@ span{
 }
 
 .btn{
-  background-color: #FF4081;
+  background-color: #000000;
 }
 
 .btn:hover{
-  background-color: #F8BBd0;
+  background-color: #49B3FC;
 }
 
 .input-group-text{

@@ -27,6 +27,7 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
     BrowserAnimationsModule,
     MatSnackBarModule,
     ReactiveFormsModule,
+    ReactiveFormsModule,
   ],
   providers: [  {
       provide: HTTP_INTERCEPTORS,

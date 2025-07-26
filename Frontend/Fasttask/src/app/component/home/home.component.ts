@@ -1,3 +1,4 @@
+import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { error } from 'console';
@@ -16,16 +17,8 @@ import { UserrService } from 'src/app/service/userr/userr.service';
 export class HomeComponent implements OnInit {
   user!: User;
   userr!: Userr;
-  guess!: User;
   ssesion!: Ssesion;
-  role: any;
-
-  usuario!: any; //Usuario;
-
-  //Ssesion;
-
-  sigInFail = false;
-
+  sigInFail: boolean = false;
   submitted: boolean = false;
 
   constructor(
@@ -48,6 +41,7 @@ export class HomeComponent implements OnInit {
       next: (token: Token) => {
         window.sessionStorage.setItem('auth-token', token.token);
         console.log('Token guardado en sessionStorage:', token.token);
+
         this.userr ={
           username: this.user.username,
           email: '',
@@ -60,6 +54,7 @@ export class HomeComponent implements OnInit {
         console.log(
           `Nombre del error: ${error}`
         );
+          this.sigInFail = true;
       },
     });
   }
@@ -68,40 +63,14 @@ export class HomeComponent implements OnInit {
     this.serviceUserr.userrByUsername(this.userr.username).subscribe({
       next: (userr: Userr) => {
         console.log('Usuario obtenido:', userr);
-        userr.email = this.userr.email;
-
+        this.userr = userr;
+        this.router.navigate(['areaClient']).then((success) => {
+      console.log('Navegación exitosa?', success);
+    });
       },
       error: (error: any) => {
         console.error('Error al obtener el usuario:', error);
-        console.log(
-          `Nombre del error: ${error}`
-        );
-      },
-    });
-  }
 
-  registrar(event?: Event): void {
-    if (event) {
-      event.preventDefault();
-    }
-    console.log('Click');
-    this.router.navigate(['areaClient']).then((success) => {
-      console.log('Navegación exitosa?', success);
-    });
-  }
-
-  loginGuess(): void {
-    console.log('atencion guess');
-    console.log(this.guess);
-    this.loginService.login(this.guess).subscribe({
-      next: (token: Token) => {
-        window.sessionStorage.setItem('auth-token', token.token);
-        // this.listBooks();
-      },
-      error: (resultError: Error) => {
-        console.log(
-          `Nombre del error: ${resultError.name}, Mensaje del error: ${resultError.message}, Pila del error: ${resultError.stack}`
-        );
       },
     });
   }

@@ -59,7 +59,7 @@ public class UserrController {
 	@GetMapping("/userr/by_username/{username}")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
-	public Userr userXID(@PathVariable String username) {
+	public Userr userrXID(@PathVariable String username) {
 		return userrDAO.findByUsername(username);
 	}
 	

@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -11,12 +12,7 @@ import {
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Userr } from 'src/app/model/userr/userr.model';
-// import { Rol } from 'src/app/models/enum/rol/rol.model';
-// import { Token } from 'src/app/models/token/token.model';
-// import { User } from 'src/app/models/user/user.model';
-// import { LoginService } from 'src/app/services/auth/login.service';
-// import { SsesionService } from 'src/app/services/auth/ssesion.service';
-// import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import { UserrService } from 'src/app/service/userr/userr.service';
 
 @Component({
   selector: 'app-signup',
@@ -41,17 +37,18 @@ export class SignupComponent implements OnInit {
   constructor(
     private _snackBar: MatSnackBar,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userrService: UserrService
   ) {}
 
   ngOnInit(): void {
     this.formulario = this.fb.group(
       {
-        nombre: ['', [Validators.required, Validators.minLength(3)]],
-        email: ['', [Validators.required, Validators.email]],
-        fechaNacimiento: ['', [Validators.required, this.fechaNoFutura]],
-        password: ['', [Validators.required]],
-        confirmPassword: ['', [Validators.required]],
+        username: ['123', [Validators.required, Validators.minLength(3)]],
+        email: ['123@gmail.com', [Validators.required, Validators.email]],
+        fecha_nacimiento: ['2025-07-09', [Validators.required, this.fechaNoFutura]],
+        password: ['123', [Validators.required]],
+        confirmPassword: ['123', [Validators.required]],
       },
       { validators: this.contraseñasIguales, }
     );
@@ -81,6 +78,7 @@ export class SignupComponent implements OnInit {
   onSubmit(): void {
     if (this.formulario.valid) {
       console.log('Formulario válido', this.formulario.value);
+      this.createUserr();
     } else {
       console.log('Formulario inválido');
       this.formulario.markAllAsTouched();
@@ -89,5 +87,25 @@ export class SignupComponent implements OnInit {
 
   get f() {
     return this.formulario.controls;
+  }
+
+  createUserr(): void {
+
+    this.userr = this.formulario.value;
+    this.userr.fecha_nacimiento = formatDate(this.userr.fecha_nacimiento, 'yyyy-MM-dd', 'en');
+    console.log('Creando usuario:', this.userr);
+      this.userrService.createUserr(this.userr).subscribe({
+        next: (response) => {
+          console.log('Usuario creado:', response);
+          this.router.navigate(['/areaClient']);
+        },
+        error: (error) => {
+          console.error('Error al crear usuario:', error);
+          this._snackBar.open(error.message, 'Cerrar', {
+            duration: 3000,
+          });
+        },
+      });
+
   }
 }

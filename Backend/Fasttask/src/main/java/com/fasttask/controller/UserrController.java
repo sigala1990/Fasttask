@@ -26,28 +26,14 @@ import com.fasttask.service.UserrServiceImpl;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,RequestMethod.DELETE })
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+		RequestMethod.DELETE })
 public class UserrController {
 
-	private IUserrDAO userrDAO;
-
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-	public UserrController(IUserrDAO TestDAO, BCryptPasswordEncoder bCryptPasswordEncoder) {
-		this.userrDAO = TestDAO;
-		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-	}
+//	private IUserrDAO userrDAO;
 
 	@Autowired
 	UserrServiceImpl userrServiceImpl;
-
-//	@GetMapping("/response-entity-builder-with-http-headers")
-//	public ResponseEntity<String> usingResponseEntityBuilderAndHttpHeaders() {
-//		HttpHeaders responseHeaders = new HttpHeaders();
-//		responseHeaders.set("Baeldung-Example-Header", "Value-ResponseEntityBuilderWithHttpHeaders");
-//
-//		return ResponseEntity.ok().headers(responseHeaders).body("Response with header using ResponseEntity");
-//	}
 
 	@GetMapping("/userr")
 	@JsonView(Views.Public.class)
@@ -55,27 +41,32 @@ public class UserrController {
 	public List<Userr> listarll_tb_usuarios() {
 		return userrServiceImpl.listarAllUserr();
 	}
-	
+
 	@GetMapping("/userr/by_username/{username}")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public Userr userrXID(@PathVariable String username) {
-		return userrDAO.findByUsername(username);
+		return userrServiceImpl.userrFindByUsername(username);
 	}
-	
+
 	@GetMapping("/userr/by_id/{id}")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public Userr userXID(@PathVariable Integer id) {
 		return userrServiceImpl.userrFindById(id);
 	}
-	
-	@PostMapping("/userr")
+
+	@PostMapping("/userr/create")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
-	public Userr crearUserr(@RequestBody Userr userr) {
-		Userr newUserr = userrServiceImpl.crearUser(userr);
-		newUserr.setPassword(bCryptPasswordEncoder.encode(userr.getPassword()));
-		return userrServiceImpl.crearUser(newUserr);
+	public ResponseEntity<?> crearUserr(@RequestBody Userr userr) {
+		if (userrServiceImpl.userrDuplicado(userr)) {
+			return ResponseEntity.status(409) // 409 Conflict
+					.body("El usuario o el email ya existe");
+		} else {
+			Userr nuevoUsuario = userrServiceImpl.crearUser(userr);
+			return ResponseEntity.status(201).body(nuevoUsuario);// 201 Creado registro correctamente
+		}
+
 	}
 }

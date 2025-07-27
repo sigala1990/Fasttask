@@ -16,7 +16,8 @@ import com.fasttask.dto.Userr;
 @Service
 public class UserrServiceImpl implements IUserrService, UserDetailsService {
 	
-	//private BCryptPasswordEncoder bCryptPasswordEncoder;
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Autowired
 	IUserrDAO iUserrDAO;
@@ -40,15 +41,31 @@ public class UserrServiceImpl implements IUserrService, UserDetailsService {
 	public Userr userrFindById(int id) {
 		return iUserrDAO.getById(id);
 	}
+	
+	@Override
+	public Userr userrFindByUsername(String username) {
+		return iUserrDAO.findByUsername(username);
+	}
 
 	@Override
 	public Userr crearUser(Userr userr) {
-//		userr.setPassword(bCryptPasswordEncoder.encode(userr.getPassword()));
+		userr.setPassword(bCryptPasswordEncoder.encode(userr.getPassword()));
 		userr.setRol(userr.getRol() != null && !userr.getRol().isEmpty() ? userr.getRol() : "USER" );
 		iUserrDAO.save(userr);
 		Userr nouUserr = iUserrDAO.findByUsername(userr.getUsername());
-		return userr;
+		return nouUserr;
 	}
+
+	@Override
+	public boolean userrDuplicado(Userr userr) {
+		boolean existEmail = iUserrDAO.existsByEmail(userr.getEmail());
+		System.out.println("Email existe "+existEmail);
+		boolean existUsername = iUserrDAO.existsByUsername(userr.getUsername());
+		System.out.println("User existe "+ existUsername);
+		return existEmail && existUsername ? true : false;		
+	}
+
+
 
 	
 	

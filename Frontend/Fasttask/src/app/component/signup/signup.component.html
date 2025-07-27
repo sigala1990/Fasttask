@@ -17,16 +17,16 @@
                       <input
                         type="text"
                         class="form-control"
-                        formControlName="nombre"
+                        formControlName="username"
                       />
-                      <div *ngIf="f['nombre'].touched && f['nombre'].errors">
+                      <div *ngIf="f['username'].touched && f['username'].errors">
                         <small
-                          *ngIf="f['nombre'].errors['required']"
+                          *ngIf="f['username'].errors['required']"
                           class="text-danger"
                           >Nombre es requerido</small
                         >
                         <small
-                          *ngIf="f['nombre'].errors['minlength']"
+                          *ngIf="f['username'].errors['minlength']"
                           class="text-danger"
                           >Mínimo 3 caracteres</small
                         >
@@ -91,20 +91,20 @@
                         <input
                           type="date"
                           class="form-control"
-                          formControlName="fechaNacimiento"
+                          formControlName="fecha_nacimiento"
                           required
                         />
                         <div
                           *ngIf="
-                            f['fechaNacimiento'].touched &&
-                            f['fechaNacimiento'].errors
+                            f['fecha_nacimiento'].touched &&
+                            f['fecha_nacimiento'].errors
                           "
                         >
-                          <small *ngIf="f['fechaNacimiento'].errors['required']" class="text-danger"
+                          <small *ngIf="f['fecha_nacimiento'].errors['required']" class="text-danger"
                             >Campo requerido</small
                           >
                           <small
-                            *ngIf="f['fechaNacimiento'].errors['fechaFutura']" class="text-danger"
+                            *ngIf="f['fecha_nacimiento'].errors['fechaFutura']" class="text-danger"
                           >
                             La fecha no puede ser mayor a hoy
                           </small>

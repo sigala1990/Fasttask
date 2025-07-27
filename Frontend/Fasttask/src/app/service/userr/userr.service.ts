@@ -1,7 +1,7 @@
+import { apiConstants } from './../apiConstants/apiConstants';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
-import { apiConstants } from '../apiConstants/ApiConstants'; // Adjust the path as needed
 import { Userr } from 'src/app/model/userr/userr.model';
 
 @Injectable({
@@ -15,18 +15,25 @@ export class UserrService {
       .pipe(catchError(this.handleError));
   }
 
-  // userrById(): Observable<any[]> {
-  //   return this.httpClient
-  //     .get<Userr[]>(`${apiConstants.baseUrl}/usuarios`)
-  //     .pipe(catchError(this.handleError));
-  // }
-
+  createUserr(userr: Userr): Observable<Userr> {
+    return this.httpClient.post<Userr>(`${apiConstants.baseUrl}api/userr/create`, userr)
+      .pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 409) {
+          // Puedes manejar aquí el error específico de usuario duplicado
+          // Por ejemplo, lanzar un error con mensaje claro
+          return throwError(() => new Error('El usuario o emailya existe.'));
+        }
+        // Para otros errores, relanzar o manejar según convenga
+        return this.handleError(error);
+      })
+    );
+  }
   // Handle API errors
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.log('An error occurred:', error.error.message);
     } else {
-      //console.log(`Backend returned code ${error.status}, ` +`body was: ${error.error}`);
       console.log(error.status);
     }
     return throwError('Something bad happened; please try again later.');

@@ -32,18 +32,25 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurity extends WebSecurityConfigurerAdapter {
+	
+	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+	public WebSecurity(UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+	    this.userDetailsService = userDetailsService;
+	    this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+	}
+	
 	private UserDetailsService userDetailsService;
 	private Filter simpleCorsFilter;
 
-	public WebSecurity(UserDetailsService userDetailsService) {
-		this.userDetailsService = userDetailsService;
-	}
+//	public WebSecurity(UserDetailsService userDetailsService) {
+//		this.userDetailsService = userDetailsService;
+//	}
 
-	@Bean
-	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+//	@Bean
+//	public BCryptPasswordEncoder bCryptPasswordEncoder() {
+//		return new BCryptPasswordEncoder();
+//	}
 	
 	@Autowired
 	public SimpleCORSFilter myCorsFilter;
@@ -77,7 +84,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// Se define la clase que recupera los usuarios y el algoritmo para procesar las passwords
-		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
 	}
 
 	@Bean

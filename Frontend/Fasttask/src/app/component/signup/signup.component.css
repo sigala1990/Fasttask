@@ -8,7 +8,7 @@ a {
   display: inline-block;
   display: flex;
   align-items: center;
-  background-color: #F5F5F7;
+  background-color: #ffffff;
 }
 .form-right i {
   font-size: 100px;
@@ -44,10 +44,7 @@ span{
 }
 
 
-.container-fluid{
-  /* margin-top: 100px;
-  min-height: 100vh; */
-}
+
 
 body {
   background-color: #f7f6f6
@@ -69,7 +66,7 @@ a {
 
 .card {
   border: none;
-  box-shadow: 5px 6px 6px 9px #e9ecef;
+  box-shadow: 5px 6px 6px 9px #F5F5F7;
   border-radius: 12px;
 }
 
@@ -128,7 +125,7 @@ span {
 .card {
 
   border: none;
-  box-shadow: 5px 6px 6px 9px #e9ecef;
+  box-shadow: 5px 6px 6px 9px #4c759e;
   border-radius: 4px;
 }
 
@@ -198,27 +195,4 @@ p {
 #form label {
   font-size: 20px;
 }
-/*
-input[type="radio"] {
-  display: none;
-} */
 
-
-
-input[type="radio"]:checked:after  {
-  color: rgb(253, 38, 181);
-  border-style: solid;
-}
-
-
-.radio-item label {
-  color: #666;
-  font-weight: normal;
-}
-[type=radio] {
-  position: absolute;
-  opacity: 100;
-  width: 10;
-  height: 10;
-  background-color: #FF4081;
-  }

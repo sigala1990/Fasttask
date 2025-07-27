@@ -22,7 +22,7 @@ export class UserrService {
         if (error.status === 409) {
           // Puedes manejar aquí el error específico de usuario duplicado
           // Por ejemplo, lanzar un error con mensaje claro
-          return throwError(() => new Error('El usuario o emailya existe.'));
+          return throwError(() => new Error('El usuario o email ya existe.'));
         }
         // Para otros errores, relanzar o manejar según convenga
         return this.handleError(error);

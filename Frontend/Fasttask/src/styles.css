@@ -1,4 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-
+/*
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*/
+/* Quita márgenes y paddings globales */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Si usas .login-page con 100vh, quítalo o ajusta: */
+.login-page {
+  min-height: 100vh;
+}

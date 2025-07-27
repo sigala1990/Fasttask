@@ -11,6 +11,7 @@ import { SignupComponent } from './component/signup/signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthInterceptor } from './helpers/auth.interceptor';
+import { NavbarComponent } from './component/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
     HomeComponent,
     AreaClientComponent,
     SignupComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

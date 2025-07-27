@@ -8,7 +8,7 @@ a {
   display: inline-block;
   display: flex;
   align-items: center;
-  background-color: #c2185cde;
+  background-color: #F5F5F7;
 }
 .form-right i {
   font-size: 100px;
@@ -29,11 +29,11 @@ span{
 }
 
 .btn{
-  background-color: #FF4081;
+  background-color: #000000;
 }
 
 .btn:hover{
-  background-color: #F8BBd0;
+  background-color: #49B3FC;
 }
 .input-t-prestamos{
   margin-right: 4px;

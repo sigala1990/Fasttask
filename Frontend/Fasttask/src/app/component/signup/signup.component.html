@@ -1,122 +1,131 @@
-<div class="login-page ">
-  <div class="container ">
+<div class="login-page">
+  <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="col-sm-5 offset-sm">
-        <h2 class="mb-2 text-center text-white">Registro en T-PRESTAMOS</h2>
+        <h2 class="mb-2 text-center">Registrate en Fasttask</h2>
         <div class="bg-white shadow rounded">
           <div class="row">
             <div class="col-sm pe-0">
-              <div class=" h-100 py-4 px-5">
+              <div class="h-100 py-4 px-5">
                 <h3>Sign up</h3>
                 <div class="row g-2">
-                  <form [formGroup]="starForm" (ngSubmit)="botoSubmit();">
-                    <label for="firstName" class="form-label">Avatar</label>
+                  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+                    <div class="col-lg-12 mb-2">
+                      <label for="firstName" class="form-label mb-0"
+                        >Nombre</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="nombre"
+                      />
+                      <div *ngIf="f['nombre'].touched && f['nombre'].errors">
+                        <small
+                          *ngIf="f['nombre'].errors['required']"
+                          class="text-danger"
+                          >Nombre es requerido</small
+                        >
+                        <small
+                          *ngIf="f['nombre'].errors['minlength']"
+                          class="text-danger"
+                          >Mínimo 3 caracteres</small
+                        >
+                      </div>
+                    </div>
+
                     <div>
+                      <div class="col-lg-12">
+                        <div class="col-md-12 mb-2">
+                          <label for="password" class="form-label mb-0"
+                            >Contraseña</label
+                          >
+                          <input
+                            type="password"
+                            class="form-control"
+                            formControlName="password"
+                          />
+                        </div>
+                        <div class="col-md-12 mb-2">
+                          <label for="password2" class="form-label mb-0"
+                            >Confirmar contraseña</label
+                          >
+                          <input
+                            type="password"
+                            class="form-control"
+                            formControlName="confirmPassword"
+                          />
+                          <div
+                            *ngIf="formulario.errors?.['noCoinciden'] && formulario.touched"
+                          >
+                            <small class="text-danger"
+                              >Las contraseñas no coinciden</small
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 mb-2">
+                        <label for="email" class="form-label mb-0">Email</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="email"
+                          placeholder="ejemplo@ejemplo.com"
+                        />
+                        <div *ngIf="f['email'].touched && f['email'].errors">
+                          <small
+                            *ngIf="f['email'].errors['required']"
+                            class="text-danger"
+                            >Email es requerido</small
+                          >
+                          <small
+                            *ngIf="f['email'].errors['email']"
+                            class="text-danger"
+                            >Email no válido</small
+                          >
+                        </div>
+                      </div>
+                      <div class="col-lg-12 mb-4">
+                        <label for="firstName" class="form-label mb-0"
+                          >Fecha nacimiento</label
+                        >
+                        <input
+                          type="date"
+                          class="form-control"
+                          formControlName="fechaNacimiento"
+                          required
+                        />
+                        <div
+                          *ngIf="
+                            f['fechaNacimiento'].touched &&
+                            f['fechaNacimiento'].errors
+                          "
+                        >
+                          <small *ngIf="f['fechaNacimiento'].errors['required']" class="text-danger"
+                            >Campo requerido</small
+                          >
+                          <small
+                            *ngIf="f['fechaNacimiento'].errors['fechaFutura']" class="text-danger"
+                          >
+                            La fecha no puede ser mayor a hoy
+                          </small>
+                        </div>
+                      </div>
 
-
-                      <input id="radio1 " formControlName="star" type="radio" name="star" value="../../../assets/img/avatar/avatar5.png">
-
-                      <label for="radio1"><img src="../../../assets/img/avatar/avatar5.png" width="50px"
-                          class="img-thumbnail"></label>
-
-                      <input id="radio2" formControlName="star" type="radio" name="star" value="../../../assets/img/avatar/avatar4.png">
-
-                      <label for="radio2"><img src="../../../assets/img/avatar/avatar4.png" width="50px"
-                          class="img-thumbnail"></label>
-
-                      <input id="radio3" formControlName="star" type="radio" name="star"
-                        value="../../../assets/img/avatar/avatar3.png">
-
-                      <label for="radio3"><img src="../../../assets/img/avatar/avatar3.png" width="50px"
-                          class="img-thumbnail"></label>
-
-                      <input id="radio4" formControlName="star" type="radio" name="star" value="../../../assets/img/avatar/avatar2.png">
-
-                      <label for="radio4"><img src="../../../assets/img/avatar/avatar2.png" width="50px"
-                          class="img-thumbnail"></label>
-
-                      <input id="radio5" formControlName="star" type="radio" name="star" value="../../../assets/img/avatar/avatar1.png">
-
-                      <label for="radio5"><img src="../../../assets/img/avatar/avatar1.png" width="50px"
-                          class="img-thumbnail"></label>
-
-                      <input id="radio6" formControlName="star" type="radio" name="star" value="../../../assets/img/avatar/avatar6.png">
-
-                      <label for="radio6"><img src="../../../assets/img/avatar/avatar6.png" width="50px"
-                          class="img-thumbnail"></label>
-                      <input id="radio7" formControlName="star" type="radio" name="star" value="../../../assets/img/avatar/avatar7.png">
-
-                      <label for="radio7"><img src="../../../assets/img/avatar/avatar7.png" width="50px"
-                          class="img-thumbnail"></label>
+                      <button
+                        class="w-100 text-white btn btn-md button-t-prestamos"
+                        (click)="onSubmit()"
+                      >
+                        Registrarse
+                      </button>
+                      <!-- </form> -->
                     </div>
                   </form>
-                  <!-- <button (click)="alpulsarRadioButton()">test</button> -->
-                  <div class="col-lg-6">
-                    <label for="firstName" class="form-label">Nombre</label>
-                    <!-- <input type="text" class="form-control" id="firstName" placeholder="Nombre" name="username" value=""
-                      required [(ngModel)]="usuario.username" (focusout)="pushed1Time('username')">
-                    <div *ngIf="!controlForm(usuario.username, true) && pushedUsername != 0 "> -->
-                      <div class="alert alert-danger p-2 mt-1" role="alert">
-                        Introduce un nombre válido.
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div class="col-lg-6">
-                    <label for="firstName" class="form-label">Fecha nacimiento</label>
-                    <!-- <input type="date" class="form-control " name="exp_date" id="exp_date" required
-                      [(ngModel)]="fecha_nacimiento" (focusout)="pushed1Time('edad')" />
-
-                    <div *ngIf="fecha_nacimiento == null && pushedEdad != 0"> -->
-                      <div class="alert alert-danger p-2 mt-1" role="alert">
-                        Introduce una fecha válida.
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div class="col-lg-12">
-                    <label for="email" class="form-label">Email</label>
-                    <!-- <input type="text" class="form-control" id="email" name="email" placeholder="ejemplo@ejemplo.com"
-                      required [(ngModel)]="usuario.email" (focusout)="pushed1Time('email')">
-                    <div *ngIf=" controlEmail(usuario.email) && pushedEmail != 0"> -->
-                      <div class="alert alert-danger p-2 mt-1" role="alert">
-                        Introduce un correo válido.
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div class="col-md-12 mb-2">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <!-- <input type="password" class="form-control" id="password" name="pwd1" placeholder="Contraseña"
-                      required [(ngModel)]="pwd1" (focusout)="pushed1Time('pwd1')">-->
-                  </div>
-
-                  <div class="col-md-12 mb-2">
-                    <label for="repeatp" class="form-label">Repetir contraseña</label>
-                    <!-- <input type="password" class="form-control" id="repeatp" name="pwd2"
-                      placeholder="Repetir contraseña" required [(ngModel)]="pwd2" (focusout)="pushed1Time('pwd2')"> -->
-                    <!-- <div *ngIf="!controlPwd() && pushedPassword2 != 0 "> -->
-                      <div class="alert alert-danger p-2 mt-1" role="alert">
-                        La password no coincide.
-                      </div>
-                    </div>
-                  </div>
-                  <!-- <button class="w-100 text-white btn btn-md button-t-prestamos"
-                    *ngIf="controlFormulario(); else controlFormularioFalse" (click)="botoSubmit()">Registrarse
-                  </button> -->
                 </div>
-
               </div>
             </div>
           </div>
         </div>
-      <!-- </div>
+      </div>
     </div>
   </div>
-</div> -->
-<ng-template #controlFormularioFalse>
-  <button class="w-100 text-white btn btn-md button-t-prestamos" disabled>Registrarse</button>
-</ng-template>
+</div>

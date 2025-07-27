@@ -3,6 +3,7 @@ package com.fasttask.dto;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -44,6 +45,10 @@ public class Userr implements UserDetails {
 	@JsonView(Views.Public.class)
 	@Column(name="email")
 	private String email;
+	
+	@JsonView(Views.Public.class)
+	@Column(name="fecha_nacimiento")
+	private Date fecha_nacimiento;
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -90,6 +95,15 @@ public class Userr implements UserDetails {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	
+	public Date getFecha_nacimiento() {
+		return fecha_nacimiento;
+	}
+
+	public void setFecha_nacimiento(Date fecha_nacimiento) {
+		this.fecha_nacimiento = fecha_nacimiento;
 	}
 
 	@Override

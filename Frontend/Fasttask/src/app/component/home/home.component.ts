@@ -8,6 +8,7 @@ import { User } from 'src/app/model/user/user.model';
 import { Userr } from 'src/app/model/userr/userr.model';
 import { LoginService } from 'src/app/service/auth/login/login.service';
 import { UserrService } from 'src/app/service/userr/userr.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -46,6 +47,7 @@ export class HomeComponent implements OnInit {
           username: this.user.username,
           email: '',
           rol: '',
+          fecha_nacimiento: ''
         }
          console.log(window.sessionStorage.getItem('auth-token'));
         this.authenticacion(this.userr);
@@ -62,8 +64,9 @@ export class HomeComponent implements OnInit {
   authenticacion(userr: Userr): void {
     this.serviceUserr.userrByUsername(this.userr.username).subscribe({
       next: (userr: Userr) => {
-        console.log('Usuario obtenido:', userr);
         this.userr = userr;
+        this.userr.fecha_nacimiento = formatDate(userr.fecha_nacimiento, 'dd/MM/yyyy', 'en');
+        console.log('Usuario obtenido:', userr);
         this.router.navigate(['areaClient']).then((success) => {
       console.log('Navegación exitosa?', success);
     });

@@ -8,4 +8,5 @@ public interface IUserrService {
 	public List<Userr> listarAllUserr();
 	
 	public Userr userrFindById(int id);
+	public Userr crearUser(Userr user);
 }

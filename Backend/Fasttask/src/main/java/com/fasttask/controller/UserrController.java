@@ -69,4 +69,13 @@ public class UserrController {
 	public Userr userXID(@PathVariable Integer id) {
 		return userrServiceImpl.userrFindById(id);
 	}
+	
+	@PostMapping("/userr")
+	@JsonView(Views.Public.class)
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+	public Userr crearUserr(@RequestBody Userr userr) {
+		Userr newUserr = userrServiceImpl.crearUser(userr);
+		newUserr.setPassword(bCryptPasswordEncoder.encode(userr.getPassword()));
+		return userrServiceImpl.crearUser(newUserr);
+	}
 }

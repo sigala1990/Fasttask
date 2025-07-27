@@ -5,4 +5,9 @@ import com.fasttask.dto.Userr;
 
 public interface IUserrDAO extends JpaRepository<Userr, Integer>{
 	Userr findByUsername(String username);
+	
+	Long countByUsername(String username);
+	
+	boolean existsByUsername(String username);
+	boolean existsByEmail(String email);
 }

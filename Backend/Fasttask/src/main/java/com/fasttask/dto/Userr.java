@@ -31,7 +31,7 @@ public class Userr implements UserDetails {
 	private int id;
 	
 	@JsonView({Views.Public.class,Views.Internal.class,})
-	@Column(name="username")
+	@Column(name="username", unique = true)
 	private String username;
 	
 	@JsonView(Views.Internal.class)	
@@ -43,7 +43,7 @@ public class Userr implements UserDetails {
 	private String rol;
 
 	@JsonView(Views.Public.class)
-	@Column(name="email")
+	@Column(name="email", unique = true)
 	private String email;
 	
 	@JsonView(Views.Public.class)

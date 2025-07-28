@@ -27,6 +27,7 @@ import com.fasttask.common.Views;
 public class Userr implements UserDetails {
 
 	@Id
+	@JsonView(Views.Public.class)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	

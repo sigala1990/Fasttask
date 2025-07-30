@@ -21,11 +21,19 @@ public class TableroController {
 	@Autowired
 	TableroServiceImpl tableroServiceImpl;
 	
-	@GetMapping("/tablero/{idUserr}")
+	@GetMapping("/tableros/{idUserr}")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public List<Tablero> listar_tableros_xUserr(@PathVariable Long idUserr) {
-		return tableroServiceImpl.listarTableroXUserr(idUserr);
+		return tableroServiceImpl.listarTableroByUserr(idUserr);
 	}
+	
+	@GetMapping("/tablero/{id}")
+	@JsonView(Views.Public.class)
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+	public Tablero listarTableroById(@PathVariable int id) {
+		return tableroServiceImpl.listarTableroById(id);
+	}
+
 	
 }

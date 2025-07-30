@@ -16,8 +16,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.fasttask.common.Views;
 
 @Entity
-@Table(name="tablero")
-public class Tablero {
+@Table(name="lista")
+public class Lista {
 
 	@Id
 	@JsonView(Views.Public.class)
@@ -25,17 +25,13 @@ public class Tablero {
 	private int id;
 	
 	@JsonView(Views.Public.class)
-	@Column(name="nombre", unique = true)
+	@Column(name="nombre")
 	private String nombre;
 	
 	@JsonView(Views.Public.class)
-	@Column(name="usuario_fk")
-	private Long usuarioFk;
-	
-	@JsonView(Views.Public.class)
-	@Column(name="imagen")
-	private String imagen;
-	
+	@Column(name="tablero_fk")
+	private int tableroFk;
+		
 	@JsonView(Views.Public.class)
 	@Column(name="fecha_creacion")
 	private Date fecha_creacion;
@@ -43,12 +39,11 @@ public class Tablero {
 	@JsonView(Views.Public.class)
 	@Column(name="fecha_modificacion")
 	private Date fecha_modificacion;
-
+	
 	@OneToMany
 	@JsonView(Views.Public.class)
-	@JoinColumn(name="tablero_fk")
-	private List<Lista> id_tablero;
-	
+	@JoinColumn(name="lista_fk")
+	private List<Task> id_lista;
 
 	public int getId() {
 		return id;
@@ -66,20 +61,13 @@ public class Tablero {
 		this.nombre = nombre;
 	}
 
-	public Long getUsuarioFk() {
-		return usuarioFk;
+
+	public int getTableroFk() {
+		return tableroFk;
 	}
 
-	public void setUsuarioFk(Long usuarioFk) {
-		this.usuarioFk = usuarioFk;
-	}
-
-	public String getImagen() {
-		return imagen;
-	}
-
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
+	public void setTableroFk(int tableroFk) {
+		this.tableroFk = tableroFk;
 	}
 
 	public Date getFecha_creacion() {
@@ -98,15 +86,13 @@ public class Tablero {
 		this.fecha_modificacion = fecha_modificacion;
 	}
 
-	public List<Lista> getId_tablero() {
-		return id_tablero;
+	public List<Task> getId_lista() {
+		return id_lista;
 	}
 
-	public void setId_tablero(List<Lista> id_tablero) {
-		this.id_tablero = id_tablero;
+	public void setId_lista(List<Task> id_lista) {
+		this.id_lista = id_lista;
 	}
-
-
-
+	
 	
 }

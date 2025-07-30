@@ -1,23 +1,20 @@
 package com.fasttask.dto;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasttask.common.Views;
 
 @Entity
-@Table(name="tablero")
-public class Tablero {
+@Table(name="task")
+public class Task {
 
 	@Id
 	@JsonView(Views.Public.class)
@@ -29,12 +26,16 @@ public class Tablero {
 	private String nombre;
 	
 	@JsonView(Views.Public.class)
-	@Column(name="usuario_fk")
-	private Long usuarioFk;
+	@Column(name="lista_fk")
+	private int listaFk;
 	
 	@JsonView(Views.Public.class)
-	@Column(name="imagen")
-	private String imagen;
+	@Column(name="descripcion")
+	private String descripcion;
+	
+	@JsonView(Views.Public.class)
+	@Column(name="completada",columnDefinition = "BOOLEAN DEFAULT false")
+	private boolean completada;
 	
 	@JsonView(Views.Public.class)
 	@Column(name="fecha_creacion")
@@ -43,12 +44,14 @@ public class Tablero {
 	@JsonView(Views.Public.class)
 	@Column(name="fecha_modificacion")
 	private Date fecha_modificacion;
-
-	@OneToMany
-	@JsonView(Views.Public.class)
-	@JoinColumn(name="tablero_fk")
-	private List<Lista> id_tablero;
 	
+	@JsonView(Views.Public.class)
+	@Column(name="fecha_task_ini")
+	private Date fecha_task_ini;
+	
+	@JsonView(Views.Public.class)
+	@Column(name="fecha_task_fin")
+	private Date fecha_task_fin;
 
 	public int getId() {
 		return id;
@@ -66,20 +69,28 @@ public class Tablero {
 		this.nombre = nombre;
 	}
 
-	public Long getUsuarioFk() {
-		return usuarioFk;
+	public int getListaFk() {
+		return listaFk;
 	}
 
-	public void setUsuarioFk(Long usuarioFk) {
-		this.usuarioFk = usuarioFk;
+	public void setListaFk(int listaFk) {
+		this.listaFk = listaFk;
 	}
 
-	public String getImagen() {
-		return imagen;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public boolean isCompletada() {
+		return completada;
+	}
+
+	public void setCompletada(boolean completada) {
+		this.completada = completada;
 	}
 
 	public Date getFecha_creacion() {
@@ -98,15 +109,21 @@ public class Tablero {
 		this.fecha_modificacion = fecha_modificacion;
 	}
 
-	public List<Lista> getId_tablero() {
-		return id_tablero;
+	public Date getFecha_task_ini() {
+		return fecha_task_ini;
 	}
 
-	public void setId_tablero(List<Lista> id_tablero) {
-		this.id_tablero = id_tablero;
+	public void setFecha_task_ini(Date fecha_task_ini) {
+		this.fecha_task_ini = fecha_task_ini;
 	}
 
+	public Date getFecha_task_fin() {
+		return fecha_task_fin;
+	}
 
-
+	public void setFecha_task_fin(Date fecha_task_fin) {
+		this.fecha_task_fin = fecha_task_fin;
+	}
+	
 	
 }

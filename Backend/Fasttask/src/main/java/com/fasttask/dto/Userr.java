@@ -51,6 +51,12 @@ public class Userr implements UserDetails {
 	@Column(name="fecha_nacimiento")
 	private Date fecha_nacimiento;
 	
+	@JsonView(Views.Public.class)
+	@Column(name="fecha_creacion")
+	private Date fecha_creacion;
+	
+	
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> roles = new ArrayList<>();
@@ -105,6 +111,16 @@ public class Userr implements UserDetails {
 
 	public void setFecha_nacimiento(Date fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
+	}
+
+	
+	
+	public Date getFecha_creacion() {
+		return fecha_creacion;
+	}
+
+	public void setFecha_creacion(Date fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
 	}
 
 	@Override

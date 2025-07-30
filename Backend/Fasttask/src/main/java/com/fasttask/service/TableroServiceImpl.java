@@ -15,9 +15,19 @@ public class TableroServiceImpl implements ITableroService {
 	ITableroDAO iTableroDAO;
 
 	@Override
-	public List<Tablero> listarTableroXUserr(Long id) {
-		// TODO Auto-generated method stub
+	public List<Tablero> listarTableroByUserr(Long id) {
 		return iTableroDAO.findByUsuarioFk(id);
+	}
+	
+	@Override
+	public Tablero listarTableroById(int id) {
+		return iTableroDAO.findById(id);
+	}
+
+	@Override
+	public Tablero guardarTablero(Tablero tablero) {
+		iTableroDAO.save(tablero);
+		return listarTableroById(tablero.getId());
 	}
 	
 	

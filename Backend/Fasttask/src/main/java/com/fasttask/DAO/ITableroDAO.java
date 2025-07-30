@@ -8,6 +8,6 @@ import com.fasttask.dto.Tablero;
 
 public interface ITableroDAO extends JpaRepository<Tablero, Integer> {
 	
-
 	List<Tablero> findByUsuarioFk(Long id);
+	Tablero findById(int id);
 }

@@ -4,3 +4,11 @@ body {
 .content {
   padding-top: 56px;
 }
+
+
+.tablero:hover {
+  background-color: #49B3FC;    /* Cambia el color de fondo */
+  transform: scale(1.07);       /* Hace el botón más grande */
+  transition: all 0.2s;         /* Suaviza la animación */
+  color: #fff;                  /* Cambia el color del texto si lo deseas */
+}

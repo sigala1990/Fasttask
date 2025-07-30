@@ -1,5 +1,6 @@
 package com.fasttask.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +50,10 @@ public class UserrServiceImpl implements IUserrService, UserDetailsService {
 
 	@Override
 	public Userr crearUser(Userr userr) {
+		Date fecha = new Date(); 
 		userr.setPassword(bCryptPasswordEncoder.encode(userr.getPassword()));
 		userr.setRol(userr.getRol() != null && !userr.getRol().isEmpty() ? userr.getRol() : "USER" );
+		userr.setFecha_creacion(fecha);
 		iUserrDAO.save(userr);
 		Userr nouUserr = iUserrDAO.findByUsername(userr.getUsername());
 		return nouUserr;

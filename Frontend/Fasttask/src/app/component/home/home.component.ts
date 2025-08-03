@@ -41,9 +41,10 @@ export class HomeComponent implements OnInit {
     this.loginService.login(this.user).subscribe({
       next: (token: Token) => {
         window.sessionStorage.setItem('auth-token', token.token);
-        console.log('Token guardado en sessionStorage:', token.token);
+
 
         this.userr ={
+          id: 0,
           username: this.user.username,
           email: '',
           rol: '',
@@ -66,6 +67,8 @@ export class HomeComponent implements OnInit {
       next: (userr: Userr) => {
         this.userr = userr;
         this.userr.fecha_nacimiento = formatDate(userr.fecha_nacimiento, 'dd/MM/yyyy', 'en');
+        window.sessionStorage.setItem('idUserr', userr.id.toString());
+
         console.log('Usuario obtenido:', userr);
         this.router.navigate(['areaClient']).then((success) => {
       console.log('Navegación exitosa?', success);

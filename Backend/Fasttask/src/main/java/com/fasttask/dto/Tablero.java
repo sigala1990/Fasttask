@@ -106,6 +106,13 @@ public class Tablero {
 		this.id_tablero = id_tablero;
 	}
 
+	@Override
+	public String toString() {
+		return "Tablero [id=" + id + ", nombre=" + nombre + ", usuarioFk=" + usuarioFk + ", imagen=" + imagen
+				+ ", fecha_creacion=" + fecha_creacion + ", fecha_modificacion=" + fecha_modificacion + ", id_tablero="
+				+ id_tablero + "]";
+	}
+
 
 
 	

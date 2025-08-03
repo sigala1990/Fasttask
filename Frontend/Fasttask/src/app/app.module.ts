@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthInterceptor } from './helpers/auth.interceptor';
 import { NavbarComponent } from './component/navbar/navbar.component';
+import { CreateBoardComponent } from './modal/createBoard/create-board/create-board.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
     AreaClientComponent,
     SignupComponent,
     NavbarComponent,
+    CreateBoardComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
     BrowserAnimationsModule,
     MatSnackBarModule,
     ReactiveFormsModule,
-    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [  {
       provide: HTTP_INTERCEPTORS,

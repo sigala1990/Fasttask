@@ -29,6 +29,15 @@ public class TableroServiceImpl implements ITableroService {
 		iTableroDAO.save(tablero);
 		return listarTableroById(tablero.getId());
 	}
+
+	@Override
+	public Tablero crearTablero(Tablero tablero) {
+		System.out.println(tablero.getNombre());
+		System.out.println(tablero.toString());
+	return 	iTableroDAO.save(tablero);
+//		int maxId = iTableroDAO.findMaxIdTableroByUsuarioFk(tablero.getUsuarioFk());
+//		return iTableroDAO.getById(maxId);
+	}
 	
 	
 	

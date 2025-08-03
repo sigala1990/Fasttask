@@ -1,4 +1,5 @@
 export interface Userr {
+  id:number;
   username: string;
   rol: string;
   email: string;

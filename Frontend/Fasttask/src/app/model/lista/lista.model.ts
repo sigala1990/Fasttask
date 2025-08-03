@@ -1,7 +1,7 @@
-export interface Tablero {
-  id?: number;
+export interface Lista {
+  id: number;
   nombre: string;
-  usuarioFk: number;
+  tablero_fk: string;
   image: string;
   descripcion: string;
   fecha_creacion: string;

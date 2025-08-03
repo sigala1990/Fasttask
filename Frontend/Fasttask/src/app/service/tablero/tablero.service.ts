@@ -17,6 +17,11 @@ export class TableroService {
         .pipe(catchError(this.handleError));
     }
 
+    createTablero(tablero: Tablero): Observable<Tablero> {
+      return this.httpClient.post<Tablero>(`${apiConstants.baseUrl}api/tablero/create`, tablero)
+        .pipe(catchError(this.handleError));
+    }
+
       handleError(error: HttpErrorResponse) {
         if (error.error instanceof ErrorEvent) {
           console.log('An error occurred:', error.error.message);

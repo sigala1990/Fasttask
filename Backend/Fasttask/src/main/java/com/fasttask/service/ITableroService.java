@@ -9,4 +9,5 @@ public interface ITableroService {
 	public List<Tablero> listarTableroByUserr(Long id);
 	public Tablero listarTableroById(int id);
 	public Tablero guardarTablero(Tablero tablero);
+	public Tablero crearTablero(Tablero tablero);
 }

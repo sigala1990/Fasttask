@@ -28,6 +28,7 @@ export class SignupComponent implements OnInit {
   pwd1 = '';
   pwd2 = '';
   userr: Userr = {
+    id: 0,
     username: '',
     rol: '',
     email: '',
@@ -95,8 +96,9 @@ export class SignupComponent implements OnInit {
     this.userr.fecha_nacimiento = formatDate(this.userr.fecha_nacimiento, 'yyyy-MM-dd', 'en');
     console.log('Creando usuario:', this.userr);
       this.userrService.createUserr(this.userr).subscribe({
-        next: (response) => {
-          console.log('Usuario creado:', response);
+        next: (userr) => {
+          window.sessionStorage.setItem('idUserr', userr.id.toString());
+          console.log('Usuario creado:', userr);
           this.router.navigate(['/areaClient']);
         },
         error: (error) => {

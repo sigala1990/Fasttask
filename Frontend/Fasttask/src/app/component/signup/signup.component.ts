@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import { Userr } from 'src/app/model/userr/userr.model';
 import { LoginService } from 'src/app/service/auth/login/login.service';
 import { UserrService } from 'src/app/service/userr/userr.service';
+import { Ssesion_util } from 'src/app/service/util/ssesion_util';
 
 @Component({
   selector: 'app-signup',
@@ -42,7 +43,8 @@ export class SignupComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private userrService: UserrService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private ssesion_util: Ssesion_util
   ) {}
 
   ngOnInit(): void {
@@ -101,7 +103,10 @@ export class SignupComponent implements OnInit {
     console.log('Creando usuario:', this.userr);
       this.userrService.createUserr(this.userr).subscribe({
         next: (userr) => {
+
           window.sessionStorage.setItem('idUserr', userr.id.toString());
+          window.sessionStorage.setItem('nameUserr', userr.username);
+
           console.log('Usuario creado:', userr);
           this.router.navigate(['/areaClient']);
         },
@@ -116,6 +121,7 @@ export class SignupComponent implements OnInit {
   }
 
   getToken(){
+    this.ssesion_util.clearSessionData();
     const userrGuest = {
       username: 'guest',
       password: 'password',

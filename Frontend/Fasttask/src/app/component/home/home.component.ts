@@ -9,6 +9,7 @@ import { Userr } from 'src/app/model/userr/userr.model';
 import { LoginService } from 'src/app/service/auth/login/login.service';
 import { UserrService } from 'src/app/service/userr/userr.service';
 import { formatDate } from '@angular/common';
+import { Ssesion_util } from 'src/app/service/util/ssesion_util';
 
 @Component({
   selector: 'app-home',
@@ -25,17 +26,19 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private loginService: LoginService,
-    private serviceUserr: UserrService
+    private serviceUserr: UserrService,
+    private ssesion_util: Ssesion_util
   ) {
     this.user = {
       username: 'adria',
-      password: 'password',
+      password: '123',
     };
   }
 
   ngOnInit(): void {}
 
   login(): void {
+    this.ssesion_util.clearSessionData();
     console.log('Lanzando login');
     console.log(this.user);
     this.loginService.login(this.user).subscribe({
@@ -67,7 +70,10 @@ export class HomeComponent implements OnInit {
       next: (userr: Userr) => {
         this.userr = userr;
         this.userr.fecha_nacimiento = formatDate(userr.fecha_nacimiento, 'dd/MM/yyyy', 'en');
+
         window.sessionStorage.setItem('idUserr', userr.id.toString());
+        window.sessionStorage.setItem('nameUserr', userr.username);
+        
 
         console.log('Usuario obtenido:', userr);
         this.router.navigate(['areaClient']).then((success) => {

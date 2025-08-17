@@ -1,5 +1,6 @@
 package com.fasttask.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,9 @@ public class TableroServiceImpl implements ITableroService {
 	public Tablero crearTablero(Tablero tablero) {
 		System.out.println(tablero.getNombre());
 		System.out.println(tablero.toString());
+		Date fecha = new Date();
+		tablero.setFecha_creacion(fecha);
+		tablero.setFecha_modificacion(fecha);
 	return 	iTableroDAO.save(tablero);
 //		int maxId = iTableroDAO.findMaxIdTableroByUsuarioFk(tablero.getUsuarioFk());
 //		return iTableroDAO.getById(maxId);

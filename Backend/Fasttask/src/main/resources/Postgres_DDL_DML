@@ -1,0 +1,43 @@
+CREATE DATABASE "Fasttask";
+
+CREATE TABLE public.userr (
+    id integer NOT NULL,
+    username text,
+    password text,
+    rol text,
+    email text,
+    fecha_creacion timestamp without time zone,
+    fecha_nacimiento timestamp without time zone
+);
+
+CREATE TABLE public.tablero (
+    id integer NOT NULL,
+    fecha_creacion timestamp without time zone,
+    fecha_modificacion timestamp without time zone,
+    imagen character varying(255),
+    nombre character varying(255),
+    usuario_fk bigint
+);
+
+CREATE TABLE public.lista (
+    id integer NOT NULL,
+    nombre text,
+    tablero_fk integer,
+    fecha_creacion timestamp without time zone,
+    fecha_modificacion timestamp without time zone
+);
+
+CREATE TABLE public.task (
+    id integer NOT NULL,
+    nombre text,
+    lista_fk integer,
+    descripcion text,
+    completada smallint,
+    fecha_creacion timestamp without time zone,
+    fecha_modificacion timestamp without time zone,
+    fecha_task_ini timestamp without time zone,
+    fecha_task_fin timestamp without time zone
+);
+
+INSERT INTO public.userr (id, username, password, rol, email, fecha_creacion, fecha_nacimiento) VALUES (1, 'guest', '$2a$10$SPU2nfnSVfkYVgBGIPY8CuD7J24NkeOvwGPAaDCOAk0eNgK.QhGOu', 'USER', NULL, NULL, NULL);
+INSERT INTO public.userr (id, username, password, rol, email, fecha_creacion, fecha_nacimiento) VALUES (9, 'adria', '$2a$10$kHM9BHmYeQaLKE73lZAjb.rP0FARM81Gmx7LnVX3e/DL/1w6yUdH2', 'USER', '123@gmail.com', '2025-08-17 23:03:55.209', '2025-07-09 02:00:00');

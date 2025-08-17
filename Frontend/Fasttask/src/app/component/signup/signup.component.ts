@@ -12,6 +12,7 @@ import {
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Userr } from 'src/app/model/userr/userr.model';
+import { LoginService } from 'src/app/service/auth/login/login.service';
 import { UserrService } from 'src/app/service/userr/userr.service';
 
 @Component({
@@ -25,6 +26,7 @@ export class SignupComponent implements OnInit {
     star: new FormControl(),
   });
 
+  loginGuest: boolean = false;
   pwd1 = '';
   pwd2 = '';
   userr: Userr = {
@@ -39,7 +41,8 @@ export class SignupComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private router: Router,
     private fb: FormBuilder,
-    private userrService: UserrService
+    private userrService: UserrService,
+    private loginService: LoginService
   ) {}
 
   ngOnInit(): void {
@@ -79,7 +82,7 @@ export class SignupComponent implements OnInit {
   onSubmit(): void {
     if (this.formulario.valid) {
       console.log('Formulario válido', this.formulario.value);
-      this.createUserr();
+      this.getToken();
     } else {
       console.log('Formulario inválido');
       this.formulario.markAllAsTouched();
@@ -90,8 +93,9 @@ export class SignupComponent implements OnInit {
     return this.formulario.controls;
   }
 
-  createUserr(): void {
 
+  createUserr(): void {
+    console.log('Empezando create Userr');
     this.userr = this.formulario.value;
     this.userr.fecha_nacimiento = formatDate(this.userr.fecha_nacimiento, 'yyyy-MM-dd', 'en');
     console.log('Creando usuario:', this.userr);
@@ -109,5 +113,28 @@ export class SignupComponent implements OnInit {
         },
       });
 
+  }
+
+  getToken(){
+    const userrGuest = {
+      username: 'guest',
+      password: 'password',
+    };
+    this.loginService.login(userrGuest).subscribe({
+      next: (token) => {
+        window.sessionStorage.setItem('auth-token', token.token);
+         console.log('Token de sesión guardado:', window.sessionStorage.getItem('auth-token'));
+        this.loginGuest = true;
+        console.log(this.loginGuest)
+        this.createUserr();  
+      },
+      error: (error) => {
+        console.error('Error al crear la nueva cuenta:', error);
+        this._snackBar.open(error.message, 'Cerrar', {
+          duration: 3000,
+        });
+        this.loginGuest = false;
+      },
+    });
   }
 }

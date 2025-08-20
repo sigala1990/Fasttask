@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateBoardComponent } from 'src/app/modal/createBoard/create-board/create-board.component';
 import { Tablero } from 'src/app/model/tablero/tablero.model';
 import { Userr } from 'src/app/model/userr/userr.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-area-client',
@@ -14,10 +15,13 @@ import { Userr } from 'src/app/model/userr/userr.model';
 export class AreaClientComponent implements OnInit {
   // result: boolean = false;
   newTablero!: Tablero;
+  tableros: any;
 
   constructor(
     private tableroService: TableroService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
 this.newTablero = {
       nombre: '',
@@ -50,6 +54,10 @@ this.newTablero = {
       });
   }
 
+  open_tablero(id: number) {
+    this.router.navigate(['tablero', id], { relativeTo: this.route });
+  }
+  
   crearTablero(nombreTablero: string) {
     // this.newTablero = {
     //   nombre: nombreTablero,
@@ -69,7 +77,8 @@ this.newTablero = {
       .createTablero(this.newTablero)
       .subscribe({
         next: (tablero) => {
-          console.log('Tablero creado:', tablero);
+          const currentUrl = this.router.url;
+          this.router.navigate([currentUrl+'/tablero/', tablero.id], { relativeTo: this.route });
         },
         error: (error) => {
           console.error('Error al crear el tablero:', error);
@@ -78,8 +87,9 @@ this.newTablero = {
   }
   getTableroByUserrId(id: number) {
     return this.tableroService.tableroByUserrId(id).subscribe({
-      next: (tablero) => {
-        console.log('Tablero obtenido:', tablero);
+      next: (tableros) => {
+        this.tableros = tableros;
+        console.log('Tablero obtenido:', tableros);
       },
       error: (error) => {
         console.error('Error al obtener el tablero:', error);

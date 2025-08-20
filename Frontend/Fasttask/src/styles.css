@@ -15,3 +15,11 @@ body {
 .login-page {
   min-height: 100vh;
 }
+
+body {
+  padding-top: 56px;
+}
+.content {
+  padding-top: 56px;
+  margin-left: 15px;
+}

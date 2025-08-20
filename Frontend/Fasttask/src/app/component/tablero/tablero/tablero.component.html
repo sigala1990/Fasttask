@@ -1,0 +1,30 @@
+<div class="content">
+    <p>tablero works!</p>
+    <div class="row container-fluid">
+
+
+        <div cdkDropListGroup>
+            <div *ngFor="let tablero of tableross"class="example-container col-lg-2 border">
+                <h2 class="ms-2 mt-2">{{tablero.nombre}}</h2>
+
+                <div cdkDropList [cdkDropListData]="tablero.tasks" class="example-list" (cdkDropListDropped)="drop($event)">
+                    <div class="example-box " *ngFor="let tasks of tablero.tasks" cdkDrag>{{tasks}}</div>
+                </div>
+                <div *ngIf="!creandoTask" class="btn btn-primary" style="  width: 100%;" (click)="addTask()">Crear +</div>
+                <div *ngIf="creandoTask"  class="ms-3 me-3" >
+                    <div><input type="text" [(ngModel)]="newTask" style="width: 100%;" placeholder="Nueva tarea" /></div>
+                    <div class="btn btn-primary align-items-start mb-2 mt-2" (click)="createTask(newTask)">Agregar</div>
+                </div>
+            </div>
+
+
+            <!-- <div class="example-container col-lg-2 border">
+                <h2 class="ms-2 mt-2">Done</h2>
+                <div cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+                </div>
+                <div class="example-box">Crear +</div>
+            </div> -->
+        </div>
+    </div>
+</div>

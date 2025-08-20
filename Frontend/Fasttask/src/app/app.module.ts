@@ -14,6 +14,8 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { CreateBoardComponent } from './modal/createBoard/create-board/create-board.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { TableroComponent } from './component/tablero/tablero/tablero.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     SignupComponent,
     NavbarComponent,
     CreateBoardComponent,
+    TableroComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     BrowserAnimationsModule,
     MatSnackBarModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    DragDropModule
   ],
   providers: [  {
       provide: HTTP_INTERCEPTORS,

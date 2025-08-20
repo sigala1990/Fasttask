@@ -61,7 +61,7 @@ this.newTablero = {
     // };
     this.newTablero.nombre = nombreTablero;
     this.newTablero.image = 'azul';
-     this.newTablero.fecha_creacion = formatDate(this.newTablero.fecha_creacion, 'yyyy-MM-dd', 'en');
+    this.newTablero.fecha_creacion = formatDate(this.newTablero.fecha_creacion, 'yyyy-MM-dd', 'en');
     this.newTablero.fecha_modificacion = formatDate(this.newTablero.fecha_modificacion, 'yyyy-MM-dd', 'en');
     this.newTablero.usuarioFk = Number(window.sessionStorage.getItem('idUserr'));
 

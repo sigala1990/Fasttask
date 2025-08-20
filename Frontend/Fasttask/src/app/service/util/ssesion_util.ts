@@ -8,4 +8,6 @@ export class Ssesion_util {
     window.sessionStorage.clear();
     console.log('sesionStorage limpiada: '+ window.sessionStorage.getItem('nameUserr'));
   }
+
+
 }

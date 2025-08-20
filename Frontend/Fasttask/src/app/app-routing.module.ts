@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './component/home/home.component';
 import { AreaClientComponent } from './component/area-client/area-client.component';
+import { AuthGuard } from './service/auth/guardAuth/auth.guard';
 
 const routes: Routes = [
-    {path:'areaClient', component: AreaClientComponent},
+    {path:'areaClient/:id', component: AreaClientComponent,  canActivate: [AuthGuard]},
     {path:'signup', component: SignupComponent},
     {path:'home', component: HomeComponent},
-    {path:'', component: HomeComponent}
+    {path:'', redirectTo: '/home', pathMatch: 'full'},
+  
 ];
 
 @NgModule({

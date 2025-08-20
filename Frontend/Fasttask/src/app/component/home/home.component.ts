@@ -10,6 +10,7 @@ import { LoginService } from 'src/app/service/auth/login/login.service';
 import { UserrService } from 'src/app/service/userr/userr.service';
 import { formatDate } from '@angular/common';
 import { Ssesion_util } from 'src/app/service/util/ssesion_util';
+import { SessionDataService } from 'src/app/service/sessionData/session-data.service';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,8 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private loginService: LoginService,
     private serviceUserr: UserrService,
-    private ssesion_util: Ssesion_util
+    private ssesion_util: Ssesion_util,
+    private sessionDataService: SessionDataService
   ) {
     this.user = {
       username: 'adria',
@@ -70,15 +72,14 @@ export class HomeComponent implements OnInit {
       next: (userr: Userr) => {
         this.userr = userr;
         this.userr.fecha_nacimiento = formatDate(userr.fecha_nacimiento, 'dd/MM/yyyy', 'en');
-
-        window.sessionStorage.setItem('idUserr', userr.id.toString());
-        window.sessionStorage.setItem('nameUserr', userr.username);
-        
-
         console.log('Usuario obtenido:', userr);
-        this.router.navigate(['areaClient']).then((success) => {
-      console.log('Navegación exitosa?', success);
-    });
+
+        this.sessionDataService.setIdUserr(userr);
+        window.sessionStorage.setItem('idUserr', userr.id.toString());
+        this.sessionDataService.setNameUserr(userr);
+        window.sessionStorage.setItem('nameUserr', userr.username);
+
+        this.router.navigate(['areaClient', this.userr.id]);
       },
       error: (error: any) => {
         console.error('Error al obtener el usuario:', error);

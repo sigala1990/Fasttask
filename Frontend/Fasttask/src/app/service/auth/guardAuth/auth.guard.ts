@@ -1,0 +1,23 @@
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
+
+constructor(private router: Router) {}
+
+canActivate(): boolean {
+  const nameUserr = window.sessionStorage.getItem('nameUserr');
+  if (nameUserr) {
+    return true;
+  }
+  // Si no hay usuario, redirige al login o home
+  this.router.navigate(['/home']);
+  console.log('Guard activado');
+  return false;
+}
+  
+}

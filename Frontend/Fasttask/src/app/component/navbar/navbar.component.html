@@ -3,7 +3,7 @@
   style="background-color: #f5f5f7"
 >
   <div class="container-fluid">
-    <a class="navbar-brand">Fasttask</a>
+    <a class="navbar-brand" routerLink="/home">Fasttask</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -17,12 +17,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/home">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Tus proyectos</a>
-        </li>
+          <a *ngIf="idUserr; else sinUsuario" class="nav-link" href="/areaClient/{{idUserr}}">Tus proyectos</a>
+          <ng-template #sinUsuario>
+            <a class="nav-link" href="/home">Regístrate</a>
+          </ng-template>
+        </li> -->
 
 
       </ul>
@@ -40,13 +43,15 @@
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          {{nameUserr}}
+          {{nameUserr}}, {{idUserr}}
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="#">Tus proyectos</a></li>
+          <li class="nav-item">
+          <a *ngIf="idUserr" class="nav-link" href="/areaClient/{{idUserr}}">Tus proyectos</a>       
+        </li>
           <li><a class="dropdown-item" href="#">Perfil</a></li>
           <li><hr class="dropdown-divider" /></li>
-          <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+          <li><a class="dropdown-item" style="cursor:pointer;" (click)="logout()">Logout</a></li>
         </ul>
       </li>
       </ul>

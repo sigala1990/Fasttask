@@ -12,8 +12,12 @@ import {
   styleUrls: ['./tablero.component.css'],
 })
 export class TableroComponent implements OnInit {
-  creandoTask = true;
+
+  idRowTask?: number;
+  creandoTask = false;
+  creandoLista = false;
   newTask: string = '';
+  newLista: string = '';
 
   // tableross = ['To Do', 'In Progress', 'Done'];
   // todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
@@ -55,16 +59,31 @@ export class TableroComponent implements OnInit {
     }
   }
 
-  addTask() {
+  addTask(idRowTask: number) {
     this.creandoTask = true;
+    this.setIdRowTask(idRowTask);
+  }
+  addLista() {
+    this.creandoLista = true;
   }
 
-  createTask(nameNewTask: string) {
+  createLista(nameNewLista: string) {
+    if (nameNewLista.trim()) {
+        this.tableross.push({ nombre: nameNewLista, tasks: [] });
+    }
+    //falta popup
+  }
+
+  createTask(nameNewTask: string, idTablero: number) {
     if (nameNewTask.trim()) {
-        // this.todo.push(nameNewTask);
+        this.tableross[idTablero].tasks.push(nameNewTask);
     }
     //falta popup  
     this.newTask = '';
     this.creandoTask = false;
+  }
+
+  setIdRowTask(id: number) {
+    this.idRowTask = id;
   }
 }

@@ -4,19 +4,30 @@
 
 
         <div cdkDropListGroup>
-            <div *ngFor="let tablero of tableross"class="example-container col-lg-2 border">
+            <div *ngFor="let tablero of tableross; let idTablero = index" class="example-container col-lg-2 border">
                 <h2 class="ms-2 mt-2">{{tablero.nombre}}</h2>
 
                 <div cdkDropList [cdkDropListData]="tablero.tasks" class="example-list" (cdkDropListDropped)="drop($event)">
-                    <div class="example-box " *ngFor="let tasks of tablero.tasks" cdkDrag>{{tasks}}</div>
+                    <div class="example-box " *ngFor="let tasks of tablero.tasks;let i =  index" cdkDrag>{{tasks}}</div>
                 </div>
-                <div *ngIf="!creandoTask" class="btn btn-primary" style="  width: 100%;" (click)="addTask()">Crear +</div>
-                <div *ngIf="creandoTask"  class="ms-3 me-3" >
+                <!-- Crear Task -->
+                <div *ngIf="!creandoTask " class="btn btn-primary" style="  width: 100%;" (click)="addTask(idTablero)">Crear +</div>
+                <div *ngIf="creandoTask && idTablero == idRowTask"  class="ms-3 me-3" >
                     <div><input type="text" [(ngModel)]="newTask" style="width: 100%;" placeholder="Nueva tarea" /></div>
-                    <div class="btn btn-primary align-items-start mb-2 mt-2" (click)="createTask(newTask)">Agregar</div>
+                    <div class="btn btn-primary align-items-start mb-2 mt-2" (click)="createTask(newTask, idTablero)">Agregar</div>
+                </div>
+                <!-- Fin crear Task  -->
+            </div>
+            <!-- Crear Lista -->
+            <div class="example-container col-lg-2 border">
+                <h2 class="ms-2 mt-2">Añadir nueva lista</h2>
+                <div *ngIf="!creandoLista" class="btn btn-primary" style="  width: 100%;" (click)="addLista()">Crear +</div>
+                <div *ngIf="creandoLista"  class="ms-3 me-3" >
+                    <div><input type="text" [(ngModel)]="newLista" style="width: 100%;" placeholder="Nueva lista" /></div>
+                    <div class="btn btn-primary align-items-start mb-2 mt-2" (click)="createLista(newLista)">Agregar</div>
                 </div>
             </div>
-
+            <!-- Fin crear Lista -->
 
             <!-- <div class="example-container col-lg-2 border">
                 <h2 class="ms-2 mt-2">Done</h2>

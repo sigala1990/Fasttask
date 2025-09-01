@@ -32,7 +32,7 @@ public class TableroController {
 	@GetMapping("/tableros/{idUserr}")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
-	public List<Tablero> listar_tableros_xUserr(@PathVariable Long idUserr) {
+	public List<Tablero> listarTablerosByUserr(@PathVariable int idUserr) {
 		return tableroServiceImpl.listarTableroByUserr(idUserr);
 	}
 	

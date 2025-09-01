@@ -16,7 +16,7 @@ public class TableroServiceImpl implements ITableroService {
 	ITableroDAO iTableroDAO;
 
 	@Override
-	public List<Tablero> listarTableroByUserr(Long id) {
+	public List<Tablero> listarTableroByUserr(int id) {
 		return iTableroDAO.findByUsuarioFk(id);
 	}
 	

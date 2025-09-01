@@ -30,7 +30,7 @@ public class Tablero {
 	
 	@JsonView(Views.Public.class)
 	@Column(name="usuario_fk")
-	private Long usuarioFk;
+	private int usuarioFk;
 	
 	@JsonView(Views.Public.class)
 	@Column(name="imagen")
@@ -47,7 +47,7 @@ public class Tablero {
 	@OneToMany
 	@JsonView(Views.Public.class)
 	@JoinColumn(name="tablero_fk")
-	private List<Lista> id_tablero;
+	private List<Lista> listas;
 	
 
 	public int getId() {
@@ -66,11 +66,11 @@ public class Tablero {
 		this.nombre = nombre;
 	}
 
-	public Long getUsuarioFk() {
+	public int getUsuarioFk() {
 		return usuarioFk;
 	}
 
-	public void setUsuarioFk(Long usuarioFk) {
+	public void setUsuarioFk(int usuarioFk) {
 		this.usuarioFk = usuarioFk;
 	}
 
@@ -99,18 +99,18 @@ public class Tablero {
 	}
 
 	public List<Lista> getId_tablero() {
-		return id_tablero;
+		return listas;
 	}
 
 	public void setId_tablero(List<Lista> id_tablero) {
-		this.id_tablero = id_tablero;
+		this.listas = id_tablero;
 	}
 
 	@Override
 	public String toString() {
 		return "Tablero [id=" + id + ", nombre=" + nombre + ", usuarioFk=" + usuarioFk + ", imagen=" + imagen
 				+ ", fecha_creacion=" + fecha_creacion + ", fecha_modificacion=" + fecha_modificacion + ", id_tablero="
-				+ id_tablero + "]";
+				+ listas + "]";
 	}
 
 

@@ -6,7 +6,7 @@ import com.fasttask.dto.Tablero;
 
 public interface ITableroService {
 
-	public List<Tablero> listarTableroByUserr(Long id);
+	public List<Tablero> listarTableroByUserr(int id);
 	public Tablero listarTableroById(int id);
 	public Tablero guardarTablero(Tablero tablero);
 	public Tablero crearTablero(Tablero tablero);

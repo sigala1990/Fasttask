@@ -10,9 +10,9 @@ import com.fasttask.dto.Tablero;
 
 public interface ITableroDAO extends JpaRepository<Tablero, Integer> {
 	
-	List<Tablero> findByUsuarioFk(Long id);
+	List<Tablero> findByUsuarioFk(int id);
 	Tablero findById(int id);
 	
-	@Query("SELECT COALESCE(MAX(t.id), 0) FROM Tablero t WHERE t.usuarioFk = :usuarioFk")
-	int findMaxIdTableroByUsuarioFk(@Param("usuarioFk") Long usuarioFk);
+//	@Query("SELECT COALESCE(MAX(t.id), 0) FROM Tablero t WHERE t.usuarioFk = :usuarioFk")
+//	int findMaxIdTableroByUsuarioFk(@Param("usuarioFk") Long usuarioFk);
 }

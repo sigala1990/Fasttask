@@ -6,7 +6,11 @@ import com.fasttask.dto.Lista;
 
 public interface IListaService {
 
-	public Lista crearLista(Lista lista);
+	public Lista listarListaById(int id);
 	public List<Lista> listarListaByTablero(int id);
+	public Lista crearLista(Lista lista);
+	public Lista actualizarLista(Lista lista);
+	public void eliminarListaById(int id);
+	
 	
 }

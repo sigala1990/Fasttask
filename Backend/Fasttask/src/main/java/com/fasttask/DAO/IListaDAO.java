@@ -9,6 +9,7 @@ import com.fasttask.dto.Lista;
 public interface IListaDAO  extends JpaRepository<Lista, Integer>{
 	
 	List<Lista> findByTableroFk(int id);
+	Lista findById(int id);
 	
 
 }

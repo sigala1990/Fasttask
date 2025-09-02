@@ -27,6 +27,22 @@ public class ListaServiceImpl implements IListaService {
 	public List<Lista> listarListaByTablero(int id) {
 		return iListaDAO.findByTableroFk(id);
 	}
+
+	@Override
+	public Lista listarListaById(int id) {
+		return iListaDAO.findById(id);
+	}
+
+	@Override
+	public Lista actualizarLista(Lista lista) {
+		return iListaDAO.save(lista);
+	}
+
+	@Override
+	public void eliminarListaById(int id) {
+		iListaDAO.deleteById(id);
+		
+	}
 	
 	
 

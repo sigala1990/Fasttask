@@ -10,4 +10,6 @@ public interface ITableroService {
 	public Tablero listarTableroById(int id);
 	public Tablero guardarTablero(Tablero tablero);
 	public Tablero crearTablero(Tablero tablero);
+	public Tablero actualizarTablero(/*int id, */Tablero tablero);
+	public void eliminarTablero(int id);
 }

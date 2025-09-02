@@ -24,9 +24,8 @@ public class ListaServiceImpl implements IListaService {
 	}
 
 	@Override
-	public List<Lista> listarListaByTablero(Long id) {
-//		return iListaDAO.findByTableroFk(id);
-		return null;
+	public List<Lista> listarListaByTablero(int id) {
+		return iListaDAO.findByTableroFk(id);
 	}
 	
 	

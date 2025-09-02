@@ -1,8 +1,12 @@
 package com.fasttask.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,12 +25,11 @@ public class ListaController {
 	@Autowired
 	ListaServiceImpl listaServiceImpl;
 	
-	@GetMapping("/lista/create")
+	@GetMapping("/lista/{idTablero}")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
-	public Lista listarListas() {
-//		return listaServiceImpl.findAll();
-		return null;
+	public List<Lista> listarListasByTablero(@PathVariable int idTablero) {
+		return listaServiceImpl.listarListaByTablero(idTablero);
 	}
 	
 	@PostMapping("/lista/create")
@@ -36,4 +39,11 @@ public class ListaController {
 		return listaServiceImpl.crearLista(lista);
 	}
 
+	@DeleteMapping("/lista/{id}")
+	@JsonView(Views.Public.class)
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+	public void eliminarLista(@PathVariable int idTablero) {
+	//
+	}
+	
 }

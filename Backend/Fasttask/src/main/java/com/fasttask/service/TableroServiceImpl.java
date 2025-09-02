@@ -19,7 +19,7 @@ public class TableroServiceImpl implements ITableroService {
 	public List<Tablero> listarTableroByUserr(int id) {
 		return iTableroDAO.findByUsuarioFk(id);
 	}
-	
+
 	@Override
 	public Tablero listarTableroById(int id) {
 		return iTableroDAO.findById(id);
@@ -38,12 +38,21 @@ public class TableroServiceImpl implements ITableroService {
 		Date fecha = new Date();
 		tablero.setFecha_creacion(fecha);
 		tablero.setFecha_modificacion(fecha);
-	return 	iTableroDAO.save(tablero);
+		return iTableroDAO.save(tablero);
 //		int maxId = iTableroDAO.findMaxIdTableroByUsuarioFk(tablero.getUsuarioFk());
 //		return iTableroDAO.getById(maxId);
 	}
-	
-	
-	
-	
+
+	@Override
+	public Tablero actualizarTablero(/* int id, */ Tablero tablero) {
+//		Tablero newTablero = new Tablero();
+		
+		return iTableroDAO.save(tablero);
+	}
+
+	@Override
+	public void eliminarTablero(int id) {
+		iTableroDAO.deleteById(id);
+	}
+
 }

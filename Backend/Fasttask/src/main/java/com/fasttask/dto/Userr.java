@@ -55,8 +55,6 @@ public class Userr implements UserDetails {
 	@Column(name="fecha_creacion")
 	private Date fecha_creacion;
 	
-	
-	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> roles = new ArrayList<>();

@@ -54,12 +54,12 @@ public class TableroController {
 		return tableroServiceImpl.crearTablero(tablero);
 	}
 	
-	@PutMapping("/tablero/update/{idTablero}")
+	@PutMapping("/tablero/update")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public Tablero actualizarTablero(/*@PathVariable(name="idTablero")int idTablero,*/@RequestBody Tablero tablero) {
 		tableroServiceImpl.actualizarTablero(tablero);
-		return null;		
+		return tableroServiceImpl.listarTableroById(tablero.getId());		
 	}
 	
 	@DeleteMapping("/tablero/{idTablero}")

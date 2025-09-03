@@ -40,10 +40,10 @@ public class Lista {
 	@Column(name="fecha_modificacion")
 	private Date fecha_modificacion;
 	
-//	@OneToMany
-//	@JsonView(Views.Public.class)
-//	@JoinColumn(name="lista_fk")
-//	private List<Task> id_lista;
+	@OneToMany
+	@JsonView(Views.Public.class)
+	@JoinColumn(name="lista_fk")
+	private List<Task> tasks;
 
 	public int getId() {
 		return id;
@@ -86,13 +86,14 @@ public class Lista {
 		this.fecha_modificacion = fecha_modificacion;
 	}
 
-//	public List<Task> getId_lista() {
-//		return id_lista;
-//	}
-//
-//	public void setId_lista(List<Task> id_lista) {
-//		this.id_lista = id_lista;
-//	}
-	
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+
+
 	
 }

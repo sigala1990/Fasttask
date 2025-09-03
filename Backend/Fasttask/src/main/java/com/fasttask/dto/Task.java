@@ -33,9 +33,12 @@ public class Task {
 	@Column(name="descripcion")
 	private String descripcion;
 	
+//	@JsonView(Views.Public.class)
+//	@Column(name="completada",columnDefinition = "BOOLEAN DEFAULT false")
+//	private boolean completada;
 	@JsonView(Views.Public.class)
-	@Column(name="completada",columnDefinition = "BOOLEAN DEFAULT false")
-	private boolean completada;
+	@Column(name="completada")
+	private int completada;
 	
 	@JsonView(Views.Public.class)
 	@Column(name="fecha_creacion")
@@ -85,16 +88,24 @@ public class Task {
 		this.descripcion = descripcion;
 	}
 
-	public boolean isCompletada() {
-		return completada;
-	}
-
-	public void setCompletada(boolean completada) {
-		this.completada = completada;
-	}
+//	public boolean isCompletada() {
+//		return completada;
+//	}
+//
+//	public void setCompletada(boolean completada) {
+//		this.completada = completada;
+//	}
 
 	public Date getFecha_creacion() {
 		return fecha_creacion;
+	}
+
+	public int getCompletada() {
+		return completada;
+	}
+
+	public void setCompletada(int completada) {
+		this.completada = completada;
 	}
 
 	public void setFecha_creacion(Date fecha_creacion) {

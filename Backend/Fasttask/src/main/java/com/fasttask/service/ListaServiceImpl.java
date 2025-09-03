@@ -35,6 +35,8 @@ public class ListaServiceImpl implements IListaService {
 
 	@Override
 	public Lista actualizarLista(Lista lista) {
+		Date fecha = new Date();
+		lista.setFecha_modificacion(fecha);
 		return iListaDAO.save(lista);
 	}
 

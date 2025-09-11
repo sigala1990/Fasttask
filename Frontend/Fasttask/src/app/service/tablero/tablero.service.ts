@@ -11,6 +11,10 @@ export class TableroService {
 
   constructor(private httpClient: HttpClient) { }
 
+    tableroById(id: number): Observable<Tablero> {
+      return this.httpClient.get<Tablero>(`${apiConstants.baseUrl}api/tablero/${id}`)
+        .pipe(catchError(this.handleError));
+    }
 
     tableroByUserrId(idUserr: number): Observable<Tablero> {
       return this.httpClient.get<Tablero>(`${apiConstants.baseUrl}api/tableros/${idUserr}`)

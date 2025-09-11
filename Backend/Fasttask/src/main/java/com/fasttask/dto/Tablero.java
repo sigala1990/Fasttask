@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -46,6 +47,7 @@ public class Tablero {
 
 	@OneToMany
 	@JsonView(Views.Public.class)
+	@OrderBy("orden ASC")
 	@JoinColumn(name="tablero_fk")
 	private List<Lista> listas;
 	

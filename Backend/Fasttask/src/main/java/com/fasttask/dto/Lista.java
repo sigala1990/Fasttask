@@ -40,6 +40,10 @@ public class Lista {
 	@Column(name="fecha_modificacion")
 	private Date fecha_modificacion;
 	
+	@JsonView(Views.Public.class)
+	@Column(name="orden")
+	private int orden;
+	
 	@OneToMany
 	@JsonView(Views.Public.class)
 	@JoinColumn(name="lista_fk")
@@ -61,6 +65,14 @@ public class Lista {
 		this.nombre = nombre;
 	}
 
+
+	public int getOrden() {
+		return orden;
+	}
+
+	public void setOrden(int orden) {
+		this.orden = orden;
+	}
 
 	public int getTableroFk() {
 		return tableroFk;

@@ -59,3 +59,13 @@
 .crear{
   cursor:pointer;
 } 
+
+.lista-input{
+  border: none;
+}
+
+.lista-input:focus {
+  border-color: #49B3FC !important;
+  box-shadow: 0 0 0 0.2rem rgba(73,179,252,.25);
+  border:1px solid #000000;
+}

@@ -5,6 +5,10 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+import { TableroService } from 'src/app/service/tablero/tablero.service';
+import { ActivatedRoute } from '@angular/router';
+import { ListaService } from 'src/app/service/lista/lista.service';
+import { Lista } from 'src/app/model/lista/lista.model';
 
 @Component({
   selector: 'app-tablero',
@@ -12,37 +16,25 @@ import {
   styleUrls: ['./tablero.component.css'],
 })
 export class TableroComponent implements OnInit {
-
   idRowTask?: number;
   creandoTask = false;
   creandoLista = false;
   newTask: string = '';
   newLista: string = '';
 
-  // tableross = ['To Do', 'In Progress', 'Done'];
-  // todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-  // done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
-  
+  tablero: any;
+  constructor(
+    private tableroService: TableroService,
+    private listaService: ListaService,
+    private route: ActivatedRoute
+  ) {}
 
-  tableross = [
-  {
-    nombre: 'To Do',
-    tasks: ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep']
-  },
-  {
-    nombre: 'In Progress',
-    tasks: ['Write report', 'Fix bugs', 'Prepare presentation']
-  },
-  {
-    nombre: 'Done',
-    tasks: ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog']
+  ngOnInit(): void {
+    console.log(this.route.snapshot.params['idTablero']);
+    this.getTablero(this.route.snapshot.params['idTablero']);
   }
-];
-  constructor() {}
 
-  ngOnInit(): void {}
-
-  drop(event: CdkDragDrop<string[]>) {
+  dropTasks(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -66,24 +58,72 @@ export class TableroComponent implements OnInit {
   addLista() {
     this.creandoLista = true;
   }
+  createLista(nombreLista: string, idTablero: string) {
+    if (nombreLista.trim()) {
+      const lista: Lista = { nombre: nombreLista, tableroFk: idTablero };
 
-  createLista(nameNewLista: string) {
-    if (nameNewLista.trim()) {
-        this.tableross.push({ nombre: nameNewLista, tasks: [] });
+      this.listaService.createLista(lista).subscribe({
+        next: (lista) => {
+          console.log('Lista creada:', lista);
+          this.getTablero(this.route.snapshot.params['idTablero']);
+          this.newLista = '';
+          this.creandoLista = false;
+        },
+        error: (error) => {
+          console.error('Error al crear lista:', error);
+        },
+      });
     }
     //falta popup
   }
 
+  updateLista(nombreLista:string, idLista:number, orden:number) {
+    const lista: Lista = { id: idLista, nombre: nombreLista, orden: orden, tableroFk: this.route.snapshot.params['idTablero'] };
+    this.listaService.updateLista(lista).subscribe({
+      next: (lista) => {
+        console.log('Lista actualizada:', lista);
+        this.getTablero(this.route.snapshot.params['idTablero']);
+        //alert lista actualizada
+      },
+      error: (error) => {
+        console.error('Error al actualizar lista:', error);
+      },
+    });
+  }
+  eliminarLista(idLista: number) {
+    this.listaService.deleteLista(idLista).subscribe({
+      next: () => {
+        console.log('Lista eliminada');
+        this.getTablero(this.route.snapshot.params['idTablero']);
+        //alert tablero eliminado
+      },
+      error: (error) => {
+        console.error('Error al eliminar lista:', error);
+      },
+    });
+  }
+
   createTask(nameNewTask: string, idTablero: number) {
     if (nameNewTask.trim()) {
-        this.tableross[idTablero].tasks.push(nameNewTask);
+      // this.tableross[idTablero].tasks.push(nameNewTask);
     }
-    //falta popup  
+    //falta popup
     this.newTask = '';
     this.creandoTask = false;
   }
 
   setIdRowTask(id: number) {
     this.idRowTask = id;
+  }
+
+  getTablero(id: number) {
+    this.tableroService.tableroById(id).subscribe({
+      next: (tablero) => {
+        this.tablero = tablero;
+      },
+      error: (error) => {
+        console.error('Error get tablero:', error);
+      },
+    });
   }
 }

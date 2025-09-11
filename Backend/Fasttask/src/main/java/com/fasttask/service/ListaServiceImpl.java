@@ -7,19 +7,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasttask.DAO.IListaDAO;
+import com.fasttask.config.EncoderConfig;
 import com.fasttask.dto.Lista;
 
 @Service
 public class ListaServiceImpl implements IListaService {
+
+    private final EncoderConfig encoderConfig;
 	
 	@Autowired
 	IListaDAO iListaDAO;
+
+    ListaServiceImpl(EncoderConfig encoderConfig) {
+        this.encoderConfig = encoderConfig;
+    }
 
 	@Override
 	public Lista crearLista(Lista lista) {
 		Date fecha = new Date();
 		lista.setFecha_creacion(fecha);
 		lista.setFecha_modificacion(fecha);
+
+		lista.setOrden(iListaDAO.findMaxOrdenByTableroFk(lista.getTableroFk()) + 1);
 		return iListaDAO.save(lista);
 	}
 
@@ -44,6 +53,11 @@ public class ListaServiceImpl implements IListaService {
 	public void eliminarListaById(int id) {
 		iListaDAO.deleteById(id);
 		
+	}
+
+	@Override
+	public int maxOrdenByTableroFk(int id) {
+		return iListaDAO.findMaxOrdenByTableroFk(id);
 	}
 	
 	

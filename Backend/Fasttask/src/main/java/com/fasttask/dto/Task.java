@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -39,6 +40,11 @@ public class Task {
 	@JsonView(Views.Public.class)
 	@Column(name="completada")
 	private int completada;
+	
+	@JsonView(Views.Public.class)
+	@Column(name="orden")
+	@OrderBy("orden ASC")
+	private int orden;
 	
 	@JsonView(Views.Public.class)
 	@Column(name="fecha_creacion")

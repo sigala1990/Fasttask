@@ -9,6 +9,7 @@ export interface Task {
   fecha_modificacion: string;
   fecha_task_ini: string;
   fecha_task_fin: string;
+  orden: number;
   // prioridad: string;
 
 }

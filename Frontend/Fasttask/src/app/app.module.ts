@@ -16,6 +16,8 @@ import { CreateBoardComponent } from './modal/createBoard/create-board/create-bo
 import { MatDialogModule } from '@angular/material/dialog';
 import { TableroComponent } from './component/tablero/tablero/tablero.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { TestComponent } from './component/test/test/test.component';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     NavbarComponent,
     CreateBoardComponent,
     TableroComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,

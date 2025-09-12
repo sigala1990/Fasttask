@@ -5,6 +5,7 @@ import { HomeComponent } from './component/home/home.component';
 import { AreaClientComponent } from './component/area-client/area-client.component';
 import { AuthGuard } from './service/auth/guardAuth/auth.guard';
 import { TableroComponent } from './component/tablero/tablero/tablero.component';
+import { TestComponent } from './component/test/test/test.component';
 
 const routes: Routes = [
   { path: 'areaClient/:id/tablero/:idTablero', component: TableroComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'test', component: TestComponent}
 ];
 
 @NgModule({

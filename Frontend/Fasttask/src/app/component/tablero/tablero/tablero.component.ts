@@ -34,6 +34,9 @@ export class TableroComponent implements OnInit {
     this.getTablero(this.route.snapshot.params['idTablero']);
   }
 
+   dropList(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.tablero, event.previousIndex, event.currentIndex);
+  }
   dropTasks(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(

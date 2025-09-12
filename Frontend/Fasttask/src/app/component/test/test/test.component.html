@@ -1,0 +1,32 @@
+<div class="container bg-danger">
+    <p>test works!</p>
+    <!-- 
+    <div cdkDropListGroup *ngFor="let lista of tablero[0].listas" class="mb-2">
+
+        <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="lista" class="example-list"
+            (cdkDropListDropped)="dropList($event)">
+            <div class="example-box"  cdkDrag>{{lista.nombre}}</div>
+        </div>
+ 
+
+    </div> -->
+
+
+    <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="dropList($event)">
+        <div class="example-box ms-5 border" *ngFor="let lista of tablero[0].listas; let i = index" cdkDrag>
+            <h5>{{lista.nombre}}</h5>
+
+            <div cdkDropListGroup>
+                <div class="example-container">
+                    <div cdkDropList [id]="'taskList' + i" [cdkDropListData]="lista.tasks"
+                        [cdkDropListConnectedTo]="connectedTaskLists" class="example-task"
+                        (cdkDropListDropped)="dropTask($event)">
+                        <div class="example-box-task" *ngFor="let task of lista.tasks" cdkDrag>{{task.nombre}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

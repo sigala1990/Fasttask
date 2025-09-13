@@ -27,6 +27,11 @@ public class TaskServiceImpl implements ITaskService{
 
 	@Override
 	public Task crearTask(Task task) {
+		Date fecha = new Date();
+		task.setFecha_creacion(fecha);
+		task.setFecha_modificacion(fecha);
+		
+		task.setOrden(iTaskDAO.findMaxOrdenByListaFk(task.getListaFk())+ 1);
 		return iTaskDAO.save(task);
 	}
 

@@ -11,7 +11,10 @@ export class ListaService {
   constructor(private httpClient: HttpClient) { }
 
   //get
-  //no hace falta
+  switchListas(idTablero: number, idLista1: number, idLista2: number): Observable<void> {
+    return this.httpClient.get<void>(`${apiConstants.baseUrl}api/lista/switch/${idTablero}/${idLista1}/${idLista2}`)
+      .pipe(catchError(this.handleError));
+  }
 
   //post
   createLista(lista: Lista): Observable<Lista> {

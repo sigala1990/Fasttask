@@ -141,6 +141,14 @@ public class Task {
 	public void setFecha_task_fin(Date fecha_task_fin) {
 		this.fecha_task_fin = fecha_task_fin;
 	}
+
+	public int getOrden() {
+		return orden;
+	}
+
+	public void setOrden(int orden) {
+		this.orden = orden;
+	}
 	
 	
 }

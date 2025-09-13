@@ -44,6 +44,13 @@ public class ListaController {
 		return listaServiceImpl.listarListaByTablero(idTablero);
 	}
 	
+	@GetMapping("/lista/switch/{idTablero}/{previousId}/{currentId}")
+	@JsonView(Views.Public.class)
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+	public void switchLista(@PathVariable int idTablero,@PathVariable int previousId,@PathVariable int currentId){
+		listaServiceImpl.switchListas(idTablero, previousId, currentId);
+	}
+
 	@PostMapping("/lista/create")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
@@ -57,7 +64,7 @@ public class ListaController {
 	public Lista actualizarLista(@RequestBody Lista lista) {
 		return listaServiceImpl.actualizarLista(lista);		
 	}
-
+	
 	@DeleteMapping("/lista/{idLista}")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")

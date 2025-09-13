@@ -9,6 +9,8 @@ import { TableroService } from 'src/app/service/tablero/tablero.service';
 import { ActivatedRoute } from '@angular/router';
 import { ListaService } from 'src/app/service/lista/lista.service';
 import { Lista } from 'src/app/model/lista/lista.model';
+import { Task } from 'src/app/model/task/task.model';
+import { TaskService } from 'src/app/service/task/task.service';
 
 @Component({
   selector: 'app-tablero',
@@ -21,21 +23,29 @@ export class TableroComponent implements OnInit {
   creandoLista = false;
   newTask: string = '';
   newLista: string = '';
+  connectedTaskLists: string[] = [];
 
-  tablero: any;
+  tablero?: any;
   constructor(
     private tableroService: TableroService,
     private listaService: ListaService,
+    private taskService: TaskService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    // if (this.tablero) {
+    
+    // }
     console.log(this.route.snapshot.params['idTablero']);
     this.getTablero(this.route.snapshot.params['idTablero']);
   }
 
-   dropList(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.tablero, event.previousIndex, event.currentIndex);
+  dropList(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.tablero.listas, event.previousIndex, event.currentIndex);
+    console.log("currentIndex: " + event.currentIndex + " previousIndex: " + event.previousIndex);
+    this.switchLista(event.previousIndex, event.currentIndex);
+
   }
   dropTasks(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -44,6 +54,7 @@ export class TableroComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
+      console.log(event.container.data + " currentIndex: " + event.currentIndex + " previousIndex: " + event.previousIndex);
     } else {
       transferArrayItem(
         event.previousContainer.data,
@@ -51,7 +62,22 @@ export class TableroComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
+      console.log(event.container.data + " currentIndex: " + event.currentIndex + " previousIndex: " + event.previousIndex);
     }
+  }
+  switchLista( idOrigen: number, idDestino: number) {
+    const listaOrigen = this.tablero.listas.find((lista: Lista) => lista.id === idOrigen);
+    const listaDestino = this.tablero.listas.find((lista: Lista) => lista.id === idDestino);
+    const idTablero = this.route.snapshot.params['idTablero'];
+    this.listaService.switchListas(idTablero, idOrigen, idDestino).subscribe({
+      next: () => {
+        // console.log('Listas intercambiadas');
+        this.getTablero(this.route.snapshot.params['idTablero']);
+      },
+      error: (error) => {
+        console.error('Error al intercambiar listas:', error);
+      },
+    });
   }
 
   addTask(idRowTask: number) {
@@ -79,9 +105,13 @@ export class TableroComponent implements OnInit {
     }
     //falta popup
   }
-
-  updateLista(nombreLista:string, idLista:number, orden:number) {
-    const lista: Lista = { id: idLista, nombre: nombreLista, orden: orden, tableroFk: this.route.snapshot.params['idTablero'] };
+  updateLista(nombreLista: string, idLista: number, orden: number) {
+    const lista: Lista = {
+      id: idLista,
+      nombre: nombreLista,
+      orden: orden,
+      tableroFk: this.route.snapshot.params['idTablero'],
+    };
     this.listaService.updateLista(lista).subscribe({
       next: (lista) => {
         console.log('Lista actualizada:', lista);
@@ -105,24 +135,56 @@ export class TableroComponent implements OnInit {
       },
     });
   }
-
-  createTask(nameNewTask: string, idTablero: number) {
+  createTask(nameNewTask: string, idLista: number) {
     if (nameNewTask.trim()) {
-      // this.tableross[idTablero].tasks.push(nameNewTask);
+      const newTask: Task = { nombre: nameNewTask, listaFk: idLista };
+      this.taskService.createTask(newTask).subscribe({
+        next: () => {
+          console.log('Task creada');
+          this.getTablero(this.route.snapshot.params['idTablero']);
+        },
+        error: (error) => {
+          console.error('Error al crear task:', error);
+        },
+      });
     }
     //falta popup
     this.newTask = '';
     this.creandoTask = false;
   }
-
+  updateTask(task: Task) {
+    this.taskService.updateTask(task).subscribe({
+      next: () => {
+        console.log('Task actualizada');
+        this.getTablero(this.route.snapshot.params['idTablero']);
+      },
+      error: (error) => {
+        console.error('Error al actualizar task:', error);
+      },
+    });
+  }
+  eliminarTask(idTask: number) {
+    this.taskService.deleteTask(idTask).subscribe({
+      next: () => {
+        console.log('Task eliminada');
+        this.getTablero(this.route.snapshot.params['idTablero']);
+        //alert tablero eliminado
+      },
+      error: (error) => {
+        console.error('Error al eliminar task:', error);
+      },
+    });
+  }
   setIdRowTask(id: number) {
     this.idRowTask = id;
   }
-
   getTablero(id: number) {
     this.tableroService.tableroById(id).subscribe({
       next: (tablero) => {
         this.tablero = tablero;
+          this.connectedTaskLists = this.tablero.listas.map(
+        (lista: any, i: number) => `taskList${i}`
+      );
       },
       error: (error) => {
         console.error('Error get tablero:', error);

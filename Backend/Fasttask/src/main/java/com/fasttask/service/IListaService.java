@@ -12,6 +12,7 @@ public interface IListaService {
 	public Lista actualizarLista(Lista lista);
 	public void eliminarListaById(int id);
 	public int maxOrdenByTableroFk(int id);
+	public void switchListas(int idTablero, int idLista1, int idLista2); 
 	
 	
 }

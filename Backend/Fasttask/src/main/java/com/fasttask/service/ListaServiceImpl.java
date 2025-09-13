@@ -45,8 +45,9 @@ public class ListaServiceImpl implements IListaService {
 	@Override
 	public Lista actualizarLista(Lista lista) {
 		Date fecha = new Date();
-		lista.setFecha_modificacion(fecha);
-		return iListaDAO.save(lista);
+		Lista listaEntera =iListaDAO.getById(lista.getId());
+		listaEntera.setFecha_modificacion(fecha);
+		return iListaDAO.save(listaEntera);
 	}
 
 	@Override
@@ -58,6 +59,20 @@ public class ListaServiceImpl implements IListaService {
 	@Override
 	public int maxOrdenByTableroFk(int id) {
 		return iListaDAO.findMaxOrdenByTableroFk(id);
+	}
+
+	@Override
+	public void switchListas(int idTablero, int previousIndex, int currentIndex) {
+		List<Lista> listas = iListaDAO.findByTableroFk(idTablero);
+		
+		Lista listaMovida = listas.remove(previousIndex);
+		listas.add(currentIndex, listaMovida);
+		
+		for (int i = 0; i < listas.size(); i++) {
+			listas.get(i).setOrden(i);
+			iListaDAO.save(listas.get(i));
+		}
+
 	}
 	
 	

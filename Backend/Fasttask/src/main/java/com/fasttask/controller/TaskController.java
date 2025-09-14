@@ -46,6 +46,14 @@ public class TaskController {
 			@PathVariable int currentId) {
 		taskServiceImpl.switchTasksInSameList(idLista, previousId, currentId);
 	}
+	
+	@GetMapping("/task/switch2/{idLista}/{listaOrigen}/{listaDestino}/{taskOrigen}/{taskDestino}")
+	@JsonView(Views.Public.class)
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+	public void switchTaskInNotSameList(@PathVariable int idLista, @PathVariable int listaOrigen, @PathVariable int listaDestino,
+			@PathVariable int taskOrigen,@PathVariable int taskDestino) {
+		taskServiceImpl.switchTasksInNotSameList(idLista,listaOrigen, listaDestino,taskOrigen ,taskDestino);
+	}
 
 	@PostMapping("task/create")
 	@JsonView(Views.Public.class)

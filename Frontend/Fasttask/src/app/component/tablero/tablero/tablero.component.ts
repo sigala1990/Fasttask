@@ -35,17 +35,25 @@ export class TableroComponent implements OnInit {
 
   ngOnInit(): void {
     // if (this.tablero) {
-    
+
     // }
     console.log(this.route.snapshot.params['idTablero']);
     this.getTablero(this.route.snapshot.params['idTablero']);
   }
 
   dropList(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.tablero.listas, event.previousIndex, event.currentIndex);
-    console.log("currentIndex: " + event.currentIndex + " previousIndex: " + event.previousIndex);
+    moveItemInArray(
+      this.tablero.listas,
+      event.previousIndex,
+      event.currentIndex
+    );
+    console.log(
+      'currentIndex: ' +
+        event.currentIndex +
+        ' previousIndex: ' +
+        event.previousIndex
+    );
     this.switchLista(event.previousIndex, event.currentIndex);
-
   }
   dropTasks(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
@@ -55,14 +63,13 @@ export class TableroComponent implements OnInit {
         event.currentIndex
       );
       let listaFk = event.container.data[event.previousIndex].listaFk;
-      for (let index = 0; index < event.container.data.length; index++) {
-        console.log("index: " + index + " idTask: " + event.container.data[index].nombre + " orden: "+ event.container.data[index].orden);
-        
-      }
       if (typeof listaFk === 'number') {
-        this.switchTaskInSameList(listaFk, event.previousIndex, event.currentIndex);
-      } 
-      // console.log(event.container.data[event.currentIndex].id + " currentIndex: " + event.currentIndex + " previousIndex: " + event.previousIndex);
+        this.switchTaskInSameList(
+          listaFk,
+          event.previousIndex,
+          event.currentIndex
+        );
+      }
     } else {
       transferArrayItem(
         event.previousContainer.data,
@@ -70,35 +77,80 @@ export class TableroComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
-      console.log(" currentList: " + event.container.data[event.currentIndex].id + " previousList: " + event.previousContainer.data[event.previousIndex].id + " currentIndex: " + event.currentIndex + " previousIndex: " + event.previousIndex);
+      const idLista = event.container.data[event.currentIndex].listaFk;
+      const listaOrigen = event.previousContainer.id.charAt(event.previousContainer.id.length - 1);
+      const listaDestino = event.container.id.charAt(event.container.id.length - 1);
+      const taskOrigen = event.previousIndex;
+      const taskDestino = event.currentIndex;
+      console.log(event);
+      console.log(
+        'Lista origen ' +
+          event.previousContainer.id.charAt(event.previousContainer.id.length - 1)
+      );
+      console.log(
+        'Lista destino ' +
+          event.container.id.charAt(event.container.id.length - 1)
+      );
+
+      console.log(
+        ' currentIndex: ' +
+          event.currentIndex +
+          ' previousIndex: ' +
+          event.previousIndex
+      );
+      this.switchTaskInDifferentList(idLista as number, listaOrigen as string, listaDestino as string, taskOrigen, taskDestino);
     }
   }
-  switchTaskInSameList( idList: number, idTask: number, newPosition: number) {
-    this.taskService.switchTaskInSameList(idList, idTask, newPosition).subscribe({
-      next: () => {
-        // console.log('Tareas intercambiadas en la misma lista');
-        this.getTablero(this.route.snapshot.params['idTablero']);
-      },
-      error: (error) => {
-        console.error('Error al intercambiar tareas en la misma lista:', error);
-      },
-    });
+  switchTaskInSameList(idList: number, idTask: number, newPosition: number) {
+    this.taskService
+      .switchTaskInSameList(idList, idTask, newPosition)
+      .subscribe({
+        next: () => {
+          this.getTablero(this.route.snapshot.params['idTablero']);
+        },
+        error: (error) => {
+          console.error(
+            'Error al intercambiar tareas en la misma lista:',
+            error
+          );
+        },
+      });
   }
-  switchTaskInDifferentList( idListOrigin: number, idListDestination: number, idTask: number, newPosition: number) {
-    this.taskService.switchTaskInDifferentList(idListOrigin, idListDestination, idTask, newPosition).subscribe({
-      next: () => {
-        // console.log('Tareas intercambiadas en diferentes listas');
-        this.getTablero(this.route.snapshot.params['idTablero']);
-      },
-      error: (error) => {
-        console.error('Error al intercambiar tareas en diferentes listas:', error);
-      },
-    });
+  switchTaskInDifferentList(
+    idLista: number,
+    listaOrigen: string,
+    listaDestino: string,
+    taskOrigen: number,
+    taskDestino: number
+  ) {
+    this.taskService
+      .switchTaskInDifferentList(
+        idLista,
+        listaOrigen,
+        listaDestino,
+        taskOrigen,
+        taskDestino
+      )
+      .subscribe({
+        next: () => {
+          // console.log('Tareas intercambiadas en diferentes listas');
+          this.getTablero(this.route.snapshot.params['idTablero']);
+        },
+        error: (error) => {
+          console.error(
+            'Error al intercambiar tareas en diferentes listas:',
+            error
+          );
+        },
+      });
   }
-
-  switchLista( idOrigen: number, idDestino: number) {
-    const listaOrigen = this.tablero.listas.find((lista: Lista) => lista.id === idOrigen);
-    const listaDestino = this.tablero.listas.find((lista: Lista) => lista.id === idDestino);
+  switchLista(idOrigen: number, idDestino: number) {
+    const listaOrigen = this.tablero.listas.find(
+      (lista: Lista) => lista.id === idOrigen
+    );
+    const listaDestino = this.tablero.listas.find(
+      (lista: Lista) => lista.id === idDestino
+    );
     const idTablero = this.route.snapshot.params['idTablero'];
     this.listaService.switchListas(idTablero, idOrigen, idDestino).subscribe({
       next: () => {
@@ -110,7 +162,6 @@ export class TableroComponent implements OnInit {
       },
     });
   }
-
   addTask(idRowTask: number) {
     this.creandoTask = true;
     this.setIdRowTask(idRowTask);
@@ -213,9 +264,9 @@ export class TableroComponent implements OnInit {
     this.tableroService.tableroById(id).subscribe({
       next: (tablero) => {
         this.tablero = tablero;
-          this.connectedTaskLists = this.tablero.listas.map(
-        (lista: any, i: number) => `taskList${i}`
-      );
+        this.connectedTaskLists = this.tablero.listas.map(
+          (lista: any, i: number) => `taskList${i}`
+        );
       },
       error: (error) => {
         console.error('Error get tablero:', error);

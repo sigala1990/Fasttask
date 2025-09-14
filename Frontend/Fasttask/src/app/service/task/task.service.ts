@@ -18,8 +18,8 @@ export class TaskService {
       .pipe(catchError(this.handleError));
   }
 
-  switchTaskInDifferentList(idListOrigin: number, idListDestination: number, previousId: number, currentId: number): Observable<void> {
-    return this.httpClient.get<void>(`${apiConstants.baseUrl}api/task/switch2/${idListOrigin}/${idListDestination}/${previousId}/${currentId}`)
+  switchTaskInDifferentList(idLista: number, listaOrigen: string, listaDestino: string, taskOrigen: number, taskDestino: number): Observable<void> {
+    return this.httpClient.get<void>(`${apiConstants.baseUrl}api/task/switch2/${idLista}/${listaOrigen}/${listaDestino}/${taskOrigen}/${taskDestino}`)
       .pipe(catchError(this.handleError));
   }
 

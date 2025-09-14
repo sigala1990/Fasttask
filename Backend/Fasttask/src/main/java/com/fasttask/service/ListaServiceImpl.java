@@ -46,6 +46,7 @@ public class ListaServiceImpl implements IListaService {
 	public Lista actualizarLista(Lista lista) {
 		Date fecha = new Date();
 		Lista listaEntera =iListaDAO.getById(lista.getId());
+		listaEntera.setNombre(lista.getNombre());
 		listaEntera.setFecha_modificacion(fecha);
 		return iListaDAO.save(listaEntera);
 	}

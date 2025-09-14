@@ -76,6 +76,13 @@ public class Lista {
 		this.orden = orden;
 	}
 
+	@Override
+	public String toString() {
+		return "Lista [id=" + id + ", nombre=" + nombre + ", tableroFk=" + tableroFk + ", fecha_creacion="
+				+ fecha_creacion + ", fecha_modificacion=" + fecha_modificacion + ", orden=" + orden + ", tasks="
+				+ tasks + "]";
+	}
+
 	public int getTableroFk() {
 		return tableroFk;
 	}

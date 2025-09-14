@@ -12,4 +12,5 @@ public interface ITaskService {
 	public Task actualizarTask(Task task);
 	public void eliminarTask(int id);
 	public void switchTasksInSameList(int idLista, int idTask1, int idTask2); 
+	public void switchTasksInNotSameList (int idLista, int listaOrigen, int listaDestino, int taskOrigen, int taskDestino);
 }

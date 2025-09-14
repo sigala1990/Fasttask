@@ -17,6 +17,14 @@ import com.fasttask.common.Views;
 @Table(name="task")
 public class Task {
 
+	@Override
+	public String toString() {
+		return "Task [id=" + id + ", nombre=" + nombre + ", listaFk=" + listaFk + ", descripcion=" + descripcion
+				+ ", completada=" + completada + ", orden=" + orden + ", fecha_creacion=" + fecha_creacion
+				+ ", fecha_modificacion=" + fecha_modificacion + ", fecha_task_ini=" + fecha_task_ini
+				+ ", fecha_task_fin=" + fecha_task_fin + "]";
+	}
+
 	@Id
 	@JsonView(Views.Public.class)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -34,7 +34,7 @@ public class ListaServiceImpl implements IListaService {
 
 	@Override
 	public List<Lista> listarListaByTablero(int id) {
-		return iListaDAO.findByTableroFk(id);
+		return iListaDAO.findByTableroFkOrderByOrdenAsc(id);
 	}
 
 	@Override
@@ -53,7 +53,6 @@ public class ListaServiceImpl implements IListaService {
 	@Override
 	public void eliminarListaById(int id) {
 		iListaDAO.deleteById(id);
-		
 	}
 
 	@Override
@@ -63,8 +62,8 @@ public class ListaServiceImpl implements IListaService {
 
 	@Override
 	public void switchListas(int idTablero, int previousIndex, int currentIndex) {
-		List<Lista> listas = iListaDAO.findByTableroFk(idTablero);
-		
+		List<Lista> listas = iListaDAO.findByTableroFkOrderByOrdenAsc(idTablero);
+
 		Lista listaMovida = listas.remove(previousIndex);
 		listas.add(currentIndex, listaMovida);
 		
@@ -72,7 +71,6 @@ public class ListaServiceImpl implements IListaService {
 			listas.get(i).setOrden(i);
 			iListaDAO.save(listas.get(i));
 		}
-
 	}
 	
 	

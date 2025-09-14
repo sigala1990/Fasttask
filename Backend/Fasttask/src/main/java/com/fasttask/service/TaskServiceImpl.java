@@ -22,7 +22,7 @@ public class TaskServiceImpl implements ITaskService{
 
 	@Override
 	public List<Task> listarTaskByLista(int id) {
-		return iTaskDAO.findByListaFk(id);
+		return iTaskDAO.findByListaFkOrderByOrdenAsc(id);
 	}
 
 	@Override
@@ -44,8 +44,20 @@ public class TaskServiceImpl implements ITaskService{
 
 	@Override
 	public void eliminarTask(int id) {
-		iTaskDAO.deleteById(id);
+		iTaskDAO.deleteById(id);	
+	}
+
+	@Override
+	public void switchTasksInSameList(int idLista,  int previousIndex, int currentIndex) {
+		List<Task> task = iTaskDAO.findByListaFkOrderByOrdenAsc(idLista);
 		
+		Task taskMovida = task.remove(previousIndex);
+		task.add(currentIndex, taskMovida);
+		
+		for (int i = 0; i < task.size(); i++) {
+			task.get(i).setOrden(i);
+			iTaskDAO.save(task.get(i));
+		}
 	}
 
 }

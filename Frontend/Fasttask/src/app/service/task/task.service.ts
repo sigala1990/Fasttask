@@ -12,6 +12,16 @@ export class TaskService {
   constructor(private httpClient: HttpClient) { }
 
   //get
+  switchTaskInSameList(idList: number, previousId: number, currentId: number): Observable<void> {
+    //http://localhost:8080/api/tasks/switch1/69/1/3
+    return this.httpClient.get<void>(`${apiConstants.baseUrl}api/task/switch1/${idList}/${previousId}/${currentId}`)
+      .pipe(catchError(this.handleError));
+  }
+
+  switchTaskInDifferentList(idListOrigin: number, idListDestination: number, previousId: number, currentId: number): Observable<void> {
+    return this.httpClient.get<void>(`${apiConstants.baseUrl}api/task/switch2/${idListOrigin}/${idListDestination}/${previousId}/${currentId}`)
+      .pipe(catchError(this.handleError));
+  }
 
   //post
   createTask(task: Task): Observable<Task> {

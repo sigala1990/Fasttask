@@ -21,43 +21,51 @@ import com.fasttask.service.TaskServiceImpl;
 @RestController
 @RequestMapping("/api")
 public class TaskController {
-	
+
 	@Autowired
 	TaskServiceImpl taskServiceImpl;
-	
+
 	@GetMapping("/task/{id}")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public Task listarTaskById(@PathVariable int id) {
 		return taskServiceImpl.listarTaskById(id);
 	}
-	
+
 	@GetMapping("/tasks/{idLista}")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public List<Task> listarTaskByLista(@PathVariable int idLista) {
 		return taskServiceImpl.listarTaskByLista(idLista);
 	}
-	
+
+	@GetMapping("/task/switch1/{idLista}/{previousId}/{currentId}")
+	@JsonView(Views.Public.class)
+	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
+	public void switchTaskInSameList(@PathVariable int idLista, @PathVariable int previousId,
+			@PathVariable int currentId) {
+		taskServiceImpl.switchTasksInSameList(idLista, previousId, currentId);
+	}
+
 	@PostMapping("task/create")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public Task crearTask(@RequestBody Task task) {
 		return taskServiceImpl.crearTask(task);
 	}
-	
+
 	@PutMapping("task/update")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public Task actualizarTask(@RequestBody Task task) {
 		return taskServiceImpl.actualizarTask(task);
 	}
-	
+
 	@DeleteMapping("/task/{idTask}")
 	@JsonView(Views.Public.class)
 	@PreAuthorize("hasAnyAuthority('ADMIN','USER')")
 	public void eliminarTask(@PathVariable int idTask) {
 		taskServiceImpl.eliminarTask(idTask);
 	}
-	
+
 }

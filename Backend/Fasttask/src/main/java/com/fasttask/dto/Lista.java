@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -47,6 +48,7 @@ public class Lista {
 	@OneToMany
 	@JsonView(Views.Public.class)
 	@JoinColumn(name="lista_fk")
+	@OrderBy("orden ASC")
 	private List<Task> tasks;
 
 	public int getId() {

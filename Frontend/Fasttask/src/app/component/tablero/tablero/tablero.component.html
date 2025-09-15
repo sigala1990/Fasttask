@@ -1,79 +1,77 @@
-<div class="container-fluid">
-    <p>tablero works!</p>
-    <div class=" border">
+<!-- <p>tablero works!</p> -->
+<div class=" ">
 
-        <div cdkDropList cdkDropListOrientation="horizontal" class="example-list"
-            (cdkDropListDropped)="dropList($event)">
-            <div class="example-box ms-5 border" *ngFor="let lista of tablero?.listas; let i = index" cdkDrag>
-                <div class="d-flex justify-content-between align-items-center justify-content-center">
-                    <input type="text" class="form-control mt-2 ms-2 lista-input" placeholder="{{lista.nombre}}"
-                        aria-label="Example text with button addon" aria-describedby="button-addon1"
-                        (blur)="updateLista(lista.nombre, lista.id, lista.orden)"
-                        (keyup.enter)="updateLista(lista.nombre, lista.id, lista.orden)" [(ngModel)]="lista.nombre" />
-                    <div class="dropdown ps-2">
-                        <button class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../../../../assets/img/menu.png" alt="Menu" style="width: 20px; height: 20px;">
-                        </button>
-                        <ul class="dropdown-menu">
+    <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="dropList($event)">
+        <div class="example-box ms-5" *ngFor="let lista of tablero?.listas; let i = index" cdkDrag>
+            <div class="d-flex justify-content-between align-items-center justify-content-center">
+                <input type="text" class="form-control mt-2 ms-2 lista-input" placeholder="{{lista.nombre}}"
+                    aria-label="Example text with button addon" aria-describedby="button-addon1"
+                    (blur)="updateLista(lista.nombre, lista.id, lista.orden)"
+                    (keyup.enter)="updateLista(lista.nombre, lista.id, lista.orden)" [(ngModel)]="lista.nombre" />
+                <div class="dropdown ps-2">
+                    <button class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="../../../../assets/img/menu.png" alt="Menu" style="width: 20px; height: 20px;">
+                    </button>
+                    <ul class="dropdown-menu">
 
-                            <li><button class="dropdown-item" type="button"
-                                    (click)="eliminarLista(lista.id)">Eliminar</button></li>
-                        </ul>
-                    </div>
+                        <li><button class="dropdown-item" type="button"
+                                (click)="eliminarLista(lista.id)">Eliminar</button></li>
+                    </ul>
                 </div>
-                <!-- Task-->
-                <div cdkDropListGroup>
-                    <div class="example-container ">
-                        <div cdkDropList [id]="'taskList' + i" [cdkDropListData]="lista.tasks"
-                            [cdkDropListConnectedTo]="connectedTaskLists"
-                            class="example-task mt-2 mb-2 border bg-danger justify-content-center"
-                            (cdkDropListDropped)="dropTasks($event)">
-                            <div class="example-box-task" *ngFor="let task of lista.tasks" cdkDrag>{{task.nombre}}
-                                <div class="dropdown ps-2">
-                                    <button class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src="../../../../assets/img/menu.png" alt="Menu"
-                                            style="width: 12px; height: 12px;">
-                                    </button>
-                                    <ul class="dropdown-menu">
+            </div>
+            <!-- Task-->
+            <div cdkDropListGroup>
+                <div class="example-container ">
+                    <div cdkDropList [id]="'taskList' + i" [cdkDropListData]="lista.tasks"
+                        [cdkDropListConnectedTo]="connectedTaskLists"
+                        class="example-task mt-2 mb-2 justify-content-center" (cdkDropListDropped)="dropTasks($event)">
+                        <div class="example-box-task" *ngFor="let task of lista.tasks" cdkDrag>{{task.nombre}}
+                            <div class="dropdown ps-2">
+                                <button class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="../../../../assets/img/menu.png" alt="Menu"
+                                        style="width: 12px; height: 12px;">
+                                </button>
+                                <ul class="dropdown-menu">
 
-                                        <li><button class="dropdown-item" type="button"
-                                                (click)="eliminarTask(task.id)">Eliminar</button></li>
-                                    </ul>
-                                </div>
+                                    <li><button class="dropdown-item" type="button"
+                                            (click)="eliminarTask(task.id)">Eliminar</button></li>
+                                </ul>
                             </div>
-
                         </div>
-                    </div>
-                </div>
-                <!-- Fin Task-->
 
-                <!-- NEW Task-->
-                <div *ngIf="!creandoTask " class="btn btn-primary mt-2" style="  width: 100%;" (click)="addTask(i)">
-                    Crear +</div>
-                <div *ngIf="creandoTask && i == idRowTask" class="ms-3 me-3">
-                    <div><input type="text" [(ngModel)]="newTask" style="width: 100%;" placeholder="Nueva tarea" />
-                    </div>
-                    <div class="btn btn-primary align-items-start mb-2 mt-2" (click)="createTask(newTask, lista.id)">
-                        Agregar</div>
-                </div>
-                <!-- Fin new Task  -->
-            </div>
-
-            <!-- Crear newLista -->
-            <div class="example-container col-lg-2 border">
-                <h2 class="ms-2 mt-2">Añadir nueva lista</h2>
-                <div *ngIf="!creandoLista" class="btn btn-primary" style="  width: 100%;" (click)="addLista()">Crear +
-                </div>
-                <div *ngIf="creandoLista" class="ms-3 me-3">
-                    <div><input type="text" [(ngModel)]="newLista" style="width: 100%;" placeholder="Nueva lista" />
-                    </div>
-                    <div class="btn btn-primary align-items-start mb-2 mt-2"
-                        (click)="createLista(newLista, tablero.id)">Agregar
                     </div>
                 </div>
             </div>
-            <!-- Fin crear newLista -->
+            <!-- Fin Task-->
 
+            <!-- NEW Task-->
+            <div *ngIf="!creandoTask " class="btn btn-primary mt-2" style="  width: 100%;" (click)="addTask(i)">
+                Crear +</div>
+            <div *ngIf="creandoTask && i == idRowTask" class="ms-3 me-3">
+                <div><input #newTaskInput type="text" [(ngModel)]="newTask" style="width: 100%;" placeholder="Nueva tarea" (blur)="cancelCreateTask()" />
+                </div>
+                <div class="btn btn-primary align-items-start mb-2 mt-2" (click)="createTask(newTask, lista.id)">
+                    Agregar</div>
+            </div>
+            <!-- Fin new Task  -->
         </div>
+
+        <!-- Crear newLista -->
+        <div class="example-container col-lg-2 border">
+            <!-- <h2 class="ms-2 mt-2">Añadir nueva lista</h2> -->
+            <div *ngIf="!creandoLista" id="btnNewLista" class="btn mt-5" style="  width: 100%;" (click)="addLista()">Añadir
+                nueva lista +
+            </div>
+            <div *ngIf="creandoLista" class="ms-3 me-3 mt-5">
+                <div><input #newListaInput type="text" [(ngModel)]="newLista" style="width: 100%;"
+                        placeholder="Nueva lista" (blur)="cancelCreateLista()" />
+                </div>
+                <div  class="btn  align-items-start mb-2 mt-2" (click)="createLista(newLista, tablero.id)">
+                    Agregar
+                </div>
+            </div>
+        </div>
+        <!-- Fin crear newLista -->
+
     </div>
 </div>

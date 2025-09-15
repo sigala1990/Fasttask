@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import {
   CdkDragDrop,
@@ -18,6 +18,10 @@ import { TaskService } from 'src/app/service/task/task.service';
   styleUrls: ['./tablero.component.css'],
 })
 export class TableroComponent implements OnInit {
+
+  @ViewChild('newListaInput') newListaInput!: ElementRef;
+  @ViewChild('newTaskInput') newTaskInput!: ElementRef;
+
   idRowTask?: number;
   creandoTask = false;
   creandoLista = false;
@@ -47,12 +51,7 @@ export class TableroComponent implements OnInit {
       event.previousIndex,
       event.currentIndex
     );
-    console.log(
-      'currentIndex: ' +
-        event.currentIndex +
-        ' previousIndex: ' +
-        event.previousIndex
-    );
+
     this.switchLista(event.previousIndex, event.currentIndex);
   }
   dropTasks(event: CdkDragDrop<Task[]>) {
@@ -78,27 +77,22 @@ export class TableroComponent implements OnInit {
         event.currentIndex
       );
       const idLista = event.container.data[event.currentIndex].listaFk;
-      const listaOrigen = event.previousContainer.id.charAt(event.previousContainer.id.length - 1);
-      const listaDestino = event.container.id.charAt(event.container.id.length - 1);
+      const listaOrigen = event.previousContainer.id.charAt(
+        event.previousContainer.id.length - 1
+      );
+      const listaDestino = event.container.id.charAt(
+        event.container.id.length - 1
+      );
       const taskOrigen = event.previousIndex;
       const taskDestino = event.currentIndex;
-      console.log(event);
-      console.log(
-        'Lista origen ' +
-          event.previousContainer.id.charAt(event.previousContainer.id.length - 1)
-      );
-      console.log(
-        'Lista destino ' +
-          event.container.id.charAt(event.container.id.length - 1)
-      );
 
-      console.log(
-        ' currentIndex: ' +
-          event.currentIndex +
-          ' previousIndex: ' +
-          event.previousIndex
+      this.switchTaskInDifferentList(
+        idLista as number,
+        listaOrigen as string,
+        listaDestino as string,
+        taskOrigen,
+        taskDestino
       );
-      this.switchTaskInDifferentList(idLista as number, listaOrigen as string, listaDestino as string, taskOrigen, taskDestino);
     }
   }
   switchTaskInSameList(idList: number, idTask: number, newPosition: number) {
@@ -165,9 +159,23 @@ export class TableroComponent implements OnInit {
   addTask(idRowTask: number) {
     this.creandoTask = true;
     this.setIdRowTask(idRowTask);
+     setTimeout(() => {
+    this.newTaskInput?.nativeElement.focus();
+  }, 0);
   }
   addLista() {
     this.creandoLista = true;
+      setTimeout(() => {
+    this.newListaInput?.nativeElement.focus();
+  }, 0);
+  }
+  cancelCreateTask(){
+    this.creandoTask = false;
+    this.newTask = '';
+  }
+  cancelCreateLista() {
+    this.creandoLista = false;
+    this.newLista = '';
   }
   createLista(nombreLista: string, idTablero: string) {
     if (nombreLista.trim()) {

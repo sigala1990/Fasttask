@@ -7,13 +7,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 :root {
   --bg1: #101204 !important;
   --bg2: #242528 !important;
+  --bg3: #2b2c2f !important;
   --text: #b7ae9d !important;
   --button-blue: #669df1 !important;
 }
 
 html,
 body {
-
 }
 
 /* Si usas .login-page con 100vh, quítalo o ajusta: */
@@ -50,3 +50,34 @@ body {
   border-radius: 50%;
   margin: 3px 0;
 }
+
+.dialog-create-board .mat-dialog-container {
+  background-color: var(--bg3);
+  border-color: var(--bg1);
+  border: 1px solid var(--bg1);
+  border-radius: 15px;
+  padding: 24px;
+  margin: 0;
+  color: var(--text);
+}
+
+.btn-acceptar {
+  color: #00000086;
+  background-color: #669df1;
+}
+
+.btn-acceptar:hover {
+  background-color: rgba(87, 119, 168, 0.92)
+}
+
+.btn-oscuro {
+  color: #ffffff86;
+  background-color: var(--bg1);
+  text-align: left;
+}
+
+.btn-oscuro:hover {
+  background-color: var(--bg2);
+  color: var(--text);
+}
+

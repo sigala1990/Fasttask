@@ -5,11 +5,6 @@
   --bg3: #669df1 !important;
 }
 .container-bg {
-  background: linear-gradient(
-    125deg,
-    rgba(204, 106, 209, 0.682) 0%,
-    rgba(190, 29, 227, 0.829) 100%
-  );
   min-height: 100vh;
   width: 100vw;
 }
@@ -52,7 +47,7 @@
   min-height: 40px;
   background: white;
   /* border-radius: 4px; */
-  overflow: hidden;
+  overflow: visible;
   display: flex; /* Cambia de block a flex */
   flex-direction: column; /* Asegura que las tareas estén en columna */
   background-color: var(--bg1);
@@ -147,23 +142,5 @@ input.input-text:focus {
   text-align: left;
 }
 
-.btn-acceptar {
-  color: #00000086;
-  background-color: #669df1;
-}
 
-.btn-acceptar:hover {
-  background-color: #8eaeddfd;
-}
-
-.btn-oscuro {
-  color: #ffffff86;
-  background-color: var(--bg1);
-  text-align: left;
-}
-
-.btn-oscuro:hover {
-  background-color: var(--bg2);
-  color: var(--text);
-}
 /***********************/

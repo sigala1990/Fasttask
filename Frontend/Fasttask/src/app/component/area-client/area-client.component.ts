@@ -40,10 +40,10 @@ export class AreaClientComponent implements OnInit {
   open_modal() {
     this.dialog
       .open(CreateBoardComponent, {
-        width: '300px',
-        height: '400px',
+        width: '350px',
+        height: '340px',
         data: {},
-        panelClass: 'custom-dialog-container',
+        panelClass: 'dialog-create-board',
       })
       .afterClosed()
       .subscribe((result) => {

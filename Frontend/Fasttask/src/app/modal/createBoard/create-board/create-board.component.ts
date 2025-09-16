@@ -15,12 +15,12 @@ export class CreateBoardComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: Tablero) {}
 
   colores: string[] = [
-    'linear-gradient(135deg, #e0e7ef 0%, #e0e7ef 100%)',
-    'linear-gradient(135deg, #49b3fc 0%, #2566d6 100%)',
-    'linear-gradient(135deg, #14181fff 0%, #d7db00ff 100%)',
+    'linear-gradient(135deg, #a0b5eb 0%, #c9f0e4 100%)',
+    'linear-gradient(135deg, #65f4cd 0%, #4799e9 100%)',
+    'linear-gradient(135deg, #789f0c 0%, #ffe100 100%)',
     'linear-gradient(135deg, #3a7bd5 0%, #a16ae8 100%)',
     'linear-gradient(135deg, #a16ae8 0%, #f16ba2 100%)',
-    'linear-gradient(135deg, #f16ba2 0%, #ff6b6b 100%)',
+    'linear-gradient(135deg, #191654 0%, #43c6ac 100%)',
   ];
   fondoSeleccionado: string = this.colores[0];
 }

@@ -1,3 +1,8 @@
+.bg-fondo{
+  background-color: var(--bg2);
+  padding: 0 !important;
+}
+
 .color-picker {
   width: 100%;
 }
@@ -27,4 +32,22 @@
   right: 8px;
   top: 8px;
   pointer-events: none;
+}
+
+
+input.input-text {
+  border-radius: 5px;
+  border: none;
+  color: var(--text);
+  background-color: var(--bg2);
+  padding: 0.375rem 0.75rem;
+}
+
+input.input-text:hover {
+  cursor: pointer;
+}
+
+input.input-text:focus {
+  background-color: var(--bg2);
+
 }

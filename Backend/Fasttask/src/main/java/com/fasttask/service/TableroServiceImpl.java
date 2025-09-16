@@ -35,6 +35,7 @@ public class TableroServiceImpl implements ITableroService {
 	public Tablero crearTablero(Tablero tablero) {
 		System.out.println(tablero.getNombre());
 		System.out.println(tablero.toString());
+		System.out.println(tablero.getImagen());
 		Date fecha = new Date();
 		tablero.setFecha_creacion(fecha);
 		tablero.setFecha_modificacion(fecha);

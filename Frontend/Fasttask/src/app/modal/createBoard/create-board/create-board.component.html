@@ -1,35 +1,31 @@
-<p>create-board works!</p>
-<h1 mat-dialog-title>Favorite Animal</h1>
-<div mat-dialog-content class="">
-  My favorite animal is:
-  <ul>
-    <li><span *ngIf="'panda' === 'panda'">&#10003;</span> Panda</li>
-    <li><span *ngIf="'unicorn' === 'unicorn'">&#10003;</span> Unicorn</li>
-    <li><span *ngIf="'lion' === 'lion'">&#10003;</span> Lion</li>
-  </ul>
-</div>
+<h1 mat-dialog-title>Crea tu tablero</h1>
+
 <div class="col-12 mt-4 ">
-  <label>Nombre Tablero<span class="text-danger">*</span></label>
+
   <div class="input-group">
 
-    <input
-      type="text"
-      class="form-control"
-      id="nombreTablero"
-      required
-      [(ngModel)]="nombreTablero"
-      name="nombreTablero"
+    <div class="color-picker mb-3">
+      <label>Escoge un fondo:</label>
+      <div class="d-flex gap-3 mt-2">
+        <div *ngFor="let color of colores; let i = index" class="color-option" [ngStyle]="{'background': color}" [class.selected]="fondoSeleccionado === color" (click)="fondoSeleccionado = color">
+          <span *ngIf="fondoSeleccionado === color" class="color-check">&#10003;</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div>
+        <label>Nombre Tablero:<span class="text-danger">*</span></label>
+      </div>
+      <div>
+        <input type="text" class="form-control" id="nombreTablero" required [(ngModel)]="nombreTablero" name="nombreTablero" />
+      </div>
 
-    />
+    </div>
+
+
   </div>
-  <mat-dialog-actions align="end">
-    <button
-      class="ms-3 btn btn-danger"
-      [disabled]="!nombreTablero || nombreTablero.trim() === ''"
-      mat-button
-      [mat-dialog-close]="nombreTablero"
-
-    >
+  <mat-dialog-actions align="start">
+    <button class="ms-3 btn btn-danger" [disabled]="!nombreTablero || nombreTablero.trim() === ''" mat-button [mat-dialog-close]="{ nombre: nombreTablero, imagen: fondoSeleccionado }">
       Crear
     </button>
   </mat-dialog-actions>

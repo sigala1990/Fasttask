@@ -1,116 +1,49 @@
-<div class="content">
-  <p>area-client works!</p>
-  <!-- <div class="col-lg-12 border ">
-    <a>hola</a>
-    <div class="row" style="height: 60%; background-color: aqua;">
-      <div class="col-lg-6 border"><a>a</a></div>
-      <div class="col-lg-6 border"><a>b</a></div>
-    </div>
-    <div class="container col-12 border text-center"><a>z</a></div>
-    <div class="container-fluid col-12 border text-center"><a>c</a></div>
-  </div> -->
-  <div class="row container-fluid">
-    <div class="col-lg-2 border"></div>
-    <div class="col-lg-2 border">
-      <h2></h2>
-      <button class="btn btn-success w-100 mb-2">
-        <i class="bi bi-table">Tableros</i>
-      </button>
-      <a href="test"><button class="btn btn-success w-100 mb-2">
-          <i class="bi bi-wrench-adjustable">Test</i>
-        </button>
-      </a>
-      <button class="btn btn-success w-100 mb-2">
-        <i class="bi bi-plus-lg">Crear</i>
-      </button>
-      <hr class="my-2" />
-      <h2 class="text-center">Crea tu propio tablero</h2>
-      <button class="btn btn-success w-100 mb-2">
-        <i class="bi bi-plus-lg">Crear2</i>
-      </button>
-    </div>
-    <div class="col-lg-8 border row">
-      <!-- <div class="col-lg-12 border">asdasa</div>
-      <div class="col-lg-12 border">asdasa</div>
-      <div class="col-lg-12 border">asdasa</div> -->
-      <h2>Tus tableros</h2>
-      <div *ngFor="let tablero of tableros" class="card me-2 mb-2 tablero" style="width: 12rem"
-        (click)="open_tablero(tablero.id)">
-        <img [src]="'../../../assets/img/' + tablero.imagen" class="card-img-top" alt=""
-          style="max-height: 150px; object-fit: cover" />
-        <div class="card-body">
-          <h5 class="card-title">{{tablero.nombre}}</h5>
-        </div>
+<div class="container-bg">
+  <div class="content">
+    <div class="row container-fluid">
+      <div class="col-lg-2 ">
       </div>
+      <div class="col-lg-8  row">
 
-      <div class="card tablero me-2 mb-2" style="width: 12rem" (click)="open_modal()">
-        <img src="../../../assets/img/add_tablero_nobg.png" class="card-img-top" alt="..."
-          style="max-height: 150px; object-fit: cover" />
-        <div class="card-body">
-          <h5 class="card-title">Crear nuevo</h5>
-        </div>
-      </div>
-      <h2>Compartidos contigo</h2>
-      <div class="card tablero mb-2" style="width: 12rem">
-        <img src="../../../assets/img/add_tablero_nobg.png" class="card-img-top" alt="..."
-          style="max-height: 150px; object-fit: cover" />
-        <div class="card-body">
-          <h5 class="card-title">Crear nuevo</h5>
-        </div>
-      </div>
-      <!-- <div id="imagenesCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row">
-              <div class="col-3">
-                <img src="ruta1.jpg" class="d-block w-100" alt="img1" />
-              </div>
-              <div class="col-3">
-                <img src="ruta2.jpg" class="d-block w-100" alt="img2" />
-              </div>
-              <div class="col-3">
-                <img src="ruta3.jpg" class="d-block w-100" alt="img3" />
-              </div>
-              <div class="col-3">
-                <img src="ruta4.jpg" class="d-block w-100" alt="img4" />
-              </div>
+        <h1>Tus tableros</h1>
+        <div *ngFor="let tablero of tableros" class=" me-5 mb-2" style="width: 12rem; " (click)="open_tablero(tablero.id)">
+
+          <div class="tablero-card ">
+
+            <img class="tablero-img" *ngIf="tablero.imagen;else noimage" [ngStyle]="{'background': tablero.imagen}"  />
+            <ng-template #noimage>
+              <img src="../../../assets/img/noimg.png" class="tablero-img" />
+            </ng-template>
+
+            <!-- <img class="tablero-img" *ngIf="tablero.imagen;else noimage" [src]="'../../../assets/img/' + tablero.imagen" alt="{{ tablero.nombre }}" />
+            <ng-template #noimage>
+              <img src="../../../assets/img/noimg.png" class="tablero-img" />
+            </ng-template> -->
+
+            <div class="tablero-footer">
+              {{ tablero.nombre }}
             </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row">
-              <div class="col-3">
-                <img src="ruta5.jpg" class="d-block w-100" alt="img5" />
-              </div>
-              <div class="col-3">
-                <img src="ruta6.jpg" class="d-block w-100" alt="img6" />
-              </div>
-              <div class="col-3">
-                <img src="ruta7.jpg" class="d-block w-100" alt="img7" />
-              </div>
-              <div class="col-3">
-                <img src="ruta8.jpg" class="d-block w-100" alt="img8" />
-              </div>
-            </div>
+
           </div>
 
+          <!-- <img *ngIf="tablero.imagen;else noimage" [src]="'../../../assets/img/' + tablero.imagen" class="card-img-top border " alt="" style=" width: 100%;max-height: 1050px; object-fit: cover" />
+          <ng-template #noimage>
+            <img src="../../../assets/img/noimg.png" class="card-img-top" alt="" style="max-height: 1050px; object-fit: cover" />
+          </ng-template>
+
+          <div class="border " style="background-color: black;">
+            <div class="text-card">{{tablero.nombre}}</div>
+          </div> -->
         </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#imagenesCarousel"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#imagenesCarousel"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon"></span>
-        </button>
-      </div> -->
+        <div class="me-5 mb-2" style="width: 12rem;" (click)="open_modal()">
+          <div class="tablero-card ">
+            <img src="../../../assets/img/add_tablero_nobg.png" class="tablero-img" alt="Crear nuevo" />
+            <div class="tablero-footer">Crear nuevo</div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </div>
 </div>

@@ -2,7 +2,7 @@ export interface Tablero {
   id?: number;
   nombre: string;
   usuarioFk: number;
-  image: string;
+  imagen: string;
   descripcion: string;
   fecha_creacion: string;
   fecha_modificacion: string;

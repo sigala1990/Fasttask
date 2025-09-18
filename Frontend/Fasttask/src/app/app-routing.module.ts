@@ -8,7 +8,7 @@ import { TableroComponent } from './component/tablero/tablero/tablero.component'
 import { TestComponent } from './component/test/test/test.component';
 
 const routes: Routes = [
-  { path: 'areaClient/:id/tablero/:idTablero', component: TableroComponent },
+  { path: 'areaClient/:id/tablero/:idTablero', component: TableroComponent, canActivate: [AuthGuard]  },
   {
     path: 'areaClient/:id',
     component: AreaClientComponent,

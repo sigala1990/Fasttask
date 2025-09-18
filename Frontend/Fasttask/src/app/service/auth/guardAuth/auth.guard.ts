@@ -11,12 +11,11 @@ constructor(private router: Router) {}
 
 canActivate(): boolean {
   const nameUserr = window.sessionStorage.getItem('nameUserr');
-  if (nameUserr) {
+  if (nameUserr)  {
     return true;
   }
   // Si no hay usuario, redirige al login o home
   this.router.navigate(['/home']);
-  console.log('Guard activado');
   return false;
 }
   

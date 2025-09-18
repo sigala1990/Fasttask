@@ -22,12 +22,12 @@
 }
 
 .example-box {
-  padding: 30px 30px;
+  padding: 10px 10px;
   border-radius: 15px;
   color: var(--text);
   /* flex: 0 0 auto; */
-  /* min-width: 260px; */
-  /* max-width: 320px; */
+  min-width: 60px;
+  max-width: 210px;
 
   /* max-height: 88.3vh; */
   /* display: flex;*/

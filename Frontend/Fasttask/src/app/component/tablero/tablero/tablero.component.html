@@ -1,12 +1,13 @@
 <!-- <p>tablero works!</p> -->
 <div class="container-bg" [ngStyle]="{'background': tablero.imagen, 'padding-top': '56px', 'min-height': '100vh'}">
 
-    <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="dropList($event)">
-        <div class="example-box ms-5" *ngFor="let lista of tablero?.listas; let i = index" cdkDrag>
+    <div cdkDropList cdkDropListOrientation="horizontal" class="example-list " (cdkDropListDropped)="dropList($event)">
+
+        <div class="example-box ms-2" *ngFor="let lista of tablero?.listas; let i = index" cdkDrag>
             <div class="d-flex justify-content-between align-items-center justify-content-center">
-                <input type="text" class="form-control mt-2 ms-2 input-text" placeholder="{{lista.nombre}}" aria-label="Example text with button addon" aria-describedby="button-addon1"
+                <input type="text" class="form-control mt-2 ms-2 input-text " placeholder="{{lista.nombre}}" 
                     (blur)="updateLista(lista.nombre, lista.id, lista.orden)" (keyup.enter)="updateLista(lista.nombre, lista.id, lista.orden)" [(ngModel)]="lista.nombre" />
-                <div class="dropdown ps-2">
+                <div class="dropdown ps-2 ">
                     <button class="btn" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="../../../../assets/img/menu.png" alt="Menu" style="width: 20px; height: 20px;">
                     </button>
@@ -19,7 +20,8 @@
             <!-- Task-->
             <div cdkDropListGroup>
                 <div class="example-container ">
-                    <div cdkDropList [id]="'taskList' + i" [cdkDropListData]="lista.tasks" [cdkDropListConnectedTo]="connectedTaskLists" class="example-task mt-2 mb-2 justify-content-center"
+
+                    <div  cdkDropList [id]="'taskList' + i" [cdkDropListData]="lista.tasks" [cdkDropListConnectedTo]="connectedTaskLists" class="example-task mt-2 mb-2 justify-content-center"
                         (cdkDropListDropped)="dropTasks($event)">
                         <div class="example-box-task" *ngFor="let task of lista.tasks" cdkDrag>{{task.nombre}}
                             <div class="dropdown ps-2">
@@ -27,13 +29,12 @@
                                     <img src="../../../../assets/img/menu.png" alt="Menu" style="width: 12px; height: 12px;">
                                 </button>
                                 <ul class="dropdown-menu">
-
                                     <li><button class="dropdown-item" type="button" (click)="eliminarTask(task.id)">Eliminar</button></li>
                                 </ul>
                             </div>
                         </div>
-
                     </div>
+
                 </div>
             </div>
             <!-- Fin Task-->

@@ -12,6 +12,7 @@ import { formatDate } from '@angular/common';
 import { Ssesion_util } from 'src/app/service/util/ssesion_util';
 import { SessionDataService } from 'src/app/service/sessionData/session-data.service';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -29,7 +30,7 @@ export class HomeComponent implements OnInit {
     private loginService: LoginService,
     private serviceUserr: UserrService,
     private ssesion_util: Ssesion_util,
-    private sessionDataService: SessionDataService
+    private sessionDataService: SessionDataService,
   ) {
     this.user = {
       username: 'adria',
@@ -93,4 +94,6 @@ export class HomeComponent implements OnInit {
       console.log('Navegación exitosa?', success);
     });
   }
+
+   
 }

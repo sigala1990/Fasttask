@@ -1,12 +1,12 @@
 <div class="container-bg">
   <div class="content">
     <div class="row container-fluid">
-      <div class="col-lg-2 ">
+      <div class="col-lg-2 col-md-2 ">
       </div>
-      <div class="col-lg-8  row">
+      <div class="col-lg-8 col-md-2 row">
 
         <h1>Tus tableros</h1>
-        <div *ngFor="let tablero of tableros" class=" me-5 mb-2" style="width: 12rem; " (click)="open_tablero(tablero.id)">
+        <div *ngFor="let tablero of tableros" class=" me-5 mb-2 " style="width: 12rem; " (click)="open_tablero(tablero.id)">
 
           <div class="tablero-card ">
 

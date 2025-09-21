@@ -1,21 +1,21 @@
-FASTTASK
+# FASTTASK
 
-Fasttask es una aplicación en línea para gestión de proyectos y tareas que se basa en el método Kanban. Permite organizar el trabajo de forma visual a través de tableros, listas y tarjetas, lo que facilita la planificación tanto de proyectos personales como de equipos.
+### Fasttask es una aplicación en línea para gestión de proyectos y tareas que se basa en el método Kanban. Permite organizar el trabajo de forma visual a través de tableros, listas y tarjetas, lo que facilita la planificación tanto de proyectos personales como de equipos.
 
 <img width="1902" height="670" alt="imagen" src="https://github.com/user-attachments/assets/f9ffcbcf-1b3a-46ff-8851-7ef267380c03" />
 
 
-2. Características principales
+2. [Características principales](#caracteristicas)
 
 Puntos clave: tecnologías usadas, funcionalidades destacadas (login, panel de admin, API REST, etc.).
 
-3. Arquitectura / Tech Stack
+3. [Arquitectura / Tech Stack](#arquitectura) 
 
 Lista de tecnologías de frontend (React, Vue…), backend (Node, Django…), base de datos, etc.
 
 Esquema o diagrama simple si ayuda.
 
-4. Requisitos previos
+4. [Requisitos previos](#requisitos)
 
 Versiones mínimas de Node, Python, etc.
 
@@ -41,7 +41,7 @@ Ejemplos de endpoints si es API.
 
 Datos de prueba o usuarios demo si aplica.
 
-8. Despliegue / Demo en vivo
+8. [Demo en vivo](#Demo)
 
 Link a la versión en producción (si la tienes).
 

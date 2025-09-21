@@ -5,46 +5,36 @@ Fasttask es una aplicación en línea para gestión de proyectos y tareas que se
 <img width="1902" height="670" alt="imagen" src="https://github.com/user-attachments/assets/f9ffcbcf-1b3a-46ff-8851-7ef267380c03" />
 
 
-## 2. [Características principales](#caracteristicas)
+## 2. Características principales
 
 - Autenticación de usuarios con roles.
 - API RESTful para gestión de datos.
 - Interfaz responsive desarrollada en Angular.
 - Persistencia en base de datos relacional PostgreSQL.
 
-## 3. [Arquitectura / Tech Stack](#arquitectura) 
+## 3. Arquitectura / Tech Stack
 
-Lista de tecnologías de frontend (React, Vue…), backend (Node, Django…), base de datos, etc.
+- **Frontend:** Angular
+- **Backend:** Spring Boot (Java)
+- **Base de datos:** PostgreSQL
+- **Build & Tools:** Maven/Gradle, Node.js, npm
 
-Esquema o diagrama simple si ayuda.
+## 4. Requisitos previos
 
-## 4. [Requisitos previos](#requisitos)
+- npm v6.14
+- Node.js v16.20.2
+- Angular CLI v13.3.11
+- @angular/core ~13.3.0
+- @angular/material ^13.3.9
+- @angular/cdk ^13.3.9
+- @ngx-translate/core ^14.0.0
+- rxjs ~7.5.0
+- typescript ~4.6.2
+- Java v1.8  
+- Maven/Gradle  
+- PostgreSQL 17,6  
 
-Versiones mínimas de Node, Python, etc.
-
-Dependencias externas (por ejemplo, variables de entorno, claves de API, Docker).
-
-## 5. Instalación y ejecución
-
-Pasos para clonar el repo.
-
-Cómo instalar dependencias (por ejemplo npm install o pip install).
-
-Cómo levantar backend y frontend (pueden ser comandos separados).
-
-Indicar puertos por defecto.
-
-## 6. Configuración (env)
-
-Variables de entorno necesarias, archivo .env.example.
-
-## 7. Uso
-
-Ejemplos de endpoints si es API.
-
-Datos de prueba o usuarios demo si aplica.
-
-## 8. [Demo en vivo](#Demo)
+## 8. Demo en vivo
 
 Link a la versión en producción (si la tienes).
 
@@ -52,7 +42,8 @@ Indicaciones rápidas para desplegar (Heroku, Vercel, Docker, etc.).
 
 ## 9. Estructura del proyecto
 
-Árbol de carpetas básico para que se entienda la organización.
+/frontend   -> Angular app
+/backend    -> Spring Boot app
 
 ## 10. Autor / Contacto
 

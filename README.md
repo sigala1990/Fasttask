@@ -34,17 +34,17 @@ Fasttask es una aplicación en línea para gestión de proyectos y tareas que se
 - Maven 3.6+
 - PostgreSQL 17,6  
 
-## 8. Demo en vivo
+## 5. Demo en vivo
 
 Link a la versión en producción (si la tienes).
 
 Indicaciones rápidas para desplegar (Heroku, Vercel, Docker, etc.).
 
-## 9. Estructura del proyecto
+## 6. Estructura del proyecto
 
-/frontend   -> Angular app
-/backend    -> Spring Boot app
+- /frontend   -> Angular app
+- /backend    -> Spring Boot app
 
-## 10. Autor / Contacto
+## 7. Autor / Contacto
 
 Adria Queralt, LinkedIn, portfolio.

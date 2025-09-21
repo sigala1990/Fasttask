@@ -157,6 +157,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>fasttask</finalName>
 	</build>
 <repositories>
 		<repository>

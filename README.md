@@ -17,7 +17,7 @@ Fasttask es una aplicación en línea para gestión de proyectos y tareas que se
 - **Frontend:** Angular
 - **Backend:** Spring Boot (Java)
 - **Base de datos:** PostgreSQL
-- **Build & Tools:** Maven/Gradle, Node.js, npm
+- **Build & Tools:** Maven, Node.js, npm, angular materials
 
 ## 4. Requisitos previos
 
@@ -30,8 +30,8 @@ Fasttask es una aplicación en línea para gestión de proyectos y tareas que se
 - @ngx-translate/core ^14.0.0
 - rxjs ~7.5.0
 - typescript ~4.6.2
-- Java v1.8  
-- Maven/Gradle  
+- Java 8  
+- Maven 3.6+
 - PostgreSQL 17,6  
 
 ## 8. Demo en vivo

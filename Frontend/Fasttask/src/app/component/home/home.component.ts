@@ -11,7 +11,7 @@ import { UserrService } from 'src/app/service/userr/userr.service';
 import { formatDate } from '@angular/common';
 import { Ssesion_util } from 'src/app/service/util/ssesion_util';
 import { SessionDataService } from 'src/app/service/sessionData/session-data.service';
-
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +31,10 @@ export class HomeComponent implements OnInit {
     private serviceUserr: UserrService,
     private ssesion_util: Ssesion_util,
     private sessionDataService: SessionDataService,
+    private translate: TranslateService
   ) {
+    const savedLang = localStorage.getItem('lang') || 'es';
+    translate.use(savedLang);
     this.user = {
       username: 'adria',
       password: '123',
@@ -48,22 +51,19 @@ export class HomeComponent implements OnInit {
       next: (token: Token) => {
         window.sessionStorage.setItem('auth-token', token.token);
 
-
-        this.userr ={
+        this.userr = {
           id: 0,
           username: this.user.username,
           email: '',
           rol: '',
-          fecha_nacimiento: ''
-        }
-         console.log(window.sessionStorage.getItem('auth-token'));
+          fecha_nacimiento: '',
+        };
+        console.log(window.sessionStorage.getItem('auth-token'));
         this.authenticacion(this.userr);
       },
       error: (error: Error) => {
-        console.log(
-          `Nombre del error: ${error}`
-        );
-          this.sigInFail = true;
+        console.log(`Nombre del error: ${error}`);
+        this.sigInFail = true;
       },
     });
   }
@@ -72,7 +72,11 @@ export class HomeComponent implements OnInit {
     this.serviceUserr.userrByUsername(this.userr.username).subscribe({
       next: (userr: Userr) => {
         this.userr = userr;
-        this.userr.fecha_nacimiento = formatDate(userr.fecha_nacimiento, 'dd/MM/yyyy', 'en');
+        this.userr.fecha_nacimiento = formatDate(
+          userr.fecha_nacimiento,
+          'dd/MM/yyyy',
+          'en'
+        );
         console.log('Usuario obtenido:', userr);
 
         this.sessionDataService.setIdUserr(userr);
@@ -84,7 +88,6 @@ export class HomeComponent implements OnInit {
       },
       error: (error: any) => {
         console.error('Error al obtener el usuario:', error);
-
       },
     });
   }
@@ -94,6 +97,4 @@ export class HomeComponent implements OnInit {
       console.log('Navegación exitosa?', success);
     });
   }
-
-   
 }

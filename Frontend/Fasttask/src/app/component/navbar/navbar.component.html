@@ -1,24 +1,14 @@
-<nav
-  class="navbar navbar-expand-lg bg-body-tertiary fixed-top"
-  style="background-color: #f5f5f79f; "
->
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/home">Fasttask</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="background-color: #f5f5f79f; ">
+  <div class="container-fluid ">
+    <a class="navbar-brand " routerLink="/home"><img src="../../../assets/img/fasttask3.png" class="img-fluid" style="max-width:70px; max-height:70px;"> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/areaClient/{{idUserr}}">Tableros</a>
+          <a *ngIf="idUserr" class="nav-link active" aria-current="page" routerLink="/areaClient/{{idUserr}}">{{ 'NAVBAR.TAB' | translate }}</a>
         </li>
         <!-- <li class="nav-item">
           <a *ngIf="idUserr; else sinUsuario" class="nav-link" href="/areaClient/{{idUserr}}">Tus proyectos</a>
@@ -30,30 +20,38 @@
 
       </ul>
       <form class="d-flex ml-2" role="search">
-        <button class="btn btn-outline-success" type="submit">
-          Cambiar idioma
-        </button>
+
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../../../assets/img/language.png" class="img-fluid w-25 me-2 img-language" style="max-width:24px; max-height:24px;">
+           <img src="../../../assets/img/{{currentLang}}.png" class="img-fluid w-25 me-2 img-language" style="max-width:24px; max-height:24px;">
+          </button>
+          <ul class="dropdown-menu">
+            <li><button class="dropdown-item" type="button" (click)="changeLang('es')"><img src="../../../assets/img/es.png" class="img-fluid w-25 me-2">ESP</button></li>
+            <li><button class="dropdown-item" type="button" (click)="changeLang('en')"><img src="../../../assets/img/en.png" class="img-fluid w-25 me-2">ENG</button></li>
+
+          </ul>
+        </div>
+
+
       </form>
       <ul class="navbar-nav  mb-2 mb-lg-0">
-      <li class="nav-item dropdown" *ngIf="nameUserr">
-        <a 
-          class="nav-link dropdown-toggle"
-          href="#"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          {{nameUserr}}, {{idUserr}}
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end">
-          <li class="nav-item">
-          <a *ngIf="idUserr" class="nav-link" href="/areaClient/{{idUserr}}">Tus proyectos</a>       
+        <li class="nav-item dropdown" *ngIf="nameUserr">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{nameUserr}}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <!-- <li class="nav-item">
+              <a *ngIf="idUserr" class="nav-link" href="/areaClient/{{idUserr}}">Tus proyectos</a>
+            </li>
+            <li><a class="dropdown-item" href="#">Perfil</a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li> -->
+            <li><a class="dropdown-item" style="cursor:pointer;" (click)="logout()">{{ 'NAVBAR.LOGOUT' | translate }}</a></li>
+          </ul>
         </li>
-          <li><a class="dropdown-item" href="#">Perfil</a></li>
-          <li><hr class="dropdown-divider" /></li>
-          <li><a class="dropdown-item" style="cursor:pointer;" (click)="logout()">Logout</a></li>
-        </ul>
-      </li>
       </ul>
     </div>
   </div>

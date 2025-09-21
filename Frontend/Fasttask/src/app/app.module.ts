@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AreaClientComponent } from './component/area-client/area-client.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './component/signup/signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -17,7 +17,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { TableroComponent } from './component/tablero/tablero/tablero.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TestComponent } from './component/test/test/test.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
+// cambiar idioma
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -39,7 +45,14 @@ import { TestComponent } from './component/test/test/test.component';
     MatSnackBarModule,
     ReactiveFormsModule,
     MatDialogModule,
-    DragDropModule
+    DragDropModule,
+     TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [  {
       provide: HTTP_INTERCEPTORS,

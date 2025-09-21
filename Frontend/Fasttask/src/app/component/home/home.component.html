@@ -1,20 +1,21 @@
 <div class="login-page">
   <div class="container">
     <div class=" d-flex justify-content-center">
-      <div class="col-lg-4 ">
+      <div class="col-lg-8 ">
         <h2 class="mb-3 text-center ">
-          Inicia Sesión en Fasttask
+          {{ 'HOME.TITLE' | translate }}
         </h2>
         <div class=" shadow rounded" style="background-color: #FBFBFD">
           <div class="row">
-            <div class="col-md-12 pe-0">
+
+            <div class="col-md-6 pe-0">
 
               <div class="form-left h-100 py-4 px-5">
-                <h3>Sign in</h3>
-                <p class="text-muted mt-3">Acceder a tu cuenta</p>
+                <h3>{{ 'HOME.LBL1' | translate }}</h3>
+                <p class="text-muted mt-3">{{ 'HOME.LBL2' | translate }}</p>
                 <form action="" class="row g-4">
                   <div class="col-12 mt-4">
-                    <label>Usuario<span class="text-danger">*</span></label>
+                    <label>{{ 'HOME.INPUT1' | translate }}<span class="text-danger">*</span></label>
                     <div class="input-group">
                       <div class="input-group-text">
                         <i class="bi bi-person"></i>
@@ -23,27 +24,45 @@
                     </div>
                   </div>
                   <div class="col-12">
-                    <label>Contraseña<span class="text-danger">*</span></label>
+                    <label>{{ 'HOME.INPUT2' | translate }}<span class="text-danger">*</span></label>
                     <div class="input-group">
                       <div class="input-group-text">
                         <i class="bi bi-lock-fill"></i>
                       </div>
                       <input type="password" class="form-control" id="password" placeholder="Introducir Contraseña" required [(ngModel)]="user.password" name="password" />
                     </div>
-                
+
                   </div>
                   <div *ngIf="sigInFail">
-                    <label class="text-danger ">Usuario o contraseña incorrectos</label>
+                    <label class="text-danger ">{{ 'HOME.ERROR' | translate }}</label>
                   </div>
                   <div class="align-item-between d-flex justify-content-center pt-3">
                     <button type="submit" (click)="login()" class="btn px-4 text-white me-5 button-t-prestamos ">
-                      Acceder
+                      {{ 'HOME.BTN1' | translate }}
                     </button>
                     <button type="button" class="btn px-4 text-white  button-t-prestamos" (click)="crearCuenta()">
-                      Crear cuenta
+                      {{ 'HOME.BTN2' | translate }}
                     </button>
                   </div>
                 </form>
+              </div>
+            </div>
+
+            <div class="col-md-6 ">
+              <div class="form-right h-100  p-3" style="background-color: #F5F5F7">
+
+                <div class=" justify-content-center text-center d-flex mt-4 ">{{ 'HOME.DESCRIPTION' | translate }}
+                </div>
+                <div class="col-3"></div>
+
+                <!-- <div class="border justify-content-center d-flex mt-4">
+                  <button class="btn px-4 text-white me-5 button-t-prestamos">
+                    <p style="text-align: justify">Logueate como invitado</p>
+                  </button>
+                </div> -->
+                <div class="text-center pt-3">
+                  <img src="../../../assets/img/fasttask3.png" width="200px" alt="" />
+                </div>
               </div>
             </div>
 

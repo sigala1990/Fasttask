@@ -3,9 +3,9 @@
     <div class="row container-fluid">
       <div class="col-lg-2 col-md-2 ">
       </div>
-      <div class="col-lg-8 col-md-2 row">
+      <div class="col-lg-8 col-md-2 row mt-2">
 
-        <h1>Tus tableros</h1>
+        <h1>{{'AREA_CLIENT.TITLE' | translate}}</h1>
         <div *ngFor="let tablero of tableros" class=" me-5 mb-2 " style="width: 12rem; " (click)="open_tablero(tablero.id)">
 
           <div class="tablero-card ">
@@ -38,7 +38,7 @@
         <div class="me-5 mb-2" style="width: 12rem;" (click)="open_modal()">
           <div class="tablero-card ">
             <img src="../../../assets/img/add_tablero_nobg.png" class="tablero-img" alt="Crear nuevo" />
-            <div class="tablero-footer">Crear nuevo</div>
+            <div class="tablero-footer">{{'AREA_CLIENT.BTN' | translate}}</div>
           </div>
         </div>
 

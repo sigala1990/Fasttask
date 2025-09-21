@@ -2,17 +2,17 @@
   <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="col-sm-5 offset-sm">
-        <h2 class="mb-2 text-center">Registrate en Fasttask</h2>
+        <h2 class="mb-2 text-center">{{'REGISTER.TITLE' | translate}}</h2>
         <div class=" shadow rounded" style="background-color: #F5F5F7;">
           <div class="row">
             <div class="col-sm pe-0">
               <div class="h-100 py-4 px-5">
-                <h3>Sign up</h3>
+                <h3>{{'REGISTER.LBL1' | translate}}</h3>
                 <div class="row g-2">
                   <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
                     <div class="col-lg-12 mb-2">
                       <label for="firstName" class="form-label mb-0"
-                        >Nombre</label
+                        >{{'REGISTER.LBL2' | translate}}</label
                       >
                       <input
                         type="text"
@@ -23,12 +23,12 @@
                         <small
                           *ngIf="f['username'].errors['required']"
                           class="text-danger"
-                          >Nombre es requerido</small
+                          >{{ 'REGISTER.ERROR5' | translate }}</small
                         >
                         <small
                           *ngIf="f['username'].errors['minlength']"
                           class="text-danger"
-                          >Mínimo 3 caracteres</small
+                          >{{ 'REGISTER.ERROR7' | translate }}</small
                         >
                       </div>
                     </div>
@@ -37,7 +37,7 @@
                       <div class="col-lg-12">
                         <div class="col-md-12 mb-2">
                           <label for="password" class="form-label mb-0"
-                            >Contraseña</label
+                            >{{'REGISTER.LBL3' | translate}}</label
                           >
                           <input
                             type="password"
@@ -47,7 +47,7 @@
                         </div>
                         <div class="col-md-12 mb-2">
                           <label for="password2" class="form-label mb-0"
-                            >Confirmar contraseña</label
+                            >{{'REGISTER.LBL5' | translate}}</label
                           >
                           <input
                             type="password"
@@ -58,13 +58,13 @@
                             *ngIf="formulario.errors?.['noCoinciden'] && formulario.touched"
                           >
                             <small class="text-danger"
-                              >Las contraseñas no coinciden</small
+                              >{{ 'REGISTER.ERROR1' | translate }}</small
                             >
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-12 mb-2">
-                        <label for="email" class="form-label mb-0">Email</label>
+                        <label for="email" class="form-label mb-0">{{'REGISTER.LBL4' | translate}}</label>
                         <input
                           type="text"
                           class="form-control"
@@ -75,18 +75,18 @@
                           <small
                             *ngIf="f['email'].errors['required']"
                             class="text-danger"
-                            >Email es requerido</small
+                            >{{ 'REGISTER.ERROR5' | translate }}</small
                           >
                           <small
                             *ngIf="f['email'].errors['email']"
                             class="text-danger"
-                            >Email no válido</small
+                            >{{ 'REGISTER.ERROR6' | translate }}</small
                           >
                         </div>
                       </div>
                       <div class="col-lg-12 mb-4">
                         <label for="firstName" class="form-label mb-0"
-                          >Fecha nacimiento</label
+                          >{{'REGISTER.LBL6' | translate}}</label
                         >
                         <input
                           type="date"
@@ -101,12 +101,12 @@
                           "
                         >
                           <small *ngIf="f['fecha_nacimiento'].errors['required']" class="text-danger"
-                            >Campo requerido</small
+                            >{{ 'REGISTER.ERROR5' | translate }}</small
                           >
                           <small
                             *ngIf="f['fecha_nacimiento'].errors['fechaFutura']" class="text-danger"
                           >
-                            La fecha no puede ser mayor a hoy
+                            {{ 'REGISTER.ERROR4' | translate }}
                           </small>
                         </div>
                       </div>
@@ -115,7 +115,7 @@
                         class="w-100 text-white btn btn-md button-t-prestamos mb-3"
 
                       >
-                        Registrarse
+                        {{'REGISTER.BTN1' | translate}}
                       </button>
                       <!-- </form> -->
                     </div>

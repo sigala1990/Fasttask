@@ -1,0 +1,56 @@
+{
+    "NAVBAR": {
+        "LOGOUT": "Cerrar sesión",
+        "LANGUAGE": "Lenguaje",
+        "TAB": "Tableros"
+    },
+    "HOME": {
+        "TITLE": "Inicia Sesión en Fasttask",
+        "LBL1": "Logueate",
+        "LBL2": "Acceder a tu cuenta",
+        "INPUT1": "Usuario",
+        "INPUT2": "Contraseña",
+        "DESCRIPTION": "Fasttask es una aplicación de organización y gestión de proyectos basada en el método Kanban, pensada para planificar tareas de manera visual y colaborativa. Su interfaz se centra en tableros (boards), que representan proyectos o áreas de trabajo; dentro de cada tablero se crean listas, y en cada lista se añaden tarjetas (cards) que equivalen a tareas o elementos de trabajo.",
+        "BTN1": "Acceder",
+        "BTN2": "Regístrate",
+        "ERROR": "Usuario o contraseña incorrectos"
+    },
+    "REGISTER": {
+        "TITLE": "Regístrate en Fasttask",
+        "LBL1": "Crea tu cuenta",
+        "LBL2": "Nombre",
+        "LBL3": "Contraseña",
+        "LBL4": "Email",
+        "LBL5": "Repetir Contraseña",
+        "LBL6": "Fecha nacimiento",
+        "BTN1": "Registrarse",
+        "ERROR1": "Las contraseñas no coinciden.",
+        "ERROR2": "El nombre de usuario ya existe.",
+        "ERROR3": "El correo electrónico ya está registrado.",
+        "ERROR4": "La fecha de nacimiento no es válida.",
+        "ERROR5": "Campo obligatorio.",
+        "ERROR6": "Email no válido.",
+        "ERROR7": "Mínimo 3 caracteres.",
+        "SUCCESS": "Registro exitoso. Ahora puedes iniciar sesión."
+    },
+    "AREA_CLIENT": {
+        "TITLE": "Tus Tableros",
+        "BTN": "Crear nuevo"
+    },
+    "AREA_CLIENT_POPUP": {
+        "TITLE": "Crear un nuevo tablero",
+        "LBL1": "Escoge un fondo:",
+        "LBL2": "Nombre del Tablero:",
+        "BTN1": "Crear"
+    },
+    "TABLERO": {
+        "BTN1": "+ Crear",
+        "BTN2": "Agregar",
+        "BTN3": "Añadir nueva lista +",
+        "BTN4": "Eliminar",
+        "BTN5": "Eliminar",
+        "BTN6": "Añadir",
+        "PLACEHOLDER1": "Nueva tarea",
+        "PLACEHOLDER2": "Nueva lista"
+    }
+}

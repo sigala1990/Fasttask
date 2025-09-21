@@ -1,0 +1,52 @@
+{
+    "NAVBAR": {
+        "LOGOUT": "Log out",
+        "LANGUAGE": "Language",
+        "TAB": "Boards"
+    },
+    "HOME": {
+        "TITLE": "Sign in to Fasttask",
+        "LBL1": "Log in",
+        "LBL2": "Access your account",
+        "INPUT1": "Username",
+        "INPUT2": "Password",
+        "DESCRIPTION": "Fasttask is a project organization and management application based on the Kanban method, designed to plan tasks visually and collaboratively. Its interface focuses on boards, which represent projects or work areas; within each board, you create lists, and in each list, you add cards that correspond to tasks or work items.",
+        "BTN1": "Sign in",
+        "BTN2": "Register",
+        "ERROR": "Incorrect username or password."
+    },
+    "REGISTER": {
+        "TITLE": "Register on Fasttask",
+        "LBL1": "Create your account",
+        "LBL2": "Name",
+        "LBL3": "Password",
+        "LBL4": "Email",
+        "LBL5": "Repeat Password",
+        "LBL6": "Birthdate",
+        "BTN1": "Sign up",
+        "ERROR1": "Passwords do not match.",
+        "ERROR2": "Username already exists.",
+        "ERROR3": "Email is already registered.",
+        "SUCCESS": "Registration successful. You can now log in."
+    },
+    "AREA_CLIENT": {
+        "TITLE": "Your Boards",
+        "BTN": "Create new"
+    },
+    "AREA_CLIENT_POPUP": {
+        "TITLE": "Create a new board",
+        "LBL1": "Choose a background:",
+        "LBL2": "Board name:",
+        "BTN1": "Create"
+    },
+    "TABLERO": {
+        "BTN1": "+ Create",
+        "BTN2": "Add",
+        "BTN3": "Add new list +",
+        "BTN4": "Delete",
+        "BTN5": "Delete",
+        "BTN6": "Add",
+        "PLACEHOLDER1": "New task",
+        "PLACEHOLDER2": "New list"
+    }
+}

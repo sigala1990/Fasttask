@@ -13,7 +13,7 @@
                     </button>
                     <ul class="dropdown-menu">
 
-                        <li><button class="dropdown-item" type="button" (click)="eliminarLista(lista.id)">Eliminar</button></li>
+                        <li><button class="dropdown-item" type="button" (click)="eliminarLista(lista.id)">{{'TABLERO.BTN4' | translate}}</button></li>
                     </ul>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                                     <img src="../../../../assets/img/menu.png" alt="Menu" style="width: 12px; height: 12px;">
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><button class="dropdown-item" type="button" (click)="eliminarTask(task.id)">Eliminar</button></li>
+                                    <li><button class="dropdown-item" type="button" (click)="eliminarTask(task.id)">{{'TABLERO.BTN5' | translate}}</button></li>
                                 </ul>
                             </div>
                         </div>
@@ -41,13 +41,13 @@
 
             <!-- NEW Task-->
             <div *ngIf="!creandoTask " class="btn btn-oscuro mt-2" style="  width: 100%;" (click)="addTask(i)">
-                + Crear </div>
+                {{'TABLERO.BTN1' | translate}} </div>
             <div *ngIf="creandoTask && i == idRowTask" class="mt-3 ms-3 me-3">
-                <div><input #newTaskInput class="form-control input-text" type="text" [(ngModel)]="newTask" style="width: 100%;" placeholder="Nueva tarea" (blur)="cancelCreateTask()" />
+                <div><input #newTaskInput class="form-control input-text" type="text" [(ngModel)]="newTask" style="width: 100%;" [placeholder]="'TABLERO.PLACEHOLDER1' | translate" (blur)="cancelCreateTask()" />
                 </div>
                 <div class="d-flex justify-content-left align-items-center gap-2">
                     <div class="btn btn-acceptar align-items-start mb-2 mt-2" (mousedown)="createTask(newTask, lista.id)">
-                        Agregar</div>
+                        {{'TABLERO.BTN2' | translate}}</div>
                     <div>
                         <button class="btn" (click)="cancelCreateTask()"> <img src="../../../../assets/img/close.png" alt="Menu" style="width: 12px; height: 12px;"></button>
                     </div>
@@ -59,15 +59,14 @@
         <!-- Crear newLista -->
         <div class="example-container col-lg-2 ">
             <div *ngIf="!creandoLista" id="btnNewLista" class="btn ms-5 " style="  width: 100%;" (click)="addLista()">
-                Añadir
-                nueva lista +
+                 {{'TABLERO.BTN3' | translate}}
             </div>
             <div *ngIf="creandoLista" id="btnNewListaOn" class="ms-5  p-3">
-                <div><input #newListaInput type="text" class="form-control input-text" [(ngModel)]="newLista" style="width: 100%;" placeholder="Nueva lista" (blur)="cancelCreateLista()" />
+                <div><input #newListaInput type="text" class="form-control input-text" [(ngModel)]="newLista" style="width: 100%;" placeholder="{{'TABLERO.PLACEHOLDER2' | translate}}" (blur)="cancelCreateLista()" />
                 </div>
                 <div class="d-flex justify-content-left align-items-center gap-2">
                     <div class="btn btn-acceptar align-items-start mb-2 mt-2" (mousedown)="createLista(newLista, tablero.id)">
-                        Agregar
+                        {{'TABLERO.BTN6' | translate}}
                     </div>
                     <div>
                         <button class="btn" (click)="cancelCreateLista()"> <img src="../../../../assets/img/close.png" alt="Menu" style="width: 12px; height: 12px;"></button>

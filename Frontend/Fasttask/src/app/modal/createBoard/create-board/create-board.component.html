@@ -1,11 +1,11 @@
 <div class="">
-  <h1 mat-dialog-title>Crea tu tablero</h1>
+  <h1 mat-dialog-title>{{ 'AREA_CLIENT_POPUP.TITLE' | translate }}</h1>
 
   <div class="col-12 mt-4 ">
     <div class="input-group">
 
       <div class="color-picker mb-3">
-        <label>Escoge un fondo:</label>
+        <label>{{ 'AREA_CLIENT_POPUP.LBL1' | translate }}</label>
         <div class="d-flex gap-3 mt-2">
           <div *ngFor="let color of colores; let i = index" class="color-option" [ngStyle]="{'background': color}" [class.selected]="fondoSeleccionado === color" (click)="fondoSeleccionado = color">
             <span *ngIf="fondoSeleccionado === color" class="color-check">&#10003;</span>
@@ -14,7 +14,7 @@
       </div>
       <div>
         <div>
-          <label>Nombre Tablero:<span class="text-danger">*</span></label>
+          <label>{{ 'AREA_CLIENT_POPUP.LBL2' | translate }}:<span class="text-danger">*</span></label>
         </div>
         <div>
           <input type="text" class="form-control input-text mt-2" id="nombreTablero" required [(ngModel)]="nombreTablero" name="nombreTablero" />
@@ -26,7 +26,7 @@
     </div>
     <mat-dialog-actions align="start">
       <button class=" btn btn-acceptar" [disabled]="!nombreTablero || nombreTablero.trim() === ''" mat-button [mat-dialog-close]="{ nombre: nombreTablero, imagen: fondoSeleccionado }">
-        Crear
+        {{ 'AREA_CLIENT_POPUP.BTN1' | translate }}
       </button>
     </mat-dialog-actions>
   </div>

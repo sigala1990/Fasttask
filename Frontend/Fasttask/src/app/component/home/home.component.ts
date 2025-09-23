@@ -35,9 +35,13 @@ export class HomeComponent implements OnInit {
   ) {
     const savedLang = localStorage.getItem('lang') || 'es';
     translate.use(savedLang);
-    this.user = {
-      username: 'adria',
-      password: '123',
+    // this.user = {
+    //   username: 'adria',
+    //   password: '123',
+    // };
+       this.user = {
+      username: '',
+      password: '',
     };
   }
 

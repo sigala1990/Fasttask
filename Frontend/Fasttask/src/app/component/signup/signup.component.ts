@@ -52,11 +52,11 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     this.formulario = this.fb.group(
       {
-        username: ['123', [Validators.required, Validators.minLength(3)]],
-        email: ['123@gmail.com', [Validators.required, Validators.email]],
-        fecha_nacimiento: ['2025-07-09', [Validators.required, this.fechaNoFutura]],
-        password: ['123', [Validators.required]],
-        confirmPassword: ['123', [Validators.required]],
+        username: ['', [Validators.required, Validators.minLength(3)]],
+        email: ['', [Validators.required, Validators.email]],
+        fecha_nacimiento: ['', [Validators.required, this.fechaNoFutura]],
+        password: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required]],
       },
       { validators: this.contraseñasIguales, }
     );

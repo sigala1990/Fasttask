@@ -68,7 +68,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 			.cors().and()
 			.csrf().disable()
 			.authorizeRequests()
-			.antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
+			.antMatchers(HttpMethod.POST,"fasttask"+ LOGIN_URL).permitAll()
 			.antMatchers(SWAGGER_RESOURCES).permitAll()
 			.antMatchers(SWAGGER_UI_HTML).permitAll()
 			.antMatchers(SWAGGER_API_DOCS).permitAll()
@@ -91,7 +91,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
 		corsConfiguration.setAllowedMethods(Arrays.asList("GET","POST", "OPTIONS", "PUT", "DELETE"));
-		corsConfiguration.setAllowedOrigins(Arrays.asList("*", "http://localhost:4200/signin"));
+		corsConfiguration.setAllowedOrigins(Arrays.asList("*", "http://localhost:4200/signin","http://217.154.179.4","http://217.154.179.4/fasttask/", "http://217.154.179.4/fasttask"));
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues().combine(corsConfiguration));
 		return source;

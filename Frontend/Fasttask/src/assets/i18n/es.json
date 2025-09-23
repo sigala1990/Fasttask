@@ -13,7 +13,9 @@
         "DESCRIPTION": "Fasttask es una aplicación de organización y gestión de proyectos basada en el método Kanban, pensada para planificar tareas de manera visual y colaborativa. Su interfaz se centra en tableros (boards), que representan proyectos o áreas de trabajo; dentro de cada tablero se crean listas, y en cada lista se añaden tarjetas (cards) que equivalen a tareas o elementos de trabajo.",
         "BTN1": "Acceder",
         "BTN2": "Regístrate",
-        "ERROR": "Usuario o contraseña incorrectos"
+        "ERROR": "Usuario o contraseña incorrectos",
+        "PLACEHOLDER1": "Introducir Usuario",
+        "PLACEHOLDER2": "Introducir Contraseña"
     },
     "REGISTER": {
         "TITLE": "Regístrate en Fasttask",

@@ -20,7 +20,7 @@
                       <div class="input-group-text">
                         <i class="bi bi-person"></i>
                       </div>
-                      <input type="text" class="form-control" id="username" placeholder="Introducir Usuario" required [(ngModel)]="user.username" name="username" />
+                      <input type="text" class="form-control" id="username" [placeholder]="'HOME.PLACEHOLDER1' | translate" required [(ngModel)]="user.username" name="username" />
                     </div>
                   </div>
                   <div class="col-12">
@@ -29,7 +29,7 @@
                       <div class="input-group-text">
                         <i class="bi bi-lock-fill"></i>
                       </div>
-                      <input type="password" class="form-control" id="password" placeholder="Introducir Contraseña" required [(ngModel)]="user.password" name="password" />
+                      <input type="password" class="form-control" id="password" [placeholder]="'HOME.PLACEHOLDER2' | translate" required [(ngModel)]="user.password" name="password" />
                     </div>
 
                   </div>

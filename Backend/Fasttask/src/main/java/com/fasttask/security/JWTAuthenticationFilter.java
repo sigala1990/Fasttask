@@ -15,6 +15,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.internal.build.AllowSysOut;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,6 +24,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.fasttask.DAO.IUserrDAO;
 import com.fasttask.dto.Userr;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -31,6 +34,9 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
+	@Autowired
+	IUserrDAO iUserrDAO;
+	
 	private AuthenticationManager authenticationManager;
 
 	public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
@@ -43,6 +49,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		try {
 			Userr credenciales = new ObjectMapper().readValue(request.getInputStream(), Userr.class);
 			System.out.println("Credenciales:"+ credenciales.getUsername()+ ", "+ credenciales.getPassword());
+			
 			return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
 					//credenciales.getUsername(), credenciales.getPassword(), credenciales.getAuthorities()));
 					credenciales.getUsername(), credenciales.getPassword(), new ArrayList<>()));

@@ -36,9 +36,7 @@ Fasttask es una aplicación en línea para gestión de proyectos y tareas que se
 
 ## 5. Demo en vivo
 
-Link a la versión en producción (si la tienes).
-
-Indicaciones rápidas para desplegar (Heroku, Vercel, Docker, etc.).
+Link de fasttask http://217.154.179.4/
 
 ## 6. Estructura del proyecto
 

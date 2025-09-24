@@ -6,19 +6,18 @@
       <div class="col-lg-8 col-md-2 row mt-2">
 
         <h1>{{'AREA_CLIENT.TITLE' | translate}}</h1>
-        <div *ngFor="let tablero of tableros" class=" me-5 mb-2 " style="width: 12rem; " (click)="open_tablero(tablero.id)">
+        <div *ngFor="let tablero of tableros" class=" me-5 mb-2 " style="width: 12rem; ">
 
-          <div class="tablero-card ">
+          <div class="tablero-card position-relative">
+            <div>
+              <img class="tablero-img" *ngIf="tablero.imagen;else noimage" [ngStyle]="{'background': tablero.imagen}" (click)="open_tablero(tablero.id)" />
+              <ng-template #noimage>
+                <img src="../../../assets/img/noimg.png" class="tablero-img" />
+              </ng-template>
 
-            <img class="tablero-img" *ngIf="tablero.imagen;else noimage" [ngStyle]="{'background': tablero.imagen}"  />
-            <ng-template #noimage>
-              <img src="../../../assets/img/noimg.png" class="tablero-img" />
-            </ng-template>
+              <img src="../../../assets/img/bin.png" class="icono-esquina" (click)="deleteTablero(tablero.id)" />
 
-            <!-- <img class="tablero-img" *ngIf="tablero.imagen;else noimage" [src]="'../../../assets/img/' + tablero.imagen" alt="{{ tablero.nombre }}" />
-            <ng-template #noimage>
-              <img src="../../../assets/img/noimg.png" class="tablero-img" />
-            </ng-template> -->
+            </div>
 
             <div class="tablero-footer">
               {{ tablero.nombre }}

@@ -12,6 +12,7 @@ import { formatDate } from '@angular/common';
 import { Ssesion_util } from 'src/app/service/util/ssesion_util';
 import { SessionDataService } from 'src/app/service/sessionData/session-data.service';
 import { TranslateService } from '@ngx-translate/core';
+import { environment as env } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -35,22 +36,28 @@ export class HomeComponent implements OnInit {
   ) {
     const savedLang = localStorage.getItem('lang') || 'es';
     translate.use(savedLang);
-    // this.user = {
-    //   username: 'adria',
-    //   password: '123',
-    // };
-       this.user = {
-      username: '',
-      password: '',
-    };
+    if (env.baseUrl.includes('localhost')) {
+      // console.log('Desarrollo');
+      this.user = {
+        username: 'adria',
+        password: '123',
+      };
+    } else {
+      // console.log('Producción');
+
+      this.user = {
+        username: '',
+        password: '',
+      };
+    }
   }
 
   ngOnInit(): void {}
 
   login(): void {
-    this.ssesion_util.clearSessionData();
-    console.log('Lanzando login');
-    console.log(this.user);
+    // this.ssesion_util.clearSessionData();
+    // console.log('Lanzando login');
+    // console.log(this.user);
     this.loginService.login(this.user).subscribe({
       next: (token: Token) => {
         window.sessionStorage.setItem('auth-token', token.token);
@@ -62,7 +69,7 @@ export class HomeComponent implements OnInit {
           rol: '',
           fecha_nacimiento: '',
         };
-        console.log(window.sessionStorage.getItem('auth-token'));
+        // console.log(window.sessionStorage.getItem('auth-token'));
         this.authenticacion(this.userr);
       },
       error: (error: Error) => {
@@ -81,7 +88,7 @@ export class HomeComponent implements OnInit {
           'dd/MM/yyyy',
           'en'
         );
-        console.log('Usuario obtenido:', userr);
+        // console.log('Usuario obtenido:', userr);
 
         this.sessionDataService.setIdUserr(userr);
         window.sessionStorage.setItem('idUserr', userr.id.toString());
@@ -98,7 +105,7 @@ export class HomeComponent implements OnInit {
 
   crearCuenta(): void {
     this.router.navigate(['signup']).then((success) => {
-      console.log('Navegación exitosa?', success);
+      // console.log('Navegación exitosa?', success);
     });
   }
 }

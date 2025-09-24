@@ -48,7 +48,7 @@ export class AreaClientComponent implements OnInit {
       .afterClosed()
       .subscribe((result) => {
         // this.result = result;
-        console.log('Dialog closed', result);
+        // console.log('Dialog closed', result);
         const nombreTablero = result.nombre;
         const imagen = result.imagen;
         if (result) {
@@ -60,6 +60,7 @@ export class AreaClientComponent implements OnInit {
   open_tablero(id: number) {
     this.router.navigate(['tablero', id], { relativeTo: this.route });
   }
+
 
   crearTablero(nombreTablero: string, imagen: string) {
     this.newTablero.nombre = nombreTablero;
@@ -90,11 +91,23 @@ export class AreaClientComponent implements OnInit {
       },
     });
   }
+
+  deleteTablero(id: number) {
+    this.tableroService.deleteTablero(id).subscribe({
+      next: () => { 
+        this.getTableroByUserrId(Number(window.sessionStorage.getItem('idUserr')));
+      },
+      error: (error) => {
+        console.error('Error al eliminar el tablero:', error);
+      },
+    });
+  }
+
   getTableroByUserrId(id: number) {
     return this.tableroService.tableroByUserrId(id).subscribe({
       next: (tableros) => {
         this.tableros = tableros;
-        console.log('Tablero obtenido:', tableros);
+        // console.log('Tablero obtenido:', tableros);
       },
       error: (error) => {
         console.error('Error al obtener el tablero:', error);

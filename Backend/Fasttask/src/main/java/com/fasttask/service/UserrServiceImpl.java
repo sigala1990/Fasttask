@@ -65,7 +65,7 @@ public class UserrServiceImpl implements IUserrService, UserDetailsService {
 		System.out.println("Email existe "+existEmail);
 		boolean existUsername = iUserrDAO.existsByUsername(userr.getUsername());
 		System.out.println("User existe "+ existUsername);
-		return existEmail && existUsername ? true : false;		
+		return existEmail || existUsername ? true : false;		
 	}
 
 

@@ -4,4 +4,5 @@ export interface Userr {
   rol: string;
   email: string;
   fecha_nacimiento: string;
+  idioma?: string;
 }

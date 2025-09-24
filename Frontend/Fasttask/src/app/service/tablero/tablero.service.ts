@@ -26,6 +26,11 @@ export class TableroService {
         .pipe(catchError(this.handleError));
     }
 
+    deleteTablero(id: number): Observable<void> {
+      return this.httpClient.delete<void>(`${apiConstants.baseUrl}api/tablero/${id}`)
+        .pipe(catchError(this.handleError));
+    }
+
       handleError(error: HttpErrorResponse) {
         if (error.error instanceof ErrorEvent) {
           console.log('An error occurred:', error.error.message);

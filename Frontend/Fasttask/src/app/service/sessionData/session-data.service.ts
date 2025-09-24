@@ -19,15 +19,13 @@ export class SessionDataService {
     this.userrSubject.next(userr.username ? userr : null);
   }
 
+  setIdiomaUserr(userr: Userr) {
+    this.userrSubject.next(userr.idioma ? userr : null);
+    
+  }
+
   clearUserr() {
     this.userrSubject.next(null);
-    console.log('userrSubject id: ' + this.userrSubject.value?.id);
-    console.log('userrSubject username: ' + this.userrSubject.value?.username);
-    console.log('userrSubject email: ' + this.userrSubject.value?.email);
-    console.log('userrSubject rol: ' + this.userrSubject.value?.rol);
-    console.log(
-      'userrSubject fecha_nacimiento: ' +
-        this.userrSubject.value?.fecha_nacimiento
-    );
+ 
   }
 }

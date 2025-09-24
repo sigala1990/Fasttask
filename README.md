@@ -1,8 +1,9 @@
 # FASTTASK
 
 Fasttask es una aplicación en línea para gestión de proyectos y tareas que se basa en el método Kanban. Permite organizar el trabajo de forma visual a través de tableros, listas y tarjetas, lo que facilita la planificación tanto de proyectos personales como de equipos.
+![gifFasttask](https://github.com/user-attachments/assets/fbfe9cfe-9686-472a-b214-881496a1c2f0)
 
-<img width="1902" height="670" alt="imagen" src="https://github.com/user-attachments/assets/f9ffcbcf-1b3a-46ff-8851-7ef267380c03" />
+-Link de fasttask http://217.154.179.4/
 
 
 ## 2. Características principales
@@ -36,9 +37,7 @@ Fasttask es una aplicación en línea para gestión de proyectos y tareas que se
 
 ## 5. Demo en vivo
 
-Link a la versión en producción (si la tienes).
-
-Indicaciones rápidas para desplegar (Heroku, Vercel, Docker, etc.).
+Link de fasttask http://217.154.179.4/
 
 ## 6. Estructura del proyecto
 

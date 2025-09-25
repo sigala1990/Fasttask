@@ -40,7 +40,7 @@ Fasttask es una aplicación en línea para gestión de proyectos y tareas que se
 
 Link de fasttask http://217.154.179.4/
 
-## 6. UML
+## 6. Diagrama Entidad-Relacion
 
 <img width="994" height="352" alt="imagen" src="https://github.com/user-attachments/assets/69e49c0b-abd5-4f86-b34f-d167b66bcf27" />
 

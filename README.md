@@ -12,6 +12,8 @@ Fasttask es una aplicación en línea para gestión de proyectos y tareas que se
 - API RESTful para gestión de datos.
 - Interfaz responsive desarrollada en Angular.
 - Persistencia en base de datos relacional PostgreSQL.
+- CRUD
+- JWT-authentication
 
 ## 3. Arquitectura / Tech Stack
 

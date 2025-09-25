@@ -44,6 +44,11 @@ Link de fasttask http://217.154.179.4/
 
 <img width="994" height="352" alt="imagen" src="https://github.com/user-attachments/assets/69e49c0b-abd5-4f86-b34f-d167b66bcf27" />
 
+## 7. Swagger
+
+http://217.154.179.4:8080/fasttask/swagger-ui/index.html#/ 
+<img width="1522" height="335" alt="imagen" src="https://github.com/user-attachments/assets/db746afc-3fbe-457b-b45b-2deebd2f4f2c" />
+
 ## 7. Autor / Contacto
 
 Adria Queralt, LinkedIn, portfolio.

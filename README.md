@@ -8,7 +8,6 @@ Fasttask es una aplicación en línea para gestión de proyectos y tareas que se
 
 ## 2. Características principales
 
-- Autenticación de usuarios con roles.
 - API RESTful para gestión de datos.
 - Interfaz responsive desarrollada en Angular.
 - Persistencia en base de datos relacional PostgreSQL.

@@ -40,10 +40,9 @@ Fasttask es una aplicación en línea para gestión de proyectos y tareas que se
 
 Link de fasttask http://217.154.179.4/
 
-## 6. Estructura del proyecto
+## 6. UML
 
-- /frontend   -> Angular app
-- /backend    -> Spring Boot app
+<img width="994" height="352" alt="imagen" src="https://github.com/user-attachments/assets/69e49c0b-abd5-4f86-b34f-d167b66bcf27" />
 
 ## 7. Autor / Contacto
 

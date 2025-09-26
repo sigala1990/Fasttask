@@ -47,7 +47,8 @@ Link de fasttask https://www.adriaqf.es/
 ## 7. Swagger
 
 https://adriaqf.es:8080/swagger-ui/index.html#/
-<img width="1522" height="335" alt="imagen" src="https://github.com/user-attachments/assets/db746afc-3fbe-457b-b45b-2deebd2f4f2c" />
+<img width="1463" height="330" alt="imagen" src="https://github.com/user-attachments/assets/15ddd126-d52c-4132-9235-a8a42cdc75df" />
+
 
 ## 7. Autor / Contacto
 

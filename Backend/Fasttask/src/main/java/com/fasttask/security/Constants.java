@@ -18,7 +18,7 @@ public class Constants {
 		
 		public static final String SWAGGER_RESOURCES = "/swagger-resources/**";
 		public static final String SWAGGER_UI_HTML = "/swagger-ui.html";
-		public static final String SWAGGER_API_DOCS = "/v3/api-docs";
+		public static final String SWAGGER_API_DOCS = "/v3/api-docs/**";
 		public static final String SWAGGER_UI = "/swagger-ui/**";
 		public static final String SWAGGER_WEBJARS = "/webjars/**";
 }

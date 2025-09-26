@@ -43,32 +43,17 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	private UserDetailsService userDetailsService;
 	private Filter simpleCorsFilter;
 
-//	public WebSecurity(UserDetailsService userDetailsService) {
-//		this.userDetailsService = userDetailsService;
-//	}
-
-//	@Bean
-//	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-//		return new BCryptPasswordEncoder();
-//	}
-	
 	@Autowired
 	public SimpleCORSFilter myCorsFilter;
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		/*
-		 * 1. Se desactiva el uso de cookies
-		 * 2. Se activa la configuración CORS con los valores por defecto
-		 * 3. Se desactiva el filtro CSRF
-		 * 4. Se indica que el login no requiere autenticación
-		 * 5. Se indica que el resto de URLs esten securizadas
-		 */
+
 		httpSecurity
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.cors().and()
 			.csrf().disable()
 			.authorizeRequests()
-			.antMatchers(HttpMethod.POST,"fasttask"+ LOGIN_URL).permitAll()
+			.antMatchers(HttpMethod.POST,"/fasttask"+ LOGIN_URL).permitAll()
 			.antMatchers(SWAGGER_RESOURCES).permitAll()
 			.antMatchers(SWAGGER_UI_HTML).permitAll()
 			.antMatchers(SWAGGER_API_DOCS).permitAll()
@@ -91,7 +76,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
 		corsConfiguration.setAllowedMethods(Arrays.asList("GET","POST", "OPTIONS", "PUT", "DELETE"));
-		corsConfiguration.setAllowedOrigins(Arrays.asList("*", "http://localhost:4200/signin","http://217.154.179.4","http://217.154.179.4/fasttask/", "http://217.154.179.4/fasttask"));
+		//corsConfiguration.setAllowedOrigins(Arrays.asList( "http://localhost:4200/signin","http://217.154.179.4","http://adriaqf.es","http://217.154.179.4/fasttask/", "http://217.154.179.4/fasttask"));
+		corsConfiguration.setAllowedOrigins(Arrays.asList( "http://localhost:4200", "https://adriaqf.es",
+		        "https://www.adriaqf.es"));
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues().combine(corsConfiguration));
 		return source;

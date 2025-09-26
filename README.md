@@ -13,6 +13,8 @@ Fasttask es una aplicación en línea para gestión de proyectos y tareas que se
 - Persistencia en base de datos relacional PostgreSQL.
 - CRUD
 - JWT-authentication
+- Certificado HTTPS
+- Authorities o roles
 
 ## 3. Arquitectura / Tech Stack
 

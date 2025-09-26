@@ -36,19 +36,15 @@ Fasttask es una aplicación en línea para gestión de proyectos y tareas que se
 - typescript ~4.6.2
 - Java 8  
 - Maven 3.6+
-- PostgreSQL 17,6  
+- PostgreSQL 13+ 
 
-## 5. Demo en vivo
-
-Link de fasttask https://www.adriaqf.es/
-
-## 6. Diagrama Entidad-Relacion
+## 5. Diagrama Entidad-Relacion
 
 <img width="994" height="352" alt="imagen" src="https://github.com/user-attachments/assets/69e49c0b-abd5-4f86-b34f-d167b66bcf27" />
 
-## 7. Swagger
+## 6. Swagger
 
-https://adriaqf.es:8080/swagger-ui/index.html#/
+Documentación interactiva de la API disponible en: https://adriaqf.es:8080/swagger-ui/index.html#/
 <img width="1463" height="330" alt="imagen" src="https://github.com/user-attachments/assets/15ddd126-d52c-4132-9235-a8a42cdc75df" />
 
 

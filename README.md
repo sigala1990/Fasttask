@@ -3,15 +3,18 @@
 Fasttask es una aplicación en línea para gestión de proyectos y tareas que se basa en el método Kanban. Permite organizar el trabajo de forma visual a través de tableros, listas y tarjetas, lo que facilita la planificación tanto de proyectos personales como de equipos.
 ![gifFasttask](https://github.com/user-attachments/assets/fbfe9cfe-9686-472a-b214-881496a1c2f0)
 
--Link de fasttask http://217.154.179.4/
+-Link de fasttask https://www.adriaqf.es/
 
 
 ## 2. Características principales
 
-- Autenticación de usuarios con roles.
 - API RESTful para gestión de datos.
 - Interfaz responsive desarrollada en Angular.
 - Persistencia en base de datos relacional PostgreSQL.
+- CRUD
+- JWT-authentication
+- Certificado HTTPS
+- Authorities o roles
 
 ## 3. Arquitectura / Tech Stack
 
@@ -37,12 +40,17 @@ Fasttask es una aplicación en línea para gestión de proyectos y tareas que se
 
 ## 5. Demo en vivo
 
-Link de fasttask http://217.154.179.4/
+Link de fasttask https://www.adriaqf.es/
 
-## 6. Estructura del proyecto
+## 6. Diagrama Entidad-Relacion
 
-- /frontend   -> Angular app
-- /backend    -> Spring Boot app
+<img width="994" height="352" alt="imagen" src="https://github.com/user-attachments/assets/69e49c0b-abd5-4f86-b34f-d167b66bcf27" />
+
+## 7. Swagger
+
+https://adriaqf.es:8080/swagger-ui/index.html#/
+<img width="1463" height="330" alt="imagen" src="https://github.com/user-attachments/assets/15ddd126-d52c-4132-9235-a8a42cdc75df" />
+
 
 ## 7. Autor / Contacto
 

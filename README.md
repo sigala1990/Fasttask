@@ -3,18 +3,18 @@
 Fasttask es una aplicación en línea para gestión de proyectos y tareas que se basa en el método Kanban. Permite organizar el trabajo de forma visual a través de tableros, listas y tarjetas, lo que facilita la planificación tanto de proyectos personales como de equipos.
 ![gifFasttask](https://github.com/user-attachments/assets/fbfe9cfe-9686-472a-b214-881496a1c2f0)
 
--Link de fasttask https://www.adriaqf.es/
-
+**Demo en vivo:**  
+[https://www.adriaqf.es/](https://www.adriaqf.es/)
 
 ## 2. Características principales
 
 - API RESTful para gestión de datos.
 - Interfaz responsive desarrollada en Angular.
 - Persistencia en base de datos relacional PostgreSQL.
-- CRUD
+- CRUD completo
 - JWT-authentication
 - Certificado HTTPS
-- Authorities o roles
+- Authorities (roles de usuario)
 
 ## 3. Arquitectura / Tech Stack
 
@@ -36,22 +36,22 @@ Fasttask es una aplicación en línea para gestión de proyectos y tareas que se
 - typescript ~4.6.2
 - Java 8  
 - Maven 3.6+
-- PostgreSQL 17,6  
+- PostgreSQL 13+ 
 
-## 5. Demo en vivo
-
-Link de fasttask https://www.adriaqf.es/
-
-## 6. Diagrama Entidad-Relacion
+## 5. Diagrama Entidad-Relacion
 
 <img width="994" height="352" alt="imagen" src="https://github.com/user-attachments/assets/69e49c0b-abd5-4f86-b34f-d167b66bcf27" />
 
-## 7. Swagger
+## 6. Swagger
 
-https://adriaqf.es:8080/swagger-ui/index.html#/
+Documentación interactiva de la API disponible en: https://adriaqf.es:8080/swagger-ui/index.html#/
 <img width="1463" height="330" alt="imagen" src="https://github.com/user-attachments/assets/15ddd126-d52c-4132-9235-a8a42cdc75df" />
 
 
 ## 7. Autor / Contacto
 
-Adria Queralt, LinkedIn, portfolio.
+Adria Queralt
+
+[LinkedIn](https://www.linkedin.com/in/adria-queralt-falco-158307184/)  
+[Portfolio](https://sigala1990.github.io/)  
+Correo: adriaqf@gmail.com

@@ -51,6 +51,7 @@ Documentación interactiva de la API disponible en: https://adriaqf.es:8080/swag
 ## 7. Autor / Contacto
 
 Adria Queralt
+
 [LinkedIn](https://www.linkedin.com/in/adria-queralt-falco-158307184/)  
 [Portfolio](https://sigala1990.github.io/)  
 Correo: adriaqf@gmail.com

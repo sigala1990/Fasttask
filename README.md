@@ -3,18 +3,18 @@
 Fasttask es una aplicación en línea para gestión de proyectos y tareas que se basa en el método Kanban. Permite organizar el trabajo de forma visual a través de tableros, listas y tarjetas, lo que facilita la planificación tanto de proyectos personales como de equipos.
 ![gifFasttask](https://github.com/user-attachments/assets/fbfe9cfe-9686-472a-b214-881496a1c2f0)
 
--Link de fasttask https://www.adriaqf.es/
-
+**Demo en vivo:**  
+[https://www.adriaqf.es/](https://www.adriaqf.es/)
 
 ## 2. Características principales
 
 - API RESTful para gestión de datos.
 - Interfaz responsive desarrollada en Angular.
 - Persistencia en base de datos relacional PostgreSQL.
-- CRUD
+- CRUD completo
 - JWT-authentication
 - Certificado HTTPS
-- Authorities o roles
+- Authorities (roles de usuario)
 
 ## 3. Arquitectura / Tech Stack
 
@@ -50,4 +50,7 @@ Documentación interactiva de la API disponible en: https://adriaqf.es:8080/swag
 
 ## 7. Autor / Contacto
 
-Adria Queralt, LinkedIn, portfolio.
+Adria Queralt
+[LinkedIn](https://www.linkedin.com/in/adria-queralt-falco-158307184/)  
+[Portfolio](https://sigala1990.github.io/)  
+Correo: adriaqf@gmail.com
